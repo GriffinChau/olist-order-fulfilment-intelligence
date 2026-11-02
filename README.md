@@ -1,95 +1,117 @@
 # Order Fulfilment & Delivery Performance Intelligence
 
-**Real-data supply chain operations portfolio | Excel + Python | Brazilian E-Commerce Public Dataset by Olist (2016-2018)**
+**A supply chain business analysis project using real public Olist marketplace data from Brazil (2016-2018).**
 
-A reproducible business analysis project that follows the customer order lifecycle from purchase to delivery and reviews. It adapts the **functional structure**, not the synthetic transactions, of an earlier 22-sheet SCM dashboard to a single coherent public dataset.
+**The goal:** Turn disconnected operational data into a clear view of seller coverage, customer delivery and potential service issues, so an operations manager can decide where to investigate.
 
-![Olist seller geography dashboard overview - verified seller population; delivery data not loaded](evidence/dashboard_overview.svg)
+> **Current project status:** The seller-location analysis is complete and supported by real records. Customer delivery analysis is the next stage because the full order transaction files have not yet been loaded. The published dashboard does **not** claim an on-time delivery rate.
 
-**[Open the Excel dashboard](workbook/Olist_Order_Fulfilment_Intelligence.xlsx)** · **[View dashboard overview](evidence/dashboard_overview.svg)** · **[Business requirements](docs/01_business_case.md)** · **[Source and QA evidence](docs/04_data_quality.md)**
+![Overview of the verified seller population and the customer delivery measures still awaiting source data](evidence/dashboard_overview.svg)
 
-## Release status
+**[Explore the Excel dashboard](workbook/Olist_Order_Fulfilment_Intelligence.xlsx)** | **[Read the business findings](docs/05_findings.md)** | **[View the data source](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)**
 
-**Stage 1 published in this package: verified seller footprint.** The [published Excel workbook](workbook/Olist_Order_Fulfilment_Intelligence.xlsx) contains a real Olist marketplace seller-state profile from **3,095 distinct seller IDs**, with summary by 23 Brazilian states and top 20 cities. The full transactional order/item/payment CSVs are **not bundled** and were not available to the builder's environment. Therefore this packaged workbook correctly displays **Not loaded** for order counts, delivery timeliness and other order-level metrics. No delivery percentages were fabricated.
+## The business problem
 
-**Stage 2 implemented and ready to run:** A complete standard-library Python ETL and Excel builder. Download the **original Olist CSVs** from the publisher and run the provided commands to calculate real delivery, commercial and QA results. Do not present the Stage 2 KPIs as observed results until the source files are supplied and the pipeline is run.
+An online marketplace serves customers through many independent sellers. Operations teams need to understand where sellers are based and, ultimately, whether orders are reaching customers when expected.
 
-## Observed seller footprint
+Before comparing service performance, the business needs reliable data. A dashboard can be misleading if it counts a seller twice, mixes different kinds of transactions or reports a delivery percentage when delivery records are missing.
 
-| Actual source observation | Verified result |
-|---|---:|
-| Seller records / distinct seller IDs | 3,095 |
-| Brazilian states represented | 23 |
-| Seller IDs in São Paulo (SP) | 1,849 |
-| Share of seller IDs in SP | 59.7% |
-| Seller IDs in Paraná (PR) | 349 |
-| Seller IDs in Minas Gerais (MG) | 244 |
+This project starts with the evidence available, checks it, presents a clear picture of the seller network and sets out how the analysis can grow into a complete customer-delivery review.
 
-**Interpretation:** The recorded marketplace seller presence is concentrated in São Paulo. Seller counts do not measure order volume, customer service quality or delivery lateness. Reference data: [Seller State Profile](data/reference/olist_seller_state_profile.csv), [Seller City Top 20](data/reference/olist_seller_city_top20.csv), [provenance](data/reference/PROVENANCE.md).
+## What I did
 
-## Business problem
-
-Marketplace operations teams need to know whether customers receive orders by their estimated date, whether delays differ across purchase months, and whether freight, product mix and marketplace seller participation create service-risk questions. Order items, payments and reviews occupy different grains, so careless joins can multiply amounts and create misleading KPI results.
-
-The project defines a testable analysis with the correct denominators and the correct evidence boundaries. The workbook starts from the seller footprint available now and refreshes into a delivery analytics report after the full dataset is loaded.
-
-## Data source and licence
-
-- **Publisher:** Olist. [Brazilian E-Commerce Public Dataset by Olist - Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce).
-- **Region / historical period:** Brazil, 2016-2018. **Currency:** BRL, not NZD.
-- **Licence stated by publisher:** [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). Attribution, noncommercial and share-alike conditions apply to the source dataset. The original Olist dataset is **not included in this repository**; check the publisher's terms before redistributing any derivations.
-- **Verified initial reference:** [Public mirror of Olist sellers CSV](https://raw.githubusercontent.com/spdrio/Brazilian-E-Commerce-Public-Dataset-by-Olist/master/files/olist_sellers_dataset.csv), used only to compute the state/city aggregates.
-
-## How to complete the real-data analysis
-
-Python 3.10+ and `artifact_tool` are used for the workbook builder; the ETL itself uses only the Python standard library.
-
-1. Download the original Olist dataset from the Kaggle link, or optionally run `python scripts/download_olist.py` (public automatic download is network-dependent).
-2. Place these **eight CSV files** in `data/raw/`: `olist_orders_dataset.csv`, `olist_order_items_dataset.csv`, `olist_order_payments_dataset.csv`, `olist_order_reviews_dataset.csv`, `olist_products_dataset.csv`, `olist_sellers_dataset.csv`, `olist_customers_dataset.csv`, `product_category_name_translation.csv`. Geolocation is optional and not required.
-3. Run:
-
-```bash
-python scripts/process_olist.py --raw data/raw --output data/processed
-python scripts/build_workbook.py --processed data/processed --output workbook/Olist_Order_Fulfilment_Intelligence.xlsx
-python -m unittest discover -s tests -v
+```mermaid
+flowchart LR
+    A["1. Find real data<br/>Public Olist seller records"] --> B["2. Check data quality<br/>Distinct sellers and locations"]
+    B --> C["3. Build the dashboard<br/>State and city comparisons"]
+    C --> D["4. Explain the findings<br/>Coverage and next questions"]
 ```
 
-On Mac/Linux, `sh scripts/run_pipeline.sh` executes these commands in sequence. For the workbook builder, install `artifact_tool` if not already available in your environment.
+| Stage | My work | Why it matters |
+|---|---|---|
+| **Understand the problem** | Defined what an operations manager needs to know about seller coverage and delivery performance. | Keeps the analysis focused on business decisions. |
+| **Prepare the information** | Reviewed real seller records, checked seller IDs and grouped locations by state and city. | Prevents misleading counts and inconsistent comparisons. |
+| **Visualise the findings** | Created an Excel dashboard with geographic summaries, a chart and supporting definitions. | Makes the information understandable without reading raw data. |
+| **Identify next steps** | Documented what can be concluded now and which additional order records are needed for delivery analysis. | Separates verified results from assumptions. |
 
-After processing, the script creates `data/processed/kpi_summary.json`, `orders_enriched.csv`, `monthly_metrics.csv`, `seller_summary.csv`, `category_summary.csv` and `seller_state_counts.csv`. **The workbook is generated from those computed files; it is not a static mock dashboard.**
+## Results from the data analysed so far
 
-## Workbook sections
+<details>
+<summary><strong>What does the seller network look like?</strong></summary>
 
-| Worksheet | What is delivered |
+The verified source contains **3,095 distinct seller IDs** across **23 Brazilian states**. São Paulo accounts for **1,849 sellers (59.7%)**, with Paraná and Minas Gerais next.
+
+</details>
+
+| Key result | Verified observation |
+|---|---:|
+| Sellers in the public source | **3,095** |
+| Brazilian states represented | **23** |
+| Sellers located in São Paulo (SP) | **1,849** |
+| São Paulo share | **59.7%** |
+| Sellers located in Paraná (PR) | **349** |
+| Sellers located in Minas Gerais (MG) | **244** |
+
+### Where the sellers are concentrated
+
+```mermaid
+pie showData
+    title Share of seller IDs by location
+    "São Paulo" : 1849
+    "All other states" : 1246
+```
+
+**Main finding:** Nearly six in ten recorded sellers are based in São Paulo. This highlights a geographic concentration worth investigating when reviewing marketplace coverage or logistics planning.
+
+**Important distinction:** Seller location tells us where sellers are registered in this dataset. It does **not** tell us which sellers ship the most orders, deliver late, have warehouse capacity or provide better service.
+
+The dashboard also compares the largest seller states and shows the data still needed for customer-delivery reporting.
+
+## What business decisions could this support?
+
+| Business question | What this project provides |
 |---|---|
-| `DASHBOARD` | Verified seller geography now; customer delivery KPIs once original source CSVs are processed |
-| `MONTHLY_DELIVERY` | Purchase-month delivery timeliness, with eligible denominator |
-| `SELLER_SALES` | Seller-attributed item price and freight values, not upstream supplier performance |
-| `CATEGORY_ANALYSIS` | Product-category item values, using published category translation |
-| `ORDER_SAMPLE` | Up to 300 real processed orders for formula/source spot checking (not a statistical sample) |
-| `SELLER_STATES` and `SELLER_CITIES` | Real 3,095-seller footprint aggregates |
-| `DATA_QA` | Data availability, source linkage, monthly reconciliation and value consistency flags |
-| `KPI_DICTIONARY`, `BA_REQUIREMENTS`, `SOURCE_LOG`, `HOW_TO_USE` | KPI governance, traceability, provenance and user guidance |
+| Where is our seller network concentrated? | A verified state-level and city-level view of the seller population. |
+| Which locations deserve further review? | A starting point for questions about regional coverage and logistics dependency. |
+| Can we compare delivery performance yet? | Not yet. The published workbook identifies the missing transaction data rather than inventing results. |
+| What should an operations manager investigate next? | Order delivery dates, delays by month, freight costs, seller-level order activity and customer reviews once the original records are available. |
 
-## Scope and caveats
+These are **investigation priorities**, not claims of proven delivery problems or achieved business savings.
 
-- **On-time customer delivery** can be measured: delivered orders with both actual and estimated delivery dates, compared at calendar-date precision.
-- **Supplier OTIF is not measured**: the original data do not provide warehouse accepted quantity versus the original ordered quantity for upstream purchase orders.
-- **PO overdue, inventory and supplier purchasing spend are not measured**: the dataset contains no upstream purchase orders, inventory ledger or supplier AP invoices.
-- `order_items.price` and `freight_value` are customer-side transaction fields. `order_payments.payment_value` is payment information from customers, not purchasing cost.
-- A single order can have many items, several payment records and several review records. The script aggregates item and payment data separately to `order_id` first, to prevent many-to-many duplication.
-- Seller category/revenue splits are item-grain attributed measures. An order can contribute to several sellers/categories, so attributed order counts must never be summed across groups as if mutually exclusive.
-- `order_estimated_delivery_date` is a promised/estimated customer date in the public dataset, not a carrier SLA or verified contract commitment.
-- Dataset is a historical, anonymised marketplace case study, not real-time operations for Würth or any New Zealand company. No measured company savings are claimed.
+## The next stage: from seller coverage to customer delivery
 
-## Review evidence and BA material
+The original Olist dataset also contains customer orders, order items, estimated delivery dates, actual delivery dates, payments, products and customer reviews. With those original files available, the project is designed to answer:
 
-- [Business case and stakeholders](docs/01_business_case.md)
-- [Data model / grain / transformations](docs/02_data_model.md)
-- [KPI dictionary and boundaries](docs/03_kpi_dictionary.md)
-- [Data quality and acceptance testing](docs/04_data_quality.md)
-- [Evidence-based findings](docs/05_findings.md)
-- [Deployment and further roadmap](docs/06_roadmap.md)
-- [Requirements traceability](docs/07_requirements_traceability.md)
+- **Delivery reliability:** What percentage of delivered orders reached customers by their estimated date?
+- **Delivery delays:** In which periods are late deliveries most common?
+- **Freight and product mix:** Which categories account for larger item and freight values?
+- **Customer experience:** Are late deliveries associated with different review scores?
 
-The project is an **independent portfolio demonstration**, not a production implementation or a representation of working for Olist. The business scenarios and suggested actions are analytical proposals, not evidence of operational impact.
+These are **planned analyses, not completed results**. The Excel dashboard currently labels order-level figures as **Not loaded**. It would be inaccurate to report a delivery rate before running and checking the underlying order records.
+
+## View the project
+
+| Start here | What you will see |
+|---|---|
+| [Excel dashboard](workbook/Olist_Order_Fulfilment_Intelligence.xlsx) | Seller coverage, charts, definitions and clear indications of unavailable delivery figures. |
+| [Business case](docs/01_business_case.md) | The problem, stakeholders and decisions this project is designed to support. |
+| [Key findings](docs/05_findings.md) | Verified observations, their meaning and practical follow-up questions. |
+| [Data quality](docs/04_data_quality.md) | How the analysis checks counts, sources and reliability. |
+| [Project roadmap](docs/06_roadmap.md) | What is needed to extend the work to actual delivery performance. |
+
+<details>
+<summary>For reviewers who want the code or reproduction steps</summary>
+
+See the [technical setup guide](docs/08_technical_setup.md), [data model](docs/02_data_model.md), [KPI definitions](docs/03_kpi_dictionary.md) and [requirements traceability](docs/07_requirements_traceability.md). The Python scripts and tests are included for independent review.
+
+</details>
+
+## Source and project boundaries
+
+**Source:** [Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce), historical Brazil data covering 2016-2018. The seller-location summaries were calculated from the [public Olist sellers CSV](https://raw.githubusercontent.com/spdrio/Brazilian-E-Commerce-Public-Dataset-by-Olist/master/files/olist_sellers_dataset.csv) and can be checked in the [source summary](data/reference/olist_seller_state_profile.csv) and [provenance notes](data/reference/PROVENANCE.md).
+
+The original Olist source is made available under the publisher's stated **CC BY-NC-SA 4.0** licence. This is an independent portfolio case study, not a live system for Olist or a New Zealand business. Values in the original order data are **BRL**, not NZD.
+
+The source does **not** establish incoming supplier OTIF, purchase-order overdue balances, inventory stockouts or supplier purchasing spend. Those would require different operational records.
+
+*Portfolio focus: understanding the business problem, checking source information, presenting evidence and recommending the next decision.*
