@@ -4,9 +4,13 @@
 
 A reproducible business analysis project that follows the customer order lifecycle from purchase to delivery and reviews. It adapts the **functional structure**, not the synthetic transactions, of an earlier 22-sheet SCM dashboard to a single coherent public dataset.
 
+![Olist seller geography dashboard overview - verified seller population; delivery data not loaded](evidence/dashboard_overview.svg)
+
+**[Open the Excel dashboard](workbook/Olist_Order_Fulfilment_Intelligence.xlsx)** · **[View dashboard overview](evidence/dashboard_overview.svg)** · **[Business requirements](docs/01_business_case.md)** · **[Source and QA evidence](docs/04_data_quality.md)**
+
 ## Release status
 
-**Stage 1 published in this package: verified seller footprint.** The included Excel workbook contains a real Olist marketplace seller-state profile from **3,095 distinct seller IDs**, with summary by 23 Brazilian states and top 20 cities. The full transactional order/item/payment CSVs are **not bundled** and were not available to the builder's environment. Therefore this packaged workbook correctly displays **Not loaded** for order counts, delivery timeliness and other order-level metrics. No delivery percentages were fabricated.
+**Stage 1 published in this package: verified seller footprint.** The [published Excel workbook](workbook/Olist_Order_Fulfilment_Intelligence.xlsx) contains a real Olist marketplace seller-state profile from **3,095 distinct seller IDs**, with summary by 23 Brazilian states and top 20 cities. The full transactional order/item/payment CSVs are **not bundled** and were not available to the builder's environment. Therefore this packaged workbook correctly displays **Not loaded** for order counts, delivery timeliness and other order-level metrics. No delivery percentages were fabricated.
 
 **Stage 2 implemented and ready to run:** A complete standard-library Python ETL and Excel builder. Download the **original Olist CSVs** from the publisher and run the provided commands to calculate real delivery, commercial and QA results. Do not present the Stage 2 KPIs as observed results until the source files are supplied and the pipeline is run.
 
