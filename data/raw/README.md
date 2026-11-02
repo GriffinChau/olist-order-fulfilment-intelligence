@@ -1,0 +1,1 @@
+Download the original Olist CSVs from https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce into this directory. These source files are not bundled or relicensed by this portfolio. Run python scripts/download_olist.py for an optional download, then run the processing and workbook-building commands from the root README.

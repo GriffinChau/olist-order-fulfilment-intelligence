@@ -1,0 +1,16 @@
+{
+  "project_name": "Order Fulfilment & Delivery Performance Intelligence",
+  "release_stage": "verified_seller_footprint_and_transaction_pipeline",
+  "country": "Brazil",
+  "currency": "BRL",
+  "source_period": "2016-2018",
+  "source_author": "Olist",
+  "source_url": "https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce",
+  "licence_of_source_data": "CC BY-NC-SA 4.0",
+  "source_data_bundled": false,
+  "full_olist_transaction_csvs_processed": false,
+  "verified_seller_ids": 3095,
+  "observed_seller_states": 23,
+  "on_time_delivery_rate": null,
+  "reason": "The real seller master was verified, but full Olist order source files are not included. Delivery KPIs are not asserted."
+}
