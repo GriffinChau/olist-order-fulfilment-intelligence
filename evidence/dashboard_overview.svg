@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" width="1200" height="640" role="img" aria-label="Olist seller footprint dashboard preview based on verified public seller records">
+<rect width="1200" height="640" fill="#eff3f8"/>
+<rect x="0" y="0" width="1200" height="104" fill="#152b42"/>
+<text x="46" y="43" fill="#fff" font-family="Arial,sans-serif" font-size="28" font-weight="bold">ORDER FULFILMENT &amp; DELIVERY INTELLIGENCE</text>
+<text x="46" y="78" fill="#c2d6df" font-family="Arial,sans-serif" font-size="17">Olist Brazil 2016-2018 | Verified public seller geography | Historical portfolio pilot</text>
+<rect x="36" y="122" width="1128" height="40" rx="8" fill="#087d75"/>
+<text x="56" y="149" fill="#fff" font-family="Arial,sans-serif" font-size="17" font-weight="bold">STATUS: SELLER FOOTPRINT VERIFIED | FULL TRANSACTION KPIs NOT LOADED</text>
+<g font-family="Arial,sans-serif">
+<rect x="36" y="184" width="264" height="114" rx="12" fill="#fff" stroke="#d4e1e8"/>
+<rect x="322" y="184" width="264" height="114" rx="12" fill="#fff" stroke="#d4e1e8"/>
+<rect x="608" y="184" width="264" height="114" rx="12" fill="#fff" stroke="#d4e1e8"/>
+<rect x="894" y="184" width="270" height="114" rx="12" fill="#fff" stroke="#d4e1e8"/>
+<text x="54" y="216" fill="#64778c" font-size="16">VERIFIED SELLER IDS</text>
+<text x="54" y="265" fill="#087d75" font-size="39" font-weight="bold">3,095</text>
+<text x="340" y="216" fill="#64778c" font-size="16">STATE CODES</text>
+<text x="340" y="265" fill="#087d75" font-size="39" font-weight="bold">23</text>
+<text x="626" y="216" fill="#64778c" font-size="16">SAO PAULO SELLERS</text>
+<text x="626" y="265" fill="#087d75" font-size="39" font-weight="bold">1,849</text>
+<text x="912" y="216" fill="#64778c" font-size="16">SP SHARE OF SELLERS</text>
+<text x="912" y="265" fill="#087d75" font-size="39" font-weight="bold">59.7%</text>
+</g>
+<rect x="36" y="319" width="680" height="281" rx="12" fill="#fff" stroke="#d4e1e8"/>
+<text x="60" y="355" fill="#152b42" font-family="Arial,sans-serif" font-size="21" font-weight="bold">Largest seller-state populations</text>
+<text x="60" y="380" fill="#63768a" font-family="Arial,sans-serif" font-size="14">Public Olist sellers table | counts of seller IDs, not deliveries</text>
+<g font-family="Arial,sans-serif" font-size="17" fill="#223448">
+<text x="65" y="420">SP</text><rect x="112" y="401" width="495" height="24" rx="3" fill="#087d75"/><text x="620" y="420">1,849</text>
+<text x="65" y="459">PR</text><rect x="112" y="440" width="93" height="24" rx="3" fill="#2fa99f"/><text x="218" y="459">349</text>
+<text x="65" y="498">MG</text><rect x="112" y="479" width="65" height="24" rx="3" fill="#5cbfb6"/><text x="190" y="498">244</text>
+<text x="65" y="537">SC</text><rect x="112" y="518" width="51" height="24" rx="3" fill="#78cbc2"/><text x="177" y="537">190</text>
+<text x="65" y="576">RJ</text><rect x="112" y="557" width="46" height="24" rx="3" fill="#91d9d2"/><text x="173" y="576">171</text>
+</g>
+<rect x="736" y="319" width="428" height="281" rx="12" fill="#fff" stroke="#d4e1e8"/>
+<text x="762" y="355" fill="#152b42" font-family="Arial,sans-serif" font-size="21" font-weight="bold">Delivery KPI availability</text>
+<text x="762" y="399" fill="#64778c" font-family="Arial,sans-serif" font-size="17">Customer orders</text>
+<text x="1135" y="399" text-anchor="end" fill="#a96f2d" font-family="Arial,sans-serif" font-size="17" font-weight="bold">Not loaded</text>
+<text x="762" y="446" fill="#64778c" font-family="Arial,sans-serif" font-size="17">On-time delivery</text>
+<text x="1135" y="446" text-anchor="end" fill="#a96f2d" font-family="Arial,sans-serif" font-size="17" font-weight="bold">Not loaded</text>
+<text x="762" y="493" fill="#64778c" font-family="Arial,sans-serif" font-size="17">Delivery lead time</text>
+<text x="1135" y="493" text-anchor="end" fill="#a96f2d" font-family="Arial,sans-serif" font-size="17" font-weight="bold">Not loaded</text>
+<rect x="761" y="520" width="378" height="52" rx="7" fill="#e9f4f3"/>
+<text x="776" y="542" fill="#087d75" font-family="Arial,sans-serif" font-size="14" font-weight="bold">Run ETL on original Olist transaction CSVs</text>
+<text x="776" y="561" fill="#223448" font-family="Arial,sans-serif" font-size="13">before interpreting delivery performance.</text>
+<text x="46" y="627" fill="#63768a" font-family="Arial,sans-serif" font-size="12">Source: Olist Brazilian E-Commerce Public Dataset. Source records are historical, anonymised and independent of any NZ business.</text>
+</svg>
