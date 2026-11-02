@@ -5,6 +5,6 @@
 - Verified seller IDs: **3,095**.
 - Brazilian state codes: **23**.
 - São Paulo seller IDs: **1,849**.
-- The preview intentionally displays **Not loaded** for transactional order and delivery metrics.
+- The overview labels customer-order and delivery measures **Pending data**. The Excel workbook itself displays **Not loaded** for these measures, reflecting the same limitation.
 
 The [Excel workbook](../workbook/Olist_Order_Fulfilment_Intelligence.xlsx) is the primary reporting artifact. The preview is not a screenshot of the Excel user interface. Figures are derived from [seller-state source CSV](../data/reference/olist_seller_state_profile.csv) and its [provenance notes](../data/reference/PROVENANCE.md).
