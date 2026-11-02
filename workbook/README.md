@@ -11,7 +11,7 @@ The published 12-sheet Excel workbook is a historical Olist portfolio prototype.
 1. Open `DASHBOARD`: 3,095 unique seller IDs, 23 Brazilian state codes, 1,849 sellers in São Paulo.
 2. Check `SELLER_STATES` and `SELLER_CITIES` for the grouped reference.
 3. Review `KPI_DICTIONARY`, `BA_REQUIREMENTS`, `SOURCE_LOG` and `DATA_QA`.
-4. To build order delivery analytics, download the publisher's full Olist CSVs and follow the root [README instructions](../README.md).
+4. For the business story and findings, read the [project overview](../README.md). Technical reviewers who want to load the full Olist order dataset can use the [separate setup guide](../docs/08_technical_setup.md).
 
 Reporting source: [Olist Brazilian E-Commerce Public Dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce). The project is not a live operational system. Currency of the original order dataset is BRL, not NZD.
 
