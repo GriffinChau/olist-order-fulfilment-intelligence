@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 750" width="1120" height="750" role="img" aria-label="Top 10 city strings from verified Olist seller dataset, Sao Paulo city has 694 distinct seller IDs, 22.4 percent of full seller population">
+<rect width="1120" height="750" fill="#f3f7fa"/>
+<rect width="1120" height="102" fill="#152b42"/>
+<g font-family="Arial,sans-serif">
+<text x="45" y="43" fill="#fff" font-size="30" font-weight="bold">WHICH CITIES HAVE THE MOST SELLERS?</text>
+<text x="45" y="79" fill="#bfd6df" font-size="17">Top 10 city / state strings | Source-based seller ID counts</text>
+<rect x="35" y="128" width="828" height="566" rx="14" fill="#fff" stroke="#dce7ec"/>
+<text x="57" y="171" fill="#19384f" font-size="20" font-weight="bold">Seller IDs by city</text>
+<text x="58" y="224" fill="#254158" font-size="16">Sao Paulo</text><text x="269" y="224" fill="#7790a3" font-size="13">SP</text><rect x="328" y="208" width="450" height="23" rx="6" fill="#e9eef4"/><rect x="328" y="208" width="450" height="23" rx="6" fill="#0f817b"/><text x="792" y="225" fill="#18374e" font-size="16" font-weight="bold">694</text>
+<text x="58" y="267" fill="#254158" font-size="16">Curitiba</text><text x="269" y="267" fill="#7790a3" font-size="13">PR</text><rect x="328" y="251" width="450" height="23" rx="6" fill="#e9eef4"/><rect x="328" y="251" width="80" height="23" rx="6" fill="#85c9c3"/><text x="792" y="268" fill="#18374e" font-size="16" font-weight="bold">124</text>
+<text x="58" y="310" fill="#254158" font-size="16">Rio De Janeiro</text><text x="269" y="310" fill="#7790a3" font-size="13">RJ</text><rect x="328" y="294" width="450" height="23" rx="6" fill="#e9eef4"/><rect x="328" y="294" width="60" height="23" rx="6" fill="#85c9c3"/><text x="792" y="311" fill="#18374e" font-size="16" font-weight="bold">93</text>
+<text x="58" y="353" fill="#254158" font-size="16">Belo Horizonte</text><text x="269" y="353" fill="#7790a3" font-size="13">MG</text><rect x="328" y="337" width="450" height="23" rx="6" fill="#e9eef4"/><rect x="328" y="337" width="43" height="23" rx="6" fill="#85c9c3"/><text x="792" y="354" fill="#18374e" font-size="16" font-weight="bold">66</text>
+<text x="58" y="396" fill="#254158" font-size="16">Ribeirao Preto</text><text x="269" y="396" fill="#7790a3" font-size="13">SP</text><rect x="328" y="380" width="450" height="23" rx="6" fill="#e9eef4"/><rect x="328" y="380" width="34" height="23" rx="6" fill="#85c9c3"/><text x="792" y="397" fill="#18374e" font-size="16" font-weight="bold">52</text>
+<text x="58" y="439" fill="#254158" font-size="16">Guarulhos</text><text x="269" y="439" fill="#7790a3" font-size="13">SP</text><rect x="328" y="423" width="450" height="23" rx="6" fill="#e9eef4"/><rect x="328" y="423" width="32" height="23" rx="6" fill="#85c9c3"/><text x="792" y="440" fill="#18374e" font-size="16" font-weight="bold">50</text>
+<text x="58" y="482" fill="#254158" font-size="16">Ibitinga</text><text x="269" y="482" fill="#7790a3" font-size="13">SP</text><rect x="328" y="466" width="450" height="23" rx="6" fill="#e9eef4"/><rect x="328" y="466" width="32" height="23" rx="6" fill="#85c9c3"/><text x="792" y="483" fill="#18374e" font-size="16" font-weight="bold">49</text>
+<text x="58" y="525" fill="#254158" font-size="16">Santo Andre</text><text x="269" y="525" fill="#7790a3" font-size="13">SP</text><rect x="328" y="509" width="450" height="23" rx="6" fill="#e9eef4"/><rect x="328" y="509" width="29" height="23" rx="6" fill="#85c9c3"/><text x="792" y="526" fill="#18374e" font-size="16" font-weight="bold">45</text>
+<text x="58" y="568" fill="#254158" font-size="16">Campinas</text><text x="269" y="568" fill="#7790a3" font-size="13">SP</text><rect x="328" y="552" width="450" height="23" rx="6" fill="#e9eef4"/><rect x="328" y="552" width="27" height="23" rx="6" fill="#85c9c3"/><text x="792" y="569" fill="#18374e" font-size="16" font-weight="bold">41</text>
+<text x="58" y="611" fill="#254158" font-size="16">Maringa</text><text x="269" y="611" fill="#7790a3" font-size="13">PR</text><rect x="328" y="595" width="450" height="23" rx="6" fill="#e9eef4"/><rect x="328" y="595" width="26" height="23" rx="6" fill="#85c9c3"/><text x="792" y="612" fill="#18374e" font-size="16" font-weight="bold">40</text>
+<rect x="882" y="128" width="203" height="566" rx="14" fill="#e6f5f1"/>
+<text x="903" y="166" fill="#275b5a" font-size="16" font-weight="bold">São Paulo city</text>
+<text x="903" y="212" fill="#0d817b" font-size="35" font-weight="bold">694</text>
+<text x="903" y="245" fill="#476d6c" font-size="16">seller IDs</text>
+<text x="903" y="303" fill="#0d817b" font-size="35" font-weight="bold">22.4%</text>
+<text x="903" y="332" fill="#476d6c" font-size="15">of all sellers</text>
+<path d="M904 372 H1060" stroke="#acd6cb" stroke-width="2"/>
+<text x="903" y="420" fill="#275b5a" font-size="17" font-weight="bold">Top 10 cities</text>
+<text x="903" y="461" fill="#0d817b" font-size="31" font-weight="bold">1,254</text>
+<text x="903" y="494" fill="#476d6c" font-size="16">40.5% of sellers</text>
+<text x="903" y="568" fill="#50726e" font-size="14">Location strings</text>
+<text x="903" y="590" fill="#50726e" font-size="14">are unverified</text>
+<text x="903" y="612" fill="#50726e" font-size="14">postal addresses.</text>
+<text x="42" y="720" fill="#586f80" font-size="14">Source: Olist sellers table. Raw city names aggregated by seller ID; not order counts or delivery performance.</text>
+</g></svg>
