@@ -67,4 +67,4 @@ The Excel workbook is generated from the computed files, not a manually populate
 - Do not claim upstream supplier OTIF, overdue purchase orders, stockouts or actual purchasing spend from this dataset.
 - Review [KPI definitions](03_kpi_dictionary.md), [data-quality controls](04_data_quality.md) and [source provenance](../data/reference/PROVENANCE.md).
 
-The current public workbook intentionally shows **Not loaded** in customer-order and delivery fields. This is a data-availability disclosure, not a zero result.
+The current GitHub-hosted Excel workbook is an **older seller-only preview**, so it still displays **Not loaded** for order-level KPIs. That display is not the current analysis status: validated transaction aggregates and visual findings are now available in [evidence](../evidence/) and the [README](../README.md). An updated 16-sheet Excel file has been prepared separately; the GitHub binary still requires replacement.
