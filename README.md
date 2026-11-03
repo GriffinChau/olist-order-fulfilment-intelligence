@@ -4,9 +4,9 @@
 
 **Business question:** How reliably were customer orders delivered, where did delays occur, and how were delivery outcomes associated with customer experience?
 
-![Delivery performance across Olist customer orders](evidence/customer_delivery_trend.svg)
+![Source-based Olist fulfilment executive overview](evidence/fulfilment_executive_overview.svg)
 
-**[Management Brief](docs/09_management_brief.md) | [Key Findings](docs/05_findings.md) | [Excel Dashboard](workbook/Olist_Order_Fulfilment_Intelligence.xlsx)**
+**[Management Brief](docs/09_management_brief.md) | [Key Findings](docs/05_findings.md) | [Excel (seller-preview version)](workbook/Olist_Order_Fulfilment_Intelligence.xlsx)**
 
 ## The results in four numbers
 
@@ -76,7 +76,7 @@ The real Olist seller table contains **3,095 distinct seller IDs** in **23 Brazi
 ## Explore the project
 
 - **[Management Brief](docs/09_management_brief.md)** - visual summary with findings and business recommendations.
-- **[Excel Dashboard](workbook/Olist_Order_Fulfilment_Intelligence.xlsx)** - spreadsheet analysis and supporting KPI definitions.
+- **[Excel (seller-preview version)](workbook/Olist_Order_Fulfilment_Intelligence.xlsx)** - the existing GitHub workbook has not yet been replaced with the newly prepared 16-sheet full-analysis workbook; the published visual findings above use verified transaction aggregates.
 - **[Data & QA Evidence](evidence/)** - source-derived, aggregated calculations and charts.
 - **[Business Case](docs/01_business_case.md)** and **[KPI Dictionary](docs/03_kpi_dictionary.md)** - requirements and metric boundaries.
 - **[Technical Setup](docs/08_technical_setup.md)** - reproducibility steps for technical reviewers.
