@@ -1,41 +1,57 @@
-# Management Brief - Olist Seller Network
+# Management Brief - Olist Customer Fulfilment & Delivery
 
-**Business question:** Where is the seller population concentrated, and what should the operations team examine before making decisions about marketplace coverage or delivery performance?
+**Business question:** Are customer orders arriving when expected, where are service issues most visible, and what should the operations team investigate?
 
-**Source:** Real Olist seller records from Brazil, 2016-2018. The published analysis includes **3,095 distinct seller IDs** across 23 Brazilian states. It does not include validated customer-order delivery metrics.
+![Executive overview of customer delivery performance](../evidence/customer_delivery_trend.svg)
 
-## What the data shows
+## The results
 
-![Verified seller counts by Brazilian state](../evidence/seller_state_concentration.svg)
+| Evidence from real Olist records | Result |
+|---|---:|
+| Customer orders | **99,441** |
+| Eligible delivered orders | **96,470** |
+| Delivered by estimated date | **93.23%** |
+| Late delivered orders | **6,534** |
+| Average purchase-to-delivery time | **12.56 days** |
 
-**Finding 1 - Regional concentration:** São Paulo accounts for **1,849 of 3,095 seller IDs (59.7%)**. The five largest states combined account for **2,803 seller IDs (90.6%)**.
+## Three decision-relevant findings
 
-![Verified seller counts by city string](../evidence/top_seller_cities.svg)
+### 1. Periods with more late deliveries
 
-**Finding 2 - City concentration:** The city string `sao paulo, SP` has **694 seller IDs (22.4% of the seller population)**. The ten most frequent city/state strings together account for **1,254 seller IDs (40.5%)**.
+March 2018 had **1,328 late deliveries** and an **81.04% on-time rate**. February 2018 (**85.87%**) and November 2017 (**87.60%**) also warrant closer review. Combined, these three cohorts account for **48.3% of late orders**.
 
-These are counts of **marketplace seller IDs**, not confirmed addresses, warehouses, revenue, delivered orders or freight exposure.
+**Recommended review:** Compare order demand, seasonal effects, geography and shipping patterns. This analysis does not establish the cause.
 
-## Questions for an operations review
+### 2. Regional differences
 
-| Management question | Evidence-based action | Additional data needed |
-|---|---|---|
-| Do we rely heavily on sellers in one geographic area? | Review the state and city concentration shown above. | Customer demand by location and seller order volume before assessing actual operational dependency. |
-| Where should distribution coverage be reviewed first? | Compare seller representation with customer demand, not seller count alone. | Customer postcode/state, order items and delivery history. |
-| Are some customer orders late or costly to fulfil? | Measure on-time delivery, lead time and freight only when original transaction files are loaded. | Original Olist orders, order items and estimated/actual delivery dates. |
+![Customer delivery performance by state](../evidence/delivery_by_customer_state.svg)
 
-![Analysis workflow from real source to business decision](../evidence/analysis_to_action.svg)
+In the large customer-state groups shown, delivery performance varies. For example, **Rio de Janeiro: 87.89% on time across 12,350 eligible orders**, compared with **São Paulo: 95.51% across 40,494 eligible orders**.
 
-## Recommended next phase
+**Recommended review:** Examine customer distance and fulfilment characteristics before assessing policy options.
 
-**Priority 1:** Load the full original Olist order dataset and verify the number of orders and coverage of estimated/actual delivery dates.
+### 3. Customer experience is related to delivery timing
 
-**Priority 2:** Compare customer on-time delivery by purchase month and investigate late-delivery concentrations. Include data coverage and the eligible denominator beside every KPI.
+![Customer reviews and on-time versus late deliveries](../evidence/delivery_and_customer_reviews.svg)
 
-**Priority 3:** Review freight-to-item value and customer ratings for orders grouped by delivery timing. The relationship may indicate areas to investigate but is not proof of causation.
+Reviewed orders delivered on time averaged **4.29 / 5** versus **2.27 / 5** for reviewed late orders. The figures are associated, not evidence of causality.
 
-## Evidence boundary
+**Recommended review:** Prioritise late-order case studies and review whether communications and delay recovery could be improved.
 
-The project currently delivers **seller geography analysis**, not a measured customer delivery or inbound supplier OTIF assessment. The public Excel workbook marks unavailable order-level results **Not loaded**. The source is historical Brazilian marketplace data, not a live operation or a New Zealand company.
+## Freight and category context
 
-**Review materials:** [Project overview](../README.md) | [Excel dashboard](../workbook/Olist_Order_Fulfilment_Intelligence.xlsx) | [Source data summaries](../data/reference/PROVENANCE.md) | [KPI definitions](03_kpi_dictionary.md).
+![Product value and freight by category](../evidence/product_category_and_freight.svg)
+
+**BRL 13.59 million** of listed item value and **BRL 2.25 million** of quoted freight value appear in the original item records. Freight equals **16.57%** of the item value total. The published value is not a verified operational freight cost or supplier purchasing expense.
+
+## What happened during the analysis?
+
+![From source data to business decision](../evidence/analysis_to_action.svg)
+
+The analysis identified the business questions, validated record counts and joins, measured delivery outcomes, compared groups and documented the operational decisions that the evidence could support.
+
+## Important limitations
+
+Data are real, historical, anonymised Olist transactions from **Brazil, 2016-2018**, reported in BRL. On-time delivery means actual customer receipt on or before the estimated calendar date, not upstream supplier OTIF. Raw CSV records are not republished in this GitHub repository. No claims about proven root causes, actual cost savings or results for a New Zealand business are made.
+
+**Review links:** [Project overview](../README.md) | [KPI dictionary](03_kpi_dictionary.md) | [Data-quality notes](04_data_quality.md) | [Source-derived evidence](../evidence/).
