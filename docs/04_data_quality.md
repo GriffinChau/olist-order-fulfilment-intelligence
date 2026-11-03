@@ -1,46 +1,39 @@
-# Data Quality and Acceptance Evidence
+# Data Quality - Verified Olist Analysis
 
-## Source coverage verified
+The eight transaction CSVs are read from [Olist's original GitHub repository](https://github.com/olist/work-at-olist-data) and independently summarised. Only verified aggregates are published, not the individual order records.
 
-| Source record type | Source rows verified | Reporting use |
-|---|---:|---|
-| Orders | **99,441** | Delivery timing, purchase-month cohorts and cancellation status |
-| Delivered orders | **96,478** | Customer delivery status |
-| Eligible delivered orders | **96,470** | On-time customer delivery; 8 missing actual delivery dates excluded |
-| Order items | **112,650** | Item price and freight value |
-| Customer payments | **103,886** | Customer-side payment amount, not supplier spend |
-| Review events | **99,224** | Review scores grouped within order |
-| Seller master | **3,095** | Marketplace seller geography |
-| Products | **32,951** | Product category and item classification |
+| Data checked | Source count |
+|---|---:|
+| Customer orders | **99,441** |
+| Delivered orders | **96,478** |
+| Eligible for on-time KPI | **96,470** |
+| Delivered on time | **89,936** |
+| Delivered late | **6,534** |
+| Canceled orders | **625** |
+| Item lines | **112,650** |
+| Customer payment events | **103,886** |
+| Review events | **99,224** |
+| Seller master IDs | **3,095** |
 
-## Reconciliation rules
+## Reconciliation
 
-- **Delivery:** 89,936 on time + 6,534 late = **96,470 eligible delivered orders**.
-- **Monthly:** Sum of all purchase-month order counts = **99,441**.
-- **Geography:** Sum of all eligible orders across customer states = **96,470**.
-- **Commercial:** Category-level item values sum to **BRL 13,591,643.70** and quoted freight values sum to **BRL 2,251,909.54**.
-- **Payments:** Customer payment events sum to **BRL 16,008,872.12** and must not be joined directly to item lines before summing.
-- **Reviews:** Where more than one review occurs for an order, first compute the **per-order mean review**, then compare reviewed order groups.
+- On-time 89,936 + late 6,534 = **96,470 eligible**.
+- Eight delivered orders have no actual customer-delivery date and are excluded from the on-time denominator.
+- Monthly order counts sum to **99,441**; customer-state eligible counts sum to **96,470**.
+- Category merchandise total: **BRL 13,591,643.70**.
+- Category listed freight total: **BRL 2,256,599.44**.
+- Customer payment total: **BRL 16,008,872.12**. Payment events are aggregated by order before any order-item join.
+- Multiple review records on one order are averaged to one order-level score.
+- A source-status spelling of `canceled` is recognised; 625 canceled orders are counted.
 
-These source-derived aggregate files are published in [evidence](../evidence/). The Python checks in [test_published_evidence.py](../tests/test_published_evidence.py) independently verify internal aggregate consistency. The existing synthetic test fixtures test code behaviour, not real-world delivery performance.
+All source-key linkage checks and monthly/item/category reconciliations passed. This establishes internal consistency, not independent financial audit accuracy.
 
-## Exceptions and limitations
+**Review the evidence:** [Order KPI summary](../data/processed/kpi_summary.json), [monthly metrics](../data/processed/monthly_metrics.csv), [regions](../data/processed/customer_region_summary.csv), [reviews](../data/processed/review_by_delivery.csv), [product categories](../data/processed/category_summary.csv), [source commit](../data/processed/PROVENANCE.json).
 
-- 8 delivered orders do not have an actual customer delivery timestamp; they are excluded from the eligible on-time denominator.
-- 1,603 order-item lines were linked to products with missing or blank category descriptions in the source analysis; keep them in the overall item-value total.
-- A passing aggregate check does not establish independent financial audit accuracy, perfect postal addresses or cause of delivery delays.
-- Supplier inbound OTIF, overdue upstream purchase orders and inventory stockouts are not available in this public dataset.
-- Original raw Olist CSVs are not redistributed. Source is historical Brazil 2016-2018, currency BRL.
+The [automated aggregate tests](../tests/test_published_evidence.py) validate these published files. Synthetic unit-test fixtures remain clearly separated from real business results.
 
-## Business acceptance
+## Scope
 
-| Requirement | Evidence |
-|---|---|
-| BR-01 Delivery on-time KPI | [Source-derived order KPI summary](../evidence/order_delivery_kpis.json) |
-| BR-02 Freight and category values | [Commercial evidence](../evidence/commercial_kpis.json) |
-| BR-03 Avoid doubled values | Order-level grouping methodology, QA and synthetic join unit test |
-| BR-04 Seller geography | [Verified seller counts](../data/reference/olist_seller_state_profile.csv) |
-| BR-05 Transparent reporting scope | [KPI Dictionary](03_kpi_dictionary.md) and [source limitations](../README.md) |
-| BR-06 Reproducibility | Original publisher, public mirror, processing code and aggregate tests |
+The figures are historical Olist Brazil, 2016-2018. The metric is **customer on-time delivery against the estimated date**, not supplier inbound OTIF. This dataset cannot validate purchasing spend, warehouse inventory, actual carrier cost or operational savings.
 
-**Reporting release caveat:** The GitHub-hosted Excel binary is an earlier seller-only version pending replacement. Data-derived dashboard images and aggregate metrics in the repository are current.
+The [Excel workbook on GitHub](../workbook/Olist_Order_Fulfilment_Intelligence.xlsx) is still the earlier seller-preview binary; full verified analysis is visible in the linked charts and aggregate files.
