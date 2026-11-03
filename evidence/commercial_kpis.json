@@ -1,0 +1,895 @@
+{
+  "summary": {
+    "source_url": "https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce",
+    "mirror_url": "https://github.com/anggid/Brazilian-E-Commerce-Public-Dataset-by-Olist",
+    "scope": "All Olist order item rows, including non-delivered status orders; customer-side item prices and listed freight values; not supplier purchasing spend or carrier invoices.",
+    "item_rows": 112650,
+    "product_records": 32951,
+    "seller_reference_records": 3095,
+    "distinct_item_sellers": 3095,
+    "categories": 74,
+    "item_value_brl": "13591643.70",
+    "freight_value_brl": "2251909.54",
+    "freight_to_item_value_pct": 16.57,
+    "qa": {
+      "missing_products": 1603,
+      "missing_sellers": 0,
+      "category_totals_match": true,
+      "seller_totals_match": true
+    },
+    "top_categories": [
+      {
+        "category": "health_beauty",
+        "item_lines": 9670,
+        "orders_attributed": 8836,
+        "item_value_brl": "1258681.34",
+        "freight_value_brl": "182566.73",
+        "freight_to_item_pct": 14.5
+      },
+      {
+        "category": "watches_gifts",
+        "item_lines": 5991,
+        "orders_attributed": 5624,
+        "item_value_brl": "1205005.68",
+        "freight_value_brl": "100535.93",
+        "freight_to_item_pct": 8.34
+      },
+      {
+        "category": "bed_bath_table",
+        "item_lines": 11115,
+        "orders_attributed": 9417,
+        "item_value_brl": "1036988.68",
+        "freight_value_brl": "204693.04",
+        "freight_to_item_pct": 19.74
+      },
+      {
+        "category": "sports_leisure",
+        "item_lines": 8641,
+        "orders_attributed": 7720,
+        "item_value_brl": "988048.97",
+        "freight_value_brl": "168607.51",
+        "freight_to_item_pct": 17.06
+      },
+      {
+        "category": "computers_accessories",
+        "item_lines": 7827,
+        "orders_attributed": 6689,
+        "item_value_brl": "911954.32",
+        "freight_value_brl": "147318.08",
+        "freight_to_item_pct": 16.15
+      },
+      {
+        "category": "furniture_decor",
+        "item_lines": 8334,
+        "orders_attributed": 6449,
+        "item_value_brl": "729762.49",
+        "freight_value_brl": "172749.30",
+        "freight_to_item_pct": 23.67
+      },
+      {
+        "category": "cool_stuff",
+        "item_lines": 3796,
+        "orders_attributed": 3632,
+        "item_value_brl": "635290.85",
+        "freight_value_brl": "84039.10",
+        "freight_to_item_pct": 13.23
+      },
+      {
+        "category": "housewares",
+        "item_lines": 6964,
+        "orders_attributed": 5884,
+        "item_value_brl": "632248.66",
+        "freight_value_brl": "146149.11",
+        "freight_to_item_pct": 23.12
+      },
+      {
+        "category": "auto",
+        "item_lines": 4235,
+        "orders_attributed": 3897,
+        "item_value_brl": "592720.11",
+        "freight_value_brl": "92664.21",
+        "freight_to_item_pct": 15.63
+      },
+      {
+        "category": "garden_tools",
+        "item_lines": 4347,
+        "orders_attributed": 3518,
+        "item_value_brl": "485256.46",
+        "freight_value_brl": "98962.75",
+        "freight_to_item_pct": 20.39
+      },
+      {
+        "category": "toys",
+        "item_lines": 4117,
+        "orders_attributed": 3886,
+        "item_value_brl": "483946.60",
+        "freight_value_brl": "77425.95",
+        "freight_to_item_pct": 16
+      },
+      {
+        "category": "baby",
+        "item_lines": 3065,
+        "orders_attributed": 2885,
+        "item_value_brl": "411764.89",
+        "freight_value_brl": "68353.11",
+        "freight_to_item_pct": 16.6
+      }
+    ],
+    "top_sellers": [
+      {
+        "seller_id": "4869f7a5dfa277a7dca6462dcf3b52b2",
+        "state": "SP",
+        "city": "guariba",
+        "item_lines": 1156,
+        "orders_attributed": 1132,
+        "item_value_brl": "229472.63",
+        "freight_value_brl": "20168.07"
+      },
+      {
+        "seller_id": "53243585a1d6dc2643021fd1853d8905",
+        "state": "BA",
+        "city": "lauro de freitas",
+        "item_lines": 410,
+        "orders_attributed": 358,
+        "item_value_brl": "222776.05",
+        "freight_value_brl": "13080.63"
+      },
+      {
+        "seller_id": "4a3ca9315b744ce9f8e9374361493884",
+        "state": "SP",
+        "city": "ibitinga",
+        "item_lines": 1987,
+        "orders_attributed": 1806,
+        "item_value_brl": "200472.92",
+        "freight_value_brl": "35067.04"
+      },
+      {
+        "seller_id": "fa1c13f2614d7b5c4749cbc52fecda94",
+        "state": "SP",
+        "city": "sumare",
+        "item_lines": 586,
+        "orders_attributed": 585,
+        "item_value_brl": "194042.03",
+        "freight_value_brl": "10042.70"
+      },
+      {
+        "seller_id": "7c67e1448b00f6e969d365cea6b010ab",
+        "state": "SP",
+        "city": "itaquaquecetuba",
+        "item_lines": 1364,
+        "orders_attributed": 982,
+        "item_value_brl": "187923.89",
+        "freight_value_brl": "51612.55"
+      },
+      {
+        "seller_id": "7e93a43ef30c4f03f38b393420bc753a",
+        "state": "SP",
+        "city": "barueri",
+        "item_lines": 340,
+        "orders_attributed": 336,
+        "item_value_brl": "176431.87",
+        "freight_value_brl": "6322.18"
+      },
+      {
+        "seller_id": "da8622b14eb17ae2831f4ac5b9dab84a",
+        "state": "SP",
+        "city": "piracicaba",
+        "item_lines": 1551,
+        "orders_attributed": 1314,
+        "item_value_brl": "160236.57",
+        "freight_value_brl": "24955.75"
+      },
+      {
+        "seller_id": "7a67c85e85bb2ce8582c35f2203ad736",
+        "state": "SP",
+        "city": "sao paulo",
+        "item_lines": 1171,
+        "orders_attributed": 1160,
+        "item_value_brl": "141745.53",
+        "freight_value_brl": "20902.85"
+      },
+      {
+        "seller_id": "1025f0e2d44d7041d6cf58b6550e0bfa",
+        "state": "SP",
+        "city": "sao paulo",
+        "item_lines": 1428,
+        "orders_attributed": 915,
+        "item_value_brl": "138968.55",
+        "freight_value_brl": "33892.14"
+      },
+      {
+        "seller_id": "955fee9216a65b617aa5c0531780ce60",
+        "state": "SP",
+        "city": "sao paulo",
+        "item_lines": 1499,
+        "orders_attributed": 1287,
+        "item_value_brl": "135171.70",
+        "freight_value_brl": "25430.98"
+      },
+      {
+        "seller_id": "46dc3b2cc0980fb8ec44634e21d2718e",
+        "state": "RJ",
+        "city": "rio de janeiro",
+        "item_lines": 542,
+        "orders_attributed": 521,
+        "item_value_brl": "128111.19",
+        "freight_value_brl": "11798.50"
+      },
+      {
+        "seller_id": "6560211a19b47992c3666cc44a7e94c0",
+        "state": "SP",
+        "city": "sao paulo",
+        "item_lines": 2033,
+        "orders_attributed": 1854,
+        "item_value_brl": "123304.83",
+        "freight_value_brl": "27960.94"
+      },
+      {
+        "seller_id": "620c87c171fb2a6dd6e8bb4dec959fc6",
+        "state": "RJ",
+        "city": "petropolis",
+        "item_lines": 798,
+        "orders_attributed": 740,
+        "item_value_brl": "114774.50",
+        "freight_value_brl": "14135.21"
+      },
+      {
+        "seller_id": "7d13fca15225358621be4086e1eb0964",
+        "state": "SP",
+        "city": "ribeirao preto",
+        "item_lines": 578,
+        "orders_attributed": 565,
+        "item_value_brl": "113628.97",
+        "freight_value_brl": "8632.05"
+      },
+      {
+        "seller_id": "5dceca129747e92ff8ef7a997dc4f8ca",
+        "state": "SP",
+        "city": "santa barbara d´oeste",
+        "item_lines": 346,
+        "orders_attributed": 325,
+        "item_value_brl": "112155.53",
+        "freight_value_brl": "13661.39"
+      },
+      {
+        "seller_id": "1f50f920176fa81dab994f9023523100",
+        "state": "SP",
+        "city": "sao jose do rio preto",
+        "item_lines": 1931,
+        "orders_attributed": 1404,
+        "item_value_brl": "106939.21",
+        "freight_value_brl": "35165.77"
+      },
+      {
+        "seller_id": "cc419e0650a3c5ba77189a1882b7556a",
+        "state": "SP",
+        "city": "santo andre",
+        "item_lines": 1775,
+        "orders_attributed": 1706,
+        "item_value_brl": "104288.42",
+        "freight_value_brl": "25668.99"
+      },
+      {
+        "seller_id": "a1043bafd471dff536d0c462352beb48",
+        "state": "MG",
+        "city": "ilicinea",
+        "item_lines": 770,
+        "orders_attributed": 718,
+        "item_value_brl": "101901.16",
+        "freight_value_brl": "31844.09"
+      },
+      {
+        "seller_id": "3d871de0142ce09b7081e2b9d1733cb1",
+        "state": "SP",
+        "city": "campo limpo paulista",
+        "item_lines": 1147,
+        "orders_attributed": 1080,
+        "item_value_brl": "94914.20",
+        "freight_value_brl": "22433.51"
+      },
+      {
+        "seller_id": "edb1ef5e36e0c8cd84eb3c9b003e486d",
+        "state": "RJ",
+        "city": "teresopolis",
+        "item_lines": 175,
+        "orders_attributed": 166,
+        "item_value_brl": "79284.55",
+        "freight_value_brl": "3905.10"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "category": "health_beauty",
+      "item_lines": 9670,
+      "orders_attributed": 8836,
+      "item_value_brl": "1258681.34",
+      "freight_value_brl": "182566.73",
+      "freight_to_item_pct": 14.5
+    },
+    {
+      "category": "watches_gifts",
+      "item_lines": 5991,
+      "orders_attributed": 5624,
+      "item_value_brl": "1205005.68",
+      "freight_value_brl": "100535.93",
+      "freight_to_item_pct": 8.34
+    },
+    {
+      "category": "bed_bath_table",
+      "item_lines": 11115,
+      "orders_attributed": 9417,
+      "item_value_brl": "1036988.68",
+      "freight_value_brl": "204693.04",
+      "freight_to_item_pct": 19.74
+    },
+    {
+      "category": "sports_leisure",
+      "item_lines": 8641,
+      "orders_attributed": 7720,
+      "item_value_brl": "988048.97",
+      "freight_value_brl": "168607.51",
+      "freight_to_item_pct": 17.06
+    },
+    {
+      "category": "computers_accessories",
+      "item_lines": 7827,
+      "orders_attributed": 6689,
+      "item_value_brl": "911954.32",
+      "freight_value_brl": "147318.08",
+      "freight_to_item_pct": 16.15
+    },
+    {
+      "category": "furniture_decor",
+      "item_lines": 8334,
+      "orders_attributed": 6449,
+      "item_value_brl": "729762.49",
+      "freight_value_brl": "172749.30",
+      "freight_to_item_pct": 23.67
+    },
+    {
+      "category": "cool_stuff",
+      "item_lines": 3796,
+      "orders_attributed": 3632,
+      "item_value_brl": "635290.85",
+      "freight_value_brl": "84039.10",
+      "freight_to_item_pct": 13.23
+    },
+    {
+      "category": "housewares",
+      "item_lines": 6964,
+      "orders_attributed": 5884,
+      "item_value_brl": "632248.66",
+      "freight_value_brl": "146149.11",
+      "freight_to_item_pct": 23.12
+    },
+    {
+      "category": "auto",
+      "item_lines": 4235,
+      "orders_attributed": 3897,
+      "item_value_brl": "592720.11",
+      "freight_value_brl": "92664.21",
+      "freight_to_item_pct": 15.63
+    },
+    {
+      "category": "garden_tools",
+      "item_lines": 4347,
+      "orders_attributed": 3518,
+      "item_value_brl": "485256.46",
+      "freight_value_brl": "98962.75",
+      "freight_to_item_pct": 20.39
+    },
+    {
+      "category": "toys",
+      "item_lines": 4117,
+      "orders_attributed": 3886,
+      "item_value_brl": "483946.60",
+      "freight_value_brl": "77425.95",
+      "freight_to_item_pct": 16
+    },
+    {
+      "category": "baby",
+      "item_lines": 3065,
+      "orders_attributed": 2885,
+      "item_value_brl": "411764.89",
+      "freight_value_brl": "68353.11",
+      "freight_to_item_pct": 16.6
+    },
+    {
+      "category": "perfumery",
+      "item_lines": 3419,
+      "orders_attributed": 3162,
+      "item_value_brl": "399124.87",
+      "freight_value_brl": "54213.84",
+      "freight_to_item_pct": 13.58
+    },
+    {
+      "category": "telephony",
+      "item_lines": 4545,
+      "orders_attributed": 4199,
+      "item_value_brl": "323667.53",
+      "freight_value_brl": "71215.79",
+      "freight_to_item_pct": 22
+    },
+    {
+      "category": "office_furniture",
+      "item_lines": 1691,
+      "orders_attributed": 1273,
+      "item_value_brl": "273960.70",
+      "freight_value_brl": "68571.95",
+      "freight_to_item_pct": 25.03
+    },
+    {
+      "category": "stationery",
+      "item_lines": 2517,
+      "orders_attributed": 2311,
+      "item_value_brl": "230943.23",
+      "freight_value_brl": "46798.48",
+      "freight_to_item_pct": 20.26
+    },
+    {
+      "category": "computers",
+      "item_lines": 203,
+      "orders_attributed": 181,
+      "item_value_brl": "222963.13",
+      "freight_value_brl": "9836.30",
+      "freight_to_item_pct": 4.41
+    },
+    {
+      "category": "pet_shop",
+      "item_lines": 1947,
+      "orders_attributed": 1710,
+      "item_value_brl": "214315.41",
+      "freight_value_brl": "39561.24",
+      "freight_to_item_pct": 18.46
+    },
+    {
+      "category": "musical_instruments",
+      "item_lines": 680,
+      "orders_attributed": 628,
+      "item_value_brl": "191498.88",
+      "freight_value_brl": "18638.49",
+      "freight_to_item_pct": 9.73
+    },
+    {
+      "category": "small_appliances",
+      "item_lines": 679,
+      "orders_attributed": 630,
+      "item_value_brl": "190648.58",
+      "freight_value_brl": "16020.25",
+      "freight_to_item_pct": 8.4
+    },
+    {
+      "category": "unclassified",
+      "item_lines": 1603,
+      "orders_attributed": 1451,
+      "item_value_brl": "179535.28",
+      "freight_value_brl": "28169.81",
+      "freight_to_item_pct": 15.69
+    },
+    {
+      "category": "electronics",
+      "item_lines": 2767,
+      "orders_attributed": 2550,
+      "item_value_brl": "160246.74",
+      "freight_value_brl": "46578.32",
+      "freight_to_item_pct": 29.07
+    },
+    {
+      "category": "consoles_games",
+      "item_lines": 1137,
+      "orders_attributed": 1062,
+      "item_value_brl": "157465.22",
+      "freight_value_brl": "19828.02",
+      "freight_to_item_pct": 12.59
+    },
+    {
+      "category": "fashion_bags_accessories",
+      "item_lines": 2031,
+      "orders_attributed": 1864,
+      "item_value_brl": "152823.54",
+      "freight_value_brl": "31450.00",
+      "freight_to_item_pct": 20.58
+    },
+    {
+      "category": "construction_tools_construction",
+      "item_lines": 929,
+      "orders_attributed": 748,
+      "item_value_brl": "144677.59",
+      "freight_value_brl": "20650.41",
+      "freight_to_item_pct": 14.27
+    },
+    {
+      "category": "luggage_accessories",
+      "item_lines": 1092,
+      "orders_attributed": 1034,
+      "item_value_brl": "140429.98",
+      "freight_value_brl": "30445.23",
+      "freight_to_item_pct": 21.68
+    },
+    {
+      "category": "home_appliances_2",
+      "item_lines": 238,
+      "orders_attributed": 234,
+      "item_value_brl": "113317.74",
+      "freight_value_brl": "10600.18",
+      "freight_to_item_pct": 9.35
+    },
+    {
+      "category": "home_construction",
+      "item_lines": 604,
+      "orders_attributed": 490,
+      "item_value_brl": "83088.12",
+      "freight_value_brl": "13832.24",
+      "freight_to_item_pct": 16.65
+    },
+    {
+      "category": "home_appliances",
+      "item_lines": 771,
+      "orders_attributed": 764,
+      "item_value_brl": "80171.53",
+      "freight_value_brl": "14818.90",
+      "freight_to_item_pct": 18.48
+    },
+    {
+      "category": "agro_industry_and_commerce",
+      "item_lines": 212,
+      "orders_attributed": 182,
+      "item_value_brl": "72530.47",
+      "freight_value_brl": "5843.60",
+      "freight_to_item_pct": 8.06
+    },
+    {
+      "category": "furniture_living_room",
+      "item_lines": 503,
+      "orders_attributed": 422,
+      "item_value_brl": "68916.56",
+      "freight_value_brl": "17968.17",
+      "freight_to_item_pct": 26.07
+    },
+    {
+      "category": "fixed_telephony",
+      "item_lines": 264,
+      "orders_attributed": 217,
+      "item_value_brl": "59583.00",
+      "freight_value_brl": "4637.81",
+      "freight_to_item_pct": 7.78
+    },
+    {
+      "category": "home_confort",
+      "item_lines": 434,
+      "orders_attributed": 397,
+      "item_value_brl": "58572.04",
+      "freight_value_brl": "8501.23",
+      "freight_to_item_pct": 14.51
+    },
+    {
+      "category": "air_conditioning",
+      "item_lines": 297,
+      "orders_attributed": 253,
+      "item_value_brl": "55024.96",
+      "freight_value_brl": "6749.23",
+      "freight_to_item_pct": 12.27
+    },
+    {
+      "category": "audio",
+      "item_lines": 364,
+      "orders_attributed": 350,
+      "item_value_brl": "50688.50",
+      "freight_value_brl": "5710.44",
+      "freight_to_item_pct": 11.27
+    },
+    {
+      "category": "small_appliances_home_oven_and_coffee",
+      "item_lines": 76,
+      "orders_attributed": 75,
+      "item_value_brl": "47445.71",
+      "freight_value_brl": "2747.86",
+      "freight_to_item_pct": 5.79
+    },
+    {
+      "category": "books_general_interest",
+      "item_lines": 553,
+      "orders_attributed": 512,
+      "item_value_brl": "46856.88",
+      "freight_value_brl": "9195.52",
+      "freight_to_item_pct": 19.62
+    },
+    {
+      "category": "kitchen_dining_laundry_garden_furniture",
+      "item_lines": 281,
+      "orders_attributed": 248,
+      "item_value_brl": "46328.37",
+      "freight_value_brl": "11999.43",
+      "freight_to_item_pct": 25.9
+    },
+    {
+      "category": "construction_tools_lights",
+      "item_lines": 304,
+      "orders_attributed": 244,
+      "item_value_brl": "41080.00",
+      "freight_value_brl": "7583.80",
+      "freight_to_item_pct": 18.46
+    },
+    {
+      "category": "construction_tools_safety",
+      "item_lines": 194,
+      "orders_attributed": 167,
+      "item_value_brl": "40544.52",
+      "freight_value_brl": "3919.10",
+      "freight_to_item_pct": 9.67
+    },
+    {
+      "category": "industry_commerce_and_business",
+      "item_lines": 268,
+      "orders_attributed": 235,
+      "item_value_brl": "39669.61",
+      "freight_value_brl": "7884.68",
+      "freight_to_item_pct": 19.88
+    },
+    {
+      "category": "food",
+      "item_lines": 510,
+      "orders_attributed": 450,
+      "item_value_brl": "29393.41",
+      "freight_value_brl": "7271.03",
+      "freight_to_item_pct": 24.74
+    },
+    {
+      "category": "market_place",
+      "item_lines": 311,
+      "orders_attributed": 280,
+      "item_value_brl": "28378.47",
+      "freight_value_brl": "5456.06",
+      "freight_to_item_pct": 19.23
+    },
+    {
+      "category": "costruction_tools_garden",
+      "item_lines": 238,
+      "orders_attributed": 194,
+      "item_value_brl": "25715.89",
+      "freight_value_brl": "5311.40",
+      "freight_to_item_pct": 20.65
+    },
+    {
+      "category": "art",
+      "item_lines": 209,
+      "orders_attributed": 202,
+      "item_value_brl": "24202.64",
+      "freight_value_brl": "4045.17",
+      "freight_to_item_pct": 16.71
+    },
+    {
+      "category": "fashion_shoes",
+      "item_lines": 262,
+      "orders_attributed": 240,
+      "item_value_brl": "23562.77",
+      "freight_value_brl": "4918.87",
+      "freight_to_item_pct": 20.88
+    },
+    {
+      "category": "drinks",
+      "item_lines": 379,
+      "orders_attributed": 297,
+      "item_value_brl": "22428.70",
+      "freight_value_brl": "5741.25",
+      "freight_to_item_pct": 25.6
+    },
+    {
+      "category": "signaling_and_security",
+      "item_lines": 199,
+      "orders_attributed": 140,
+      "item_value_brl": "21509.23",
+      "freight_value_brl": "6507.82",
+      "freight_to_item_pct": 30.26
+    },
+    {
+      "category": "furniture_bedroom",
+      "item_lines": 109,
+      "orders_attributed": 95,
+      "item_value_brl": "20028.78",
+      "freight_value_brl": "4632.23",
+      "freight_to_item_pct": 23.13
+    },
+    {
+      "category": "books_technical",
+      "item_lines": 267,
+      "orders_attributed": 260,
+      "item_value_brl": "19096.06",
+      "freight_value_brl": "4283.06",
+      "freight_to_item_pct": 22.43
+    },
+    {
+      "category": "costruction_tools_tools",
+      "item_lines": 103,
+      "orders_attributed": 97,
+      "item_value_brl": "15903.95",
+      "freight_value_brl": "2030.22",
+      "freight_to_item_pct": 12.77
+    },
+    {
+      "category": "food_drink",
+      "item_lines": 278,
+      "orders_attributed": 227,
+      "item_value_brl": "15179.48",
+      "freight_value_brl": "4507.99",
+      "freight_to_item_pct": 29.7
+    },
+    {
+      "category": "fashion_male_clothing",
+      "item_lines": 132,
+      "orders_attributed": 112,
+      "item_value_brl": "10797.82",
+      "freight_value_brl": "2152.41",
+      "freight_to_item_pct": 19.93
+    },
+    {
+      "category": "fashion_underwear_beach",
+      "item_lines": 131,
+      "orders_attributed": 121,
+      "item_value_brl": "9541.55",
+      "freight_value_brl": "1916.19",
+      "freight_to_item_pct": 20.08
+    },
+    {
+      "category": "christmas_supplies",
+      "item_lines": 153,
+      "orders_attributed": 128,
+      "item_value_brl": "8800.82",
+      "freight_value_brl": "3229.30",
+      "freight_to_item_pct": 36.69
+    },
+    {
+      "category": "tablets_printing_image",
+      "item_lines": 83,
+      "orders_attributed": 79,
+      "item_value_brl": "7528.41",
+      "freight_value_brl": "1226.20",
+      "freight_to_item_pct": 16.29
+    },
+    {
+      "category": "cine_photo",
+      "item_lines": 72,
+      "orders_attributed": 65,
+      "item_value_brl": "6933.46",
+      "freight_value_brl": "1256.20",
+      "freight_to_item_pct": 18.12
+    },
+    {
+      "category": "music",
+      "item_lines": 38,
+      "orders_attributed": 38,
+      "item_value_brl": "6034.35",
+      "freight_value_brl": "690.51",
+      "freight_to_item_pct": 11.44
+    },
+    {
+      "category": "dvds_blu_ray",
+      "item_lines": 64,
+      "orders_attributed": 59,
+      "item_value_brl": "5999.39",
+      "freight_value_brl": "1288.74",
+      "freight_to_item_pct": 21.48
+    },
+    {
+      "category": "books_imported",
+      "item_lines": 60,
+      "orders_attributed": 53,
+      "item_value_brl": "4639.85",
+      "freight_value_brl": "769.85",
+      "freight_to_item_pct": 16.59
+    },
+    {
+      "category": "party_supplies",
+      "item_lines": 43,
+      "orders_attributed": 39,
+      "item_value_brl": "4485.18",
+      "freight_value_brl": "827.97",
+      "freight_to_item_pct": 18.46
+    },
+    {
+      "category": "furniture_mattress_and_upholstery",
+      "item_lines": 38,
+      "orders_attributed": 38,
+      "item_value_brl": "4368.08",
+      "freight_value_brl": "1630.46",
+      "freight_to_item_pct": 37.33
+    },
+    {
+      "category": "portateis_cozinha_e_preparadores_de_alimentos",
+      "item_lines": 15,
+      "orders_attributed": 14,
+      "item_value_brl": "3968.53",
+      "freight_value_brl": "309.76",
+      "freight_to_item_pct": 7.81
+    },
+    {
+      "category": "fashio_female_clothing",
+      "item_lines": 48,
+      "orders_attributed": 39,
+      "item_value_brl": "2803.64",
+      "freight_value_brl": "621.75",
+      "freight_to_item_pct": 22.18
+    },
+    {
+      "category": "fashion_sport",
+      "item_lines": 30,
+      "orders_attributed": 27,
+      "item_value_brl": "2119.51",
+      "freight_value_brl": "578.13",
+      "freight_to_item_pct": 27.28
+    },
+    {
+      "category": "la_cuisine",
+      "item_lines": 14,
+      "orders_attributed": 13,
+      "item_value_brl": "2054.99",
+      "freight_value_brl": "333.55",
+      "freight_to_item_pct": 16.23
+    },
+    {
+      "category": "arts_and_craftmanship",
+      "item_lines": 24,
+      "orders_attributed": 23,
+      "item_value_brl": "1814.01",
+      "freight_value_brl": "370.13",
+      "freight_to_item_pct": 20.4
+    },
+    {
+      "category": "diapers_and_hygiene",
+      "item_lines": 39,
+      "orders_attributed": 27,
+      "item_value_brl": "1567.59",
+      "freight_value_brl": "573.68",
+      "freight_to_item_pct": 36.6
+    },
+    {
+      "category": "pc_gamer",
+      "item_lines": 9,
+      "orders_attributed": 8,
+      "item_value_brl": "1545.95",
+      "freight_value_brl": "133.57",
+      "freight_to_item_pct": 8.64
+    },
+    {
+      "category": "flowers",
+      "item_lines": 33,
+      "orders_attributed": 29,
+      "item_value_brl": "1110.04",
+      "freight_value_brl": "488.87",
+      "freight_to_item_pct": 44.04
+    },
+    {
+      "category": "home_comfort_2",
+      "item_lines": 30,
+      "orders_attributed": 24,
+      "item_value_brl": "760.27",
+      "freight_value_brl": "410.31",
+      "freight_to_item_pct": 53.97
+    },
+    {
+      "category": "cds_dvds_musicals",
+      "item_lines": 14,
+      "orders_attributed": 12,
+      "item_value_brl": "730.00",
+      "freight_value_brl": "224.99",
+      "freight_to_item_pct": 30.82
+    },
+    {
+      "category": "fashion_childrens_clothes",
+      "item_lines": 8,
+      "orders_attributed": 8,
+      "item_value_brl": "569.85",
+      "freight_value_brl": "95.51",
+      "freight_to_item_pct": 16.76
+    },
+    {
+      "category": "security_and_services",
+      "item_lines": 2,
+      "orders_attributed": 2,
+      "item_value_brl": "283.29",
+      "freight_value_brl": "41.22",
+      "freight_to_item_pct": 14.55
+    }
+  ]
+}
