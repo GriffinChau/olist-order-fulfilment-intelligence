@@ -1,28 +1,19 @@
-# Visual Evidence - Olist Order Fulfilment
+# Olist Visual Evidence
 
-**All four customer-delivery charts below are based on source-verified Olist aggregates.**
+The main portfolio README displays **one consolidated dashboard**:
 
-## Customer delivery and experience
+**[View the executive summary](executive_summary.svg)**
 
-![Monthly delivery performance and exceptions](customer_delivery_performance.svg)
+Additional chart files are kept here as optional drill-down evidence. They are not repeated inline in the README or Management Brief.
 
-![Delivery reliability by destination state](customer_delivery_by_region.svg)
+| Optional chart | Question answered |
+|---|---|
+| [Monthly delivery](customer_delivery_performance.svg) | Which purchase months experienced more delivery exceptions? |
+| [Delivery by destination state](customer_delivery_by_region.svg) | How do on-time rates vary between destination states? |
+| [Customer reviews](delivery_and_reviews.svg) | What review differences are associated with delivery timing? |
+| [Category freight](freight_category_analysis.svg) | How do item values and listed freight compare by product category? |
+| [Seller geography](seller_state_concentration.svg) | Where are marketplace sellers located? |
 
-![Customer review scores by delivery outcome](delivery_and_reviews.svg)
+**Underlying source-derived evidence:** [KPI summary](../data/processed/kpi_summary.json), [monthly data](../data/processed/monthly_metrics.csv), [customer states](../data/processed/customer_region_summary.csv), [reviews](../data/processed/review_by_delivery.csv), [category values](../data/processed/category_summary.csv) and [source provenance](../data/processed/PROVENANCE.json).
 
-![Item value and freight exposure by product category](freight_category_analysis.svg)
-
-## Seller network context
-
-[Seller state concentration](seller_state_concentration.svg) | [Top seller cities](top_seller_cities.svg) | [Business analysis workflow](analysis_to_action.svg).
-
-## Reproduce or verify the numbers
-
-- [Overall KPI summary](../data/processed/kpi_summary.json)
-- [Monthly delivery aggregates](../data/processed/monthly_metrics.csv)
-- [Regional delivery aggregates](../data/processed/customer_region_summary.csv)
-- [Delivery and review aggregates](../data/processed/review_by_delivery.csv)
-- [Product-category values](../data/processed/category_summary.csv)
-- [Original Olist source commit and provenance](../data/processed/PROVENANCE.json)
-
-The raw individual order, customer and review records are not republished. This is a historical Brazil 2016-2018 study using BRL; on-time delivery is measured against the customer's estimated date, not supplier OTIF. Listed freight is not a verified carrier invoice and review association does not establish causation.
+Olist source data are historical Brazil records for 2016-2018. The delivery KPI compares the customer's actual date with the estimated date. Listed freight is not independently audited carrier cost. Review-score differences do not prove causation.
