@@ -20,7 +20,10 @@
   "verified_seller_ids": 3095,
   "observed_seller_states": 23,
   "verified_visual_reporting": true,
-  "github_excel_status": "seller_geography_preview_not_yet_rebuilt_from_full_data",
+  "github_excel_status": "real_data_16_worksheet_workbook_published",
   "source_evidence": "data/processed/PROVENANCE.json",
-  "qa_summary": "all order-key, monthly, category and item-value reconciliations passed"
+  "qa_summary": "all order-key, monthly, category and item-value reconciliations passed",
+  "published_workbook": "workbook/Olist_Order_Fulfilment_Intelligence_Real_Data.xlsx",
+  "primary_visual": "evidence/executive_summary.svg",
+  "primary_visual_count_in_README": 1
 }
