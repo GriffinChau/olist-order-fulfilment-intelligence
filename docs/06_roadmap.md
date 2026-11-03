@@ -1,23 +1,18 @@
-# Project roadmap
+# Project Roadmap and Release Status
 
-## Completed - Seller geography
+## Completed
 
-Verified 3,095 unique marketplace sellers across 23 Brazilian states. Published seller-state and city graphics.
+- **Data sourcing:** Eight original public Olist CSVs processed; origin and commit recorded in [source provenance](../data/processed/PROVENANCE.json).
+- **Delivery performance:** 99,441 real orders analysed, with 93.23% on-time delivery among 96,470 eligible delivered orders.
+- **Business analysis:** Monthly delivery, customer regions, review-score association, categories, freight and seller geography evaluated.
+- **Visual reporting:** [One consolidated executive dashboard](../README.md) is displayed in the portfolio. Detailed supporting charts remain available as optional links.
+- **Excel deliverable:** [Full real-data workbook (16 worksheets)](../workbook/Olist_Order_Fulfilment_Intelligence_Real_Data.xlsx) published.
+- **QA:** Reconciliation of delivered orders, monthly counts, category totals and customer-region results documented in [data quality](04_data_quality.md).
 
-## Completed - Full customer-order analysis
+## Optional future enhancements
 
-Processed eight real Olist transactional CSVs from the publisher's public repository. Verified 99,441 orders, 96,470 delivered orders eligible for on-time calculation, 6,534 late orders and 93.23% on-time customer delivery. Produced category and customer-region aggregates and review comparisons.
+1. Add dispatch origin, carrier milestones or transport invoices, if licensed sources become available, to test explanations for delivery patterns.
+2. Explore category and region differences jointly, controlling for order characteristics before attributing causes.
+3. Convert findings into an operational pilot with stakeholder acceptance criteria, if working with a real business.
 
-## Completed - Business-facing visual reporting
-
-Published monthly delivery, destination state, review comparisons and item/freight visualisations, including a [management findings report](10_delivery_performance_findings.md). The original row-level transaction records are not redistributed.
-
-## Remaining - Excel workbook refresh
-
-The GitHub Excel file remains the initial seller-geography edition. Rebuild the Excel file from the verified published aggregates with the same visual business interpretation and check that it matches the latest source-validated numbers. Do not call the original workbook the full-data report until updated.
-
-## Future optional improvements
-
-Explore carrier and origin/destination patterns if suitable data exist, and test whether delivery feedback associations hold when considering order value, category and customer region. Never infer supplier PO, inbound OTIF, inventory stockouts or actual purchasing spend from customer-side Olist orders.
-
-**Release principle:** every portfolio metric must have an identifiable source, correct denominator and clear business meaning.
+The repository is an **independent historical portfolio project**. It does not represent a live Olist implementation, proven root causes or realised business savings.
