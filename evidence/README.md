@@ -1,36 +1,28 @@
-# Olist Business Analysis - Visual Evidence
+# Visual Evidence - Olist Order Fulfilment
 
-**Actual historical Olist records | Brazil, 2016-2018 | Source-derived aggregated results**
+**All four customer-delivery charts below are based on source-verified Olist aggregates.**
 
-The charts answer the main management questions without requiring a reviewer to read the underlying CSVs.
+## Customer delivery and experience
 
-## Delivery and customer experience
+![Monthly delivery performance and exceptions](customer_delivery_performance.svg)
 
-| Visual | Key question |
-|---|---|
-| ![Monthly delivery performance](customer_delivery_trend.svg) | When did customer orders arrive later than estimated? |
-| ![Regional delivery reliability](delivery_by_customer_state.svg) | Which customer states had lower on-time delivery rates? |
-| ![Customer reviews by delivery timing](delivery_and_customer_reviews.svg) | How did customer ratings differ between on-time and late orders? |
-| ![Item categories and freight](product_category_and_freight.svg) | Which product groups have high recorded item value and freight exposure? |
+![Delivery reliability by destination state](customer_delivery_by_region.svg)
 
-## Seller geography (context)
+![Customer review scores by delivery outcome](delivery_and_reviews.svg)
 
-[Seller state concentration](seller_state_concentration.svg) | [Top seller cities](top_seller_cities.svg) | [Analysis to decision process](analysis_to_action.svg).
+![Item value and freight exposure by product category](freight_category_analysis.svg)
 
-Seller population is not a measure of sales, order volume or delivery quality.
+## Seller network context
 
-## Evidence files and source scope
+[Seller state concentration](seller_state_concentration.svg) | [Top seller cities](top_seller_cities.svg) | [Business analysis workflow](analysis_to_action.svg).
 
-| File | What is verified |
-|---|---|
-| [Order KPI summary](order_delivery_kpis.json) | 99,441 orders; 96,470 eligible delivered; 93.23% on time; 6,534 late |
-| [Monthly delivery CSV](monthly_delivery_summary.csv) | One row per purchase-month cohort; order and delivery reconciliation |
-| [Customer state and reviews](delivery_by_state_and_reviews.json) | State-level eligible orders, late counts and descriptive order-level review scores |
-| [Commercial categories](commercial_kpis.json) | 112,650 item lines, category item prices and listed freight, plus reconciliation checks |
-| [Customer payments](customer_payment_kpis.json) | 103,886 customer payment events, separate from procurement spend |
+## Reproduce or verify the numbers
 
-**Source:** [Olist Brazilian E-Commerce Public Dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce), accessed through a [public source CSV mirror](https://github.com/anggid/Brazilian-E-Commerce-Public-Dataset-by-Olist). The original source records are not redistributed in this repository. Source licence: **CC BY-NC-SA 4.0**.
+- [Overall KPI summary](../data/processed/kpi_summary.json)
+- [Monthly delivery aggregates](../data/processed/monthly_metrics.csv)
+- [Regional delivery aggregates](../data/processed/customer_region_summary.csv)
+- [Delivery and review aggregates](../data/processed/review_by_delivery.csv)
+- [Product-category values](../data/processed/category_summary.csv)
+- [Original Olist source commit and provenance](../data/processed/PROVENANCE.json)
 
-**Measurement boundaries:** On-time compares customer actual vs estimated delivery calendar date, not supplier OTIF. Listed freight is not an audited carrier cost. Differences in customer review scores describe association, not causality.
-
-The GitHub-hosted [Excel workbook](../workbook/Olist_Order_Fulfilment_Intelligence.xlsx) is still the earlier seller preview until its binary is replaced with the updated workbook. The validated delivery results are published in the evidence above.
+The raw individual order, customer and review records are not republished. This is a historical Brazil 2016-2018 study using BRL; on-time delivery is measured against the customer's estimated date, not supplier OTIF. Listed freight is not a verified carrier invoice and review association does not establish causation.
