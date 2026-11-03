@@ -4,7 +4,7 @@ This page is for technical reviewers who want to reproduce the analysis. For the
 
 ## Data availability
 
-The public release includes **verified Olist seller-state and city summaries**. The original Olist transaction CSVs are **not included**, and customer-order/delivery KPIs have not yet been computed in the published Excel workbook.
+The public evidence directory now includes **verified aggregate results from the real Olist order, item, product, customer, review and payment source tables**, including 99,441 orders and 93.23% customer on-time delivery among 96,470 eligible delivered orders. Original source CSVs are **not redistributed**. The existing GitHub Excel binary is still the original seller-only preview until replaced by the refreshed workbook; check the [project status](../project_status.json) before citing the Excel file.
 
 Source: [Olist Brazilian E-Commerce Public Dataset on Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce). The historical source covers Brazil in 2016-2018. Transaction values are in BRL. Check the publisher's CC BY-NC-SA 4.0 conditions before redistributing source data or derived material.
 
