@@ -1,20 +1,16 @@
-# Reproducibility for Technical Reviewers
+# Technical Reproducibility
 
-For the business narrative and visual results, start with the [project overview](../README.md).
+Business reviewers can start at the [project overview and single executive dashboard](../README.md) or [the 16-sheet full-data Excel workbook](../workbook/Olist_Order_Fulfilment_Intelligence_Real_Data.xlsx). Technical details are kept here to avoid cluttering the portfolio page.
 
-## Verified analysis is already complete
+## Source and verified results
 
-The Olist source-based report covers **99,441 orders**, **96,470 delivery-eligible orders**, **93.23% on-time customer deliveries**, category value, customer region and review outcomes. The [source manifest](../data/processed/PROVENANCE.json) records the original Olist repository commit used.
+The project processed eight original Olist public CSVs and published reconciled aggregate results: **99,441 orders**, **96,470 eligible delivered orders**, **93.23% on-time**, category commercial values, destination-state delivery and review comparisons. The original row-level records are not redistributed.
 
-The original row-level files are deliberately **not republished**. Source-verified aggregates are provided in [data/processed](../data/processed/kpi_summary.json).
+[Olist source repository](https://github.com/olist/work-at-olist-data) | [Original Kaggle listing](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) | [Source commit](../data/processed/PROVENANCE.json)
 
-## Rebuild the results
+## Reproducing the analysis
 
-- Source CSVs: [Olist's original public GitHub repository](https://github.com/olist/work-at-olist-data/tree/master/datasets) or [Olist on Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce).
-- Required tables: `olist_orders_dataset.csv`, `olist_order_items_dataset.csv`, `olist_order_payments_dataset.csv`, `olist_order_reviews_dataset.csv`, `olist_products_dataset.csv`, `olist_sellers_dataset.csv`, `olist_customers_dataset.csv`, `product_category_name_translation.csv`.
-- Optional: geolocation CSV is not used in this analysis.
-
-With Python 3.10+ and the eight files in `data/raw/`, run:
+With Python 3.10+, obtain the original Olist files (`olist_orders_dataset.csv`, `olist_order_items_dataset.csv`, `olist_order_payments_dataset.csv`, `olist_order_reviews_dataset.csv`, `olist_products_dataset.csv`, `olist_sellers_dataset.csv`, `olist_customers_dataset.csv`, `product_category_name_translation.csv`) and put them in `data/raw/`.
 
 ```bash
 python scripts/process_olist.py --raw data/raw --output data/processed
@@ -22,16 +18,14 @@ python scripts/summarise_delivery_experience.py --orders data/processed/orders_e
 python -m unittest discover -s tests -v
 ```
 
-The pipeline itself uses the Python standard library. The optional Excel builder `scripts/build_workbook.py` uses `artifact_tool`, which requires a compatible runtime; the GitHub-hosted workbook is still the earlier seller edition.
+The processing pipeline uses the Python standard library. The optional [workbook builder](../scripts/build_workbook.py) uses `artifact_tool` and builds a simpler Excel reporting edition; the currently published **16-worksheet portfolio workbook** is [here](../workbook/Olist_Order_Fulfilment_Intelligence_Real_Data.xlsx).
 
-## Key checks and boundaries
+## Measures and limitations
 
-- Unique order IDs are retained, and item/payment/review rows are independently aggregated before joining.
-- The on-time cohort contains only delivered orders with actual and estimated customer dates.
-- Eight delivered records lack actual dates, so they are excluded from the eligible denominator.
-- The source status `canceled` is included in cancellation rate.
-- QA verifies monthly counts, customer destinations and category merchandise/freight totals.
-- Monetary values are customer-side BRL, not upstream supplier spending or carrier invoices.
-- Supplier inbound OTIF, overdue upstream POs and inventory stockouts cannot be established from these source tables.
+- One order ID is counted once; items, payments and reviews are aggregated separately before joining.
+- On-time delivery compares actual and estimated **customer** delivery dates. Eight delivered records missing actual dates are excluded.
+- The source's `canceled` status corresponds to 625 canceled orders.
+- Category totals, monthly counts, review coverage and customer-region totals are checked against source-derived aggregates.
+- Currency is BRL, historical Brazil 2016-2018. Customer-side item and freight values are not supplier spend or audited transport invoices.
 
-The public [source-derived KPI file](../data/processed/kpi_summary.json), [KPI definitions](03_kpi_dictionary.md) and [data quality results](04_data_quality.md) provide more detail.
+See [data quality](04_data_quality.md) and [KPI dictionary](03_kpi_dictionary.md).
