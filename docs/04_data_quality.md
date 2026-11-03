@@ -36,4 +36,4 @@ The [automated aggregate tests](../tests/test_published_evidence.py) validate th
 
 The figures are historical Olist Brazil, 2016-2018. The metric is **customer on-time delivery against the estimated date**, not supplier inbound OTIF. This dataset cannot validate purchasing spend, warehouse inventory, actual carrier cost or operational savings.
 
-The [Excel workbook on GitHub](../workbook/Olist_Order_Fulfilment_Intelligence.xlsx) is still the earlier seller-preview binary; full verified analysis is visible in the linked charts and aggregate files.
+The [16-worksheet full-data Excel workbook](../workbook/Olist_Order_Fulfilment_Intelligence_Real_Data.xlsx) is now published, with the [single business overview](../README.md) and reconciled source-derived results.
