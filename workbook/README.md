@@ -1,17 +1,13 @@
-# Excel dashboard - current edition and data status
+# Olist Excel Dashboard - Full Real-Data Edition
 
-[Open the published Excel workbook](Olist_Order_Fulfilment_Intelligence.xlsx).
+**[Open the current Excel dashboard (16 worksheets)](Olist_Order_Fulfilment_Intelligence_Real_Data.xlsx)**
 
-**Important:** The Excel workbook currently remains the initial seller-geography edition. It contains 3,095 verified seller IDs and the state and city analysis, but its customer-order and delivery KPI fields still show **Not loaded**. That is the workbook's state, not the project's overall data status.
+This is the **full real-data edition**, covering the original Olist customer-order analysis, delivery performance, region and category comparisons, seller information and business reporting. The workbook is saved in this repository and is separate from the lightweight public-data pipeline scripts.
 
-**The full original Olist transaction analysis has now been completed and published separately**, with verified source-derived evidence and charts:
+For the simplest overview, start with the [one-image executive dashboard](../README.md) rather than browsing every worksheet.
 
-- [Customer delivery dashboard](../evidence/customer_delivery_performance.svg)
-- [Customer destination comparison](../evidence/customer_delivery_by_region.svg)
-- [Review experience comparison](../evidence/delivery_and_reviews.svg)
-- [Item value and freight](../evidence/freight_category_analysis.svg)
-- [Business findings and recommendations](../docs/10_delivery_performance_findings.md)
+**Verified source highlights:** 99,441 customer orders, 96,470 delivery-eligible orders, 93.23% on time, 6,534 late deliveries. Source evidence and quality controls are published in [data/processed](../data/processed/kpi_summary.json).
 
-The full-data Excel refresh is tracked in the [project roadmap](../docs/06_roadmap.md); please do not quote the workbook's unpopulated customer-delivery cells as observed results.
+**Scope:** Historical Olist Brazil data (2016-2018), BRL. The on-time metric measures customer delivery against the estimated date, not upstream supplier OTIF. Listed freight is not a carrier invoice.
 
-The source is historical Olist Brazil data (2016-2018), with item and freight amounts expressed in BRL.
+The optional [Python Excel builder](../scripts/build_workbook.py) is a simpler reproducible reporting implementation; it should not be confused with the formatting and layout of this 16-worksheet portfolio file.
