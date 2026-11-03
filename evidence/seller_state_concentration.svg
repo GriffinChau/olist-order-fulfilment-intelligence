@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1160" height="730" viewBox="0 0 1160 730" role="img" aria-label="Verified Olist marketplace seller population by Brazilian state, 3095 seller IDs. Sao Paulo has 1849 seller IDs or 59.7 percent.">
+<rect width="1160" height="730" fill="#f3f7fa"/>
+<rect width="1160" height="98" fill="#152b42"/>
+<text x="48" y="44" fill="#ffffff" font-family="Arial,sans-serif" font-weight="bold" font-size="29">WHERE ARE OLIST SELLERS BASED?</text>
+<text x="48" y="77" fill="#bdd6df" font-family="Arial,sans-serif" font-size="17">Actual public seller records | Brazil | Historical data</text>
+<g font-family="Arial,sans-serif">
+<rect x="46" y="122" width="252" height="110" rx="14" fill="#ffffff" stroke="#dde7ef"/>
+<rect x="320" y="122" width="252" height="110" rx="14" fill="#ffffff" stroke="#dde7ef"/>
+<rect x="594" y="122" width="252" height="110" rx="14" fill="#ffffff" stroke="#dde7ef"/>
+<rect x="868" y="122" width="246" height="110" rx="14" fill="#e5f5f2"/>
+<text x="64" y="151" fill="#617588" font-size="16">Seller IDs</text><text x="64" y="209" fill="#0b7f78" font-weight="bold" font-size="41">3,095</text>
+<text x="338" y="151" fill="#617588" font-size="16">States</text><text x="338" y="209" fill="#0b7f78" font-weight="bold" font-size="41">23</text>
+<text x="612" y="151" fill="#617588" font-size="16">São Paulo</text><text x="612" y="209" fill="#0b7f78" font-weight="bold" font-size="41">1,849</text>
+<text x="886" y="151" fill="#617588" font-size="16">São Paulo share</text><text x="886" y="209" fill="#0b7f78" font-weight="bold" font-size="41">59.7%</text>
+<rect x="45" y="258" width="900" height="397" rx="14" fill="#ffffff" stroke="#dde7ef"/>
+<text x="77" y="282" fill="#18344a" font-size="19" font-weight="bold">Top five states and all remaining states</text>
+<text x="78" y="321" fill="#263e56" font-size="18" font-weight="bold">SP</text>
+  <rect x="205" y="301" width="500" height="28" rx="7" fill="#e9eff5"/>
+  <rect x="205" y="301" width="490" height="28" rx="7" fill="#0d817d"/>
+  <text x="721" y="321" font-size="18" font-weight="bold" fill="#142e45">1,849</text>
+  <text x="844" y="321" font-size="17" fill="#596e82">59.7%</text>
+<text x="78" y="377" fill="#263e56" font-size="18" font-weight="normal">PR</text>
+  <rect x="205" y="357" width="500" height="28" rx="7" fill="#e9eff5"/>
+  <rect x="205" y="357" width="92" height="28" rx="7" fill="#6fc4b9"/>
+  <text x="721" y="377" font-size="18" font-weight="bold" fill="#142e45">349</text>
+  <text x="844" y="377" font-size="17" fill="#596e82">11.3%</text>
+<text x="78" y="433" fill="#263e56" font-size="18" font-weight="normal">MG</text>
+  <rect x="205" y="413" width="500" height="28" rx="7" fill="#e9eff5"/>
+  <rect x="205" y="413" width="65" height="28" rx="7" fill="#6fc4b9"/>
+  <text x="721" y="433" font-size="18" font-weight="bold" fill="#142e45">244</text>
+  <text x="844" y="433" font-size="17" fill="#596e82">7.9%</text>
+<text x="78" y="489" fill="#263e56" font-size="18" font-weight="normal">SC</text>
+  <rect x="205" y="469" width="500" height="28" rx="7" fill="#e9eff5"/>
+  <rect x="205" y="469" width="50" height="28" rx="7" fill="#6fc4b9"/>
+  <text x="721" y="489" font-size="18" font-weight="bold" fill="#142e45">190</text>
+  <text x="844" y="489" font-size="17" fill="#596e82">6.1%</text>
+<text x="78" y="545" fill="#263e56" font-size="18" font-weight="normal">RJ</text>
+  <rect x="205" y="525" width="500" height="28" rx="7" fill="#e9eff5"/>
+  <rect x="205" y="525" width="45" height="28" rx="7" fill="#6fc4b9"/>
+  <text x="721" y="545" font-size="18" font-weight="bold" fill="#142e45">171</text>
+  <text x="844" y="545" font-size="17" fill="#596e82">5.5%</text>
+<text x="78" y="601" fill="#263e56" font-size="18" font-weight="normal">Other 18</text>
+  <rect x="205" y="581" width="500" height="28" rx="7" fill="#e9eff5"/>
+  <rect x="205" y="581" width="77" height="28" rx="7" fill="#6fc4b9"/>
+  <text x="721" y="601" font-size="18" font-weight="bold" fill="#142e45">292</text>
+  <text x="844" y="601" font-size="17" fill="#596e82">9.4%</text>
+<rect x="964" y="258" width="151" height="397" rx="14" fill="#e8f5f2"/>
+<text x="980" y="290" font-size="16" fill="#2a5055" font-weight="bold">Insight</text>
+<text x="980" y="345" font-size="29" fill="#087d75" font-weight="bold">90.6%</text>
+<text x="980" y="374" font-size="15" fill="#2a5055">of seller IDs</text>
+<text x="980" y="399" font-size="15" fill="#2a5055">come from the</text>
+<text x="980" y="424" font-size="15" fill="#2a5055">top 5 states</text>
+<path d="M980 458 h116" stroke="#a0cfc5" stroke-width="2"/>
+<text x="980" y="490" font-size="14" fill="#536d76">Not a measure</text>
+<text x="980" y="511" font-size="14" fill="#536d76">of orders,</text>
+<text x="980" y="532" font-size="14" fill="#536d76">late delivery</text>
+<text x="980" y="553" font-size="14" fill="#536d76">or revenue.</text>
+<text x="47" y="695" fill="#526a80" font-size="14">Source: Olist sellers public dataset. Based on verified distinct seller IDs, grouped by source state code.</text>
+</g></svg>
