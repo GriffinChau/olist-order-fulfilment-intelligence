@@ -23,7 +23,8 @@ class TestPipeline(unittest.TestCase):
                     w=csv.writer(f);w.writerow(header);w.writerows(rows)
             write('olist_orders_dataset.csv',['order_id','customer_id','order_status','order_purchase_timestamp','order_delivered_customer_date','order_estimated_delivery_date'],[
                 ['o1','c1','delivered','2018-01-01 10:00:00','2018-01-06 10:00:00','2018-01-07 00:00:00'],
-                ['o2','c1','delivered','2018-01-02 10:00:00','2018-01-09 10:00:00','2018-01-07 00:00:00']])
+                ['o2','c1','delivered','2018-01-02 10:00:00','2018-01-09 10:00:00','2018-01-07 00:00:00'],
+                ['o3','c1','canceled','2018-01-03 10:00:00','','2018-01-10 00:00:00']])
             write('olist_order_items_dataset.csv',['order_id','order_item_id','product_id','seller_id','price','freight_value'],[
                 ['o1','1','p1','s1','10.00','1.00'],['o1','2','p1','s1','20.00','2.00'],['o2','1','p1','s1','30.00','3.00']])
             write('olist_order_payments_dataset.csv',['order_id','payment_value','payment_type'],[
@@ -34,7 +35,9 @@ class TestPipeline(unittest.TestCase):
             write('olist_customers_dataset.csv',['customer_id','customer_state'],[['c1','SP']])
             write('product_category_name_translation.csv',['product_category_name','product_category_name_english'],[['automotivo','auto']])
             x=build(raw,out)
-            self.assertEqual(x['orders'],2)
+            self.assertEqual(x['orders'],3)
+            self.assertEqual(x['cancelled_orders'],1)
+            self.assertEqual(x['cancellation_rate_pct'],33.33)
             self.assertEqual(x['eligible_delivered_orders'],2)
             self.assertEqual(x['on_time_deliveries'],1)
             self.assertEqual(x['on_time_delivery_rate_pct'],50.0)
