@@ -2,7 +2,7 @@
 
 | ID | Business need | Acceptance test | Evidence | Status |
 |---|---|---|---|---|
-| BR-01 | Customer fulfilment timeliness | Delivered orders with both dates only; correct on-time denominator | Processing script, monthly delivery CSV | Full data pending |
+| BR-01 | Customer fulfilment timeliness | Delivered orders with both dates only; correct on-time denominator | [Order KPI summary](../evidence/order_delivery_kpis.json), [monthly delivery](../evidence/monthly_delivery_summary.csv) | Source aggregates verified |
 | BR-02 | Explain commercial mix | Item price and freight reconcile across seller/category | Seller/category output, QA | Full data pending |
 | BR-03 | Avoid double counting | Many items + many payments remain one correctly valued order | Unit tests | Test passed |
 | BR-04 | Profile marketplace footprint | Seller state totals = 3,095; SP = 1,849 | Verified real reference, workbook preview | Verified |
