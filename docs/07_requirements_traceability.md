@@ -9,6 +9,6 @@
 | BR-05: Analyse commercial exposure | Item prices and listed freight by category | [Freight chart](../evidence/freight_category_analysis.svg) |
 | BR-06: Avoid misleading reporting | Unique order keys, separate aggregation and source reconciliation | [QA evidence](04_data_quality.md), [unit tests](../tests/test_pipeline.py) |
 
-**Data status:** Source-derived aggregate reporting and business visualisations are complete. The GitHub Excel binary is still the initial seller-only edition and requires a separate refresh.
+**Data status:** Source-derived aggregate reporting, the consolidated executive dashboard and the [16-worksheet full-data Excel workbook](../workbook/Olist_Order_Fulfilment_Intelligence_Real_Data.xlsx) are published.
 
 The case study has not been approved by a real Olist stakeholder and does not claim measured operational improvements.
