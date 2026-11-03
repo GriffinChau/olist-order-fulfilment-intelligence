@@ -1,17 +1,12 @@
-# Business findings: verified Olist analysis
+# Findings at a glance
 
-The full customer-delivery analysis and management implications are presented visually in [Customer Delivery Findings](10_delivery_performance_findings.md).
+For the main visual overview, see the [executive dashboard in the project README](../README.md). Detailed evidence and managerial recommendations are in [Management Findings](10_delivery_performance_findings.md).
 
-![Verified real customer delivery performance](../evidence/customer_delivery_performance.svg)
+**Key findings:**
+- **Delivery:** 93.23% of 96,470 eligible customer deliveries met the estimated date; March 2018 stood out at 81.04%.
+- **Destination:** SP achieved 95.51% across 40,494 eligible deliveries, versus 87.89% for RJ across 12,350.
+- **Customer reviews:** 4.29/5 for reviewed on-time/early orders versus 2.27/5 for reviewed late orders. This association does not establish cause.
+- **Freight:** Listed freight was 16.60% of item price totals, not verified carrier cost.
+- **Marketplace sellers:** 3,095 seller IDs were recorded across 23 Brazilian states, with 59.7% in SP. Seller distribution is not customer delivery performance.
 
-**93.23%** of 96,470 eligible customer deliveries arrived by their estimated date. March 2018 has an observed **81.04%** on-time rate across 7,003 eligible deliveries, with 1,328 late orders.
-
-![Customer ratings and delivery timing](../evidence/delivery_and_reviews.svg)
-
-Average valid review scores are **4.29/5 for on-time/early orders** and **2.27/5 for late orders**, an observed association rather than a proven causal effect.
-
-![Seller network concentration](../evidence/seller_state_concentration.svg)
-
-Olist has **3,095 seller IDs** across 23 Brazilian states. São Paulo state holds **1,849 seller IDs (59.7%)**. Seller location is not a direct measure of sales or delivery reliability.
-
-For review priorities and full KPI definitions, see [Management Findings](10_delivery_performance_findings.md), [KPI Dictionary](03_kpi_dictionary.md) and [source evidence](../data/processed/kpi_summary.json).
+Source: [official Olist records](https://github.com/olist/work-at-olist-data), [KPI summary](../data/processed/kpi_summary.json) and [source provenance](../data/processed/PROVENANCE.json).
