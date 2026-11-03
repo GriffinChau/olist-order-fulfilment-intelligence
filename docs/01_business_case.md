@@ -25,4 +25,4 @@ Out of scope: inbound supplier OTIF, purchase order backlog, actual upstream pur
 - AC-05: Historic Brazil / BRL source, licence and limitations are disclosed.
 - AC-06: Unsupported supplier and inventory KPIs remain unavailable.
 
-**Current status:** Verified seller geography for 3,095 actual seller IDs. Full transactional analytics await the original Olist order datasets. This is a portfolio implementation, not a production deployment.
+**Current status:** The historical Olist source has now been analysed across customer orders, products, seller locations, reviews and payment records. The published aggregate evidence establishes 99,441 orders and 93.23% on-time customer delivery among 96,470 eligible delivered orders. The existing GitHub Excel binary still needs replacement with the refreshed workbook; source-derived findings and charts are already published. This remains a portfolio case study, not an operational deployment.
