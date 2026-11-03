@@ -1,90 +1,86 @@
 # Olist Order Fulfilment & Delivery Intelligence
 
-**Supply Chain / Business Analysis Portfolio | Real Olist transactions | Brazil, 2016-2018**
+**Business Analysis portfolio | Real order and delivery data | Brazil, 2016-2018**
 
-**Business question:** How reliably were customer orders delivered, where did delays occur, and how were delivery outcomes associated with customer experience?
+**The business question:** Are customers receiving orders on time, which periods and regions need attention, and how does delivery experience relate to customer feedback?
 
-![Source-based Olist fulfilment executive overview](evidence/fulfilment_executive_overview.svg)
+![Verified customer delivery dashboard showing real monthly performance](evidence/customer_delivery_performance.svg)
 
-**[Management Brief](docs/09_management_brief.md) | [Key Findings](docs/05_findings.md) | [Excel (seller-preview version)](workbook/Olist_Order_Fulfilment_Intelligence.xlsx)**
+## The results in one minute
 
-## The results in four numbers
-
-| Actual Olist observation | Verified result |
+| Measure | Result |
 |---|---:|
-| Customer orders analysed | **99,441** |
-| Orders delivered with both dates available | **96,470** |
-| Delivered on or before estimated date | **93.23%** |
-| Orders delivered later than estimated | **6,534** |
+| Real customer orders analysed | **99,441** |
+| On-time customer delivery | **93.23%** |
+| Delivered orders arriving late | **6,534** |
+| Average order-to-delivery time | **12.56 days** |
+| Canceled orders | **625 (0.63%)** |
 
-Delivery lead time averaged **12.56 days** from purchase to customer receipt for delivered orders with usable timestamps. The average lateness among late deliveries was **10.62 calendar days**.
+**Measurement basis:** 96,470 delivered orders have both estimated and actual customer-delivery dates. 89,936 of them arrived on or before the estimated calendar date. Eight orders marked delivered lacked the actual date and were excluded.
 
-**Definition:** On-time compares the recorded **actual customer delivery date** to the **estimated delivery date**, using calendar days. This is not supplier inbound OTIF, and it is not a carrier contract SLA.
+**[Read the management findings](docs/10_delivery_performance_findings.md) | [See the original Olist source](https://github.com/olist/work-at-olist-data) | [Check source calculations](data/processed/kpi_summary.json)**
 
-## What the analysis revealed
+## What I investigated
 
-### 1. Delivery performance varied sharply by purchase month
+![From business question to verified analysis and decisions](evidence/analysis_to_action.svg)
 
-![Actual Olist on-time customer delivery by month](evidence/customer_delivery_trend.svg)
+The analysis connects orders, order items, customer locations and customer reviews. I checked the original records, defined who qualifies for each KPI, reconciled totals and translated the findings into management questions.
 
-Only **81.04%** of eligible orders placed in **March 2018** arrived by the estimated date (1,328 late out of 7,003 eligible). February 2018 was **85.87%** and November 2017 **87.60%**.
+## Finding 1. Delivery performance changes by month
 
-These three purchase-month groups account for **3,158 of 6,534 late orders (48.3%)**, despite making up only **21.6%** of eligible deliveries. This is a useful starting point for investigating seasonal pressure, geography and logistics, not proof of the cause.
+![On-time delivery rates and monthly delivery exceptions](evidence/customer_delivery_performance.svg)
 
-### 2. Customer experience differed substantially
+**March 2018 stands out:** 1,328 late orders and an on-time rate of **81.04%** among 7,003 eligible deliveries. February 2018 and November 2017 also deserve review. The dataset does not by itself establish why these orders were late.
 
-![Average review scores by delivery timing](evidence/delivery_and_customer_reviews.svg)
+## Finding 2. Delivery performance differs by destination
 
-| Delivery result | Average review score | Reviewed eligible orders |
-|---|---:|---:|
-| On-time or early | **4.29 / 5** | **89,443** |
-| Late | **2.27 / 5** | **6,381** |
+![Customer on-time delivery by destination state](evidence/customer_delivery_by_region.svg)
 
-Orders were grouped by on-time status, with multiple reviews averaged **within each order** before comparing groups. This is an **association**, not evidence that lateness caused low ratings.
+On-time delivery was **95.51% for São Paulo (40,494 eligible orders)** and **87.89% for Rio de Janeiro (12,350 eligible orders)**. This supports a closer review of routes, carrier coverage or order mix, but those potential explanations need additional evidence.
 
-### 3. Some customer regions showed lower delivery reliability
+## Finding 3. Late orders have lower review scores
 
-![On-time rates by customer state](evidence/delivery_by_customer_state.svg)
+![Comparison of customer review scores for on-time versus late deliveries](evidence/delivery_and_reviews.svg)
 
-For states with at least 1,250 eligible orders, Ceará (**86.24%**), Bahia (**87.84%**) and Rio de Janeiro (**87.89%**) were among the lowest on-time groups in the displayed comparison.
+Reviewed on-time orders average **4.29/5**, compared with **2.27/5** for reviewed late orders. The difference is substantial but observational: it does **not** prove delivery delays are the only cause of dissatisfaction.
 
-**Next question:** Do travel distance, product mix or logistics processes help explain the differences? The source does not establish the cause.
+## Finding 4. Freight deserves category-level attention
 
-### 4. Freight matters alongside product value
+![Product category value and listed freight charges](evidence/freight_category_analysis.svg)
 
-![Product categories by item value, with freight comparison](evidence/product_category_and_freight.svg)
+The dataset shows **BRL 13.59 million** in listed item value and **BRL 2.26 million** in listed freight, a ratio of **16.60%**. This can guide investigation of categories with relatively high freight exposure, but listed freight is not verified carrier cost.
 
-Across **112,650 order-item rows**, the source lists **BRL 13.59 million** of item prices and **BRL 2.25 million** of freight values. Freight equals **16.57% of item value** as a descriptive ratio. These are customer-side listed amounts, **not** supplier purchasing expenditure or verified carrier invoices.
+## Business decisions supported
 
-## From data to an operational decision
-
-![How the project moves from source records to business questions](evidence/analysis_to_action.svg)
-
-| Management question | Practical decision support |
+| For an Operations Manager | Evidence to review |
 |---|---|
-| **When were delays most prominent?** | Prioritise the March 2018, February 2018 and November 2017 purchase cohorts for deeper review. |
-| **Where should regional delivery be investigated?** | Compare customer-state results while considering eligible-order counts and product mix. |
-| **How are delays related to customer experience?** | Review late-delivery cases and satisfaction patterns without assuming causality. |
-| **Which categories have significant freight exposure?** | Examine item-value and freight-to-item-value comparisons before making cost decisions. |
+| Which periods should receive a closer delivery-service investigation? | Monthly on-time rate and late-order counts |
+| Which customer destinations differ most? | State-level delivery performance with sample sizes |
+| Where should customer-service follow-up be considered? | Delivery timing alongside customer review outcomes |
+| Which product groups merit more freight analysis? | Category item value and listed freight ratio |
 
-## Earlier analysis: marketplace seller coverage
+**These are investigation recommendations, not claims that operational changes were implemented or produced savings.**
 
-The real Olist seller table contains **3,095 distinct seller IDs** in **23 Brazilian states**; **59.7%** are registered in São Paulo state. Seller geographic concentration is useful context, but it is not a measure of late shipments.
+## Seller network - supporting context
 
-[View the seller geography chart](evidence/seller_state_concentration.svg) and [top cities](evidence/top_seller_cities.svg).
+![Verified seller state distribution](evidence/seller_state_concentration.svg)
+
+The same public data contain **3,095 distinct marketplace seller IDs** across 23 Brazilian state codes; **59.7%** are in São Paulo state. Seller location is not a measure of on-time performance, revenue or warehouse capacity.
 
 ## Explore the project
 
-- **[Management Brief](docs/09_management_brief.md)** - visual summary with findings and business recommendations.
-- **[Excel (seller-preview version)](workbook/Olist_Order_Fulfilment_Intelligence.xlsx)** - the existing GitHub workbook has not yet been replaced with the newly prepared 16-sheet full-analysis workbook; the published visual findings above use verified transaction aggregates.
-- **[Data & QA Evidence](evidence/)** - source-derived, aggregated calculations and charts.
-- **[Business Case](docs/01_business_case.md)** and **[KPI Dictionary](docs/03_kpi_dictionary.md)** - requirements and metric boundaries.
-- **[Technical Setup](docs/08_technical_setup.md)** - reproducibility steps for technical reviewers.
+- **[Management Findings](docs/10_delivery_performance_findings.md)** - visual evidence, interpretation and suggested actions.
+- **[Verified KPI summary](data/processed/kpi_summary.json)** and **[monthly results](data/processed/monthly_metrics.csv)** - reproducible evidence.
+- **[Region results](data/processed/customer_region_summary.csv)** and **[review results](data/processed/review_by_delivery.csv)** - aggregated data without order identifiers.
+- **[Excel workbook](workbook/Olist_Order_Fulfilment_Intelligence.xlsx)** - the published seller-geography workbook; see status note below.
+- **[Business case](docs/01_business_case.md)** and **[data-quality controls](docs/04_data_quality.md)** - requirements and validation approach.
+- **[Technical reproduction](docs/08_technical_setup.md)** - for reviewers who want the code or original data.
+- **[Source provenance](data/processed/PROVENANCE.json)** - original Olist repository commit and scope.
 
-## Source and limitations
+**Excel status:** Full transaction analysis and these visual findings are now published. The GitHub Excel workbook is still the earlier seller-coverage edition, and its delivery cells have not yet been refreshed. The charts above and the linked output files contain the verified delivery results.
 
-The results use the **[Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)**, accessed through a [public GitHub mirror of the original CSVs](https://github.com/anggid/Brazilian-E-Commerce-Public-Dataset-by-Olist). All published metrics are aggregate calculations from actual historical, anonymised transactions. Original raw transactions are **not redistributed** in this repository. The original dataset is published with a **CC BY-NC-SA 4.0** licence; follow publisher conditions before downstream reuse.
+## Source and boundaries
 
-This is an independent historic Brazil case study, **not** a real-time Olist service, Würth operation or NZ purchasing system. Commercial values are in **BRL**. The dataset cannot establish supplier purchase orders, inbound OTIF, inventory stockouts, actual upstream procurement spend or operational improvements already achieved.
+Data: [Olist's own public GitHub datasets](https://github.com/olist/work-at-olist-data) and [Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce), historical Brazil, 2016-2018. Transaction amounts are **BRL**, not NZD. Original transaction files are not redistributed in this portfolio repository. Check Olist's dataset licence before reuse.
 
-**Accuracy note:** Business recommendations are investigation priorities based on observed associations. They are not claims of proven root causes, commercial savings or stakeholder sign-off.
+This project measures **customer delivery relative to the estimated customer date**, not upstream supplier OTIF. The source does not contain actual supplier purchase orders, goods receipts, warehouse inventory or invoice-verified purchasing costs. It is an independent portfolio study, not a live business system.
