@@ -1,33 +1,23 @@
-# Olist Customer Delivery - One-Page Management Brief
+# Olist Customer Delivery - Management Brief
 
-**Question:** Where does fulfilment performance need investigation, and what do customer reviews suggest?
+**Business question:** Which customer-delivery outcomes deserve further investigation?
 
-![Source-verified monthly delivery dashboard](../evidence/customer_delivery_performance.svg)
+The **[single executive dashboard](../README.md)** brings the main results together without repeating the visualisations across multiple pages.
 
-**The overall result:** 99,441 real orders analysed. **93.23%** of the 96,470 eligible delivered orders arrived by their estimated date, leaving **6,534 late deliveries**. Mean delivery lead time is **12.56 days**.
+## Key evidence
 
-## Three business findings
+| Operational question | Observed finding | Suggested follow-up |
+|---|---|---|
+| How reliably did orders arrive? | **93.23%** on time across **96,470** eligible customer deliveries | Review late delivery exceptions |
+| When was performance weaker? | **March 2018: 81.04%** on time and **1,328** late deliveries | Investigate demand, carrier events and fulfilment conditions |
+| Where did service vary? | **SP: 95.51%** vs **RJ: 87.89%** across differing numbers of eligible orders | Compare route and order characteristics |
+| How did reviews differ? | **4.29/5** for reviewed on-time/early orders vs **2.27/5** for late orders | Review delayed customer experiences; do not claim causality |
+| What about freight? | **BRL 2.26M** listed freight on **BRL 13.59M** item value | Investigate category ratios and actual carrier costs |
 
-**1. March 2018 deserves review.** It had **1,328 late deliveries** and **81.04% on-time performance** across 7,003 eligible orders. February 2018 (**85.87%**) and November 2017 (**87.60%**) also warrant investigation.
+## Recommendation
 
-![Customer-delivery reliability by destination state](../evidence/customer_delivery_by_region.svg)
+Prioritise a review of late deliveries in March 2018 and destination states with lower observed on-time rates. Link the findings to carrier milestones and order characteristics before attributing root causes. Review customer feedback alongside late deliveries and verify carrier invoices before drawing cost conclusions.
 
-**2. Delivery reliability differs by destination.** São Paulo (SP) achieved **95.51%** across 40,494 eligible deliveries; Rio de Janeiro (RJ) **87.89%** across 12,350. Sample sizes matter, and destinations are not necessarily warehouse origins.
+**Evidence:** [Full findings and methods](10_delivery_performance_findings.md) | [Data checks](04_data_quality.md) | [KPI source](../data/processed/kpi_summary.json).
 
-![Customer review scores by delivery timing](../evidence/delivery_and_reviews.svg)
-
-**3. Late delivery is associated with poorer reviews.** Valid customer review scores average **4.29/5 on-time** versus **2.27/5 late**. This is correlation, not proof of causation.
-
-## Financial context
-
-![Listed merchandise prices and freight by product category](../evidence/freight_category_analysis.svg)
-
-**BRL 13.59 million** merchandise value and **BRL 2.26 million** listed freight represent a freight-to-item ratio of **16.60%**. These are customer-side listed amounts, not supplier spend or audited carrier costs.
-
-## Suggested action
-
-Review the months and destinations with lower delivery reliability, examine delayed orders alongside customer reviews, and obtain carrier event details and actual cost information before proposing operational changes.
-
-**Source:** [Olist original dataset repository](https://github.com/olist/work-at-olist-data) | [Source calculations](../data/processed/kpi_summary.json) | [Full evidence-based findings](10_delivery_performance_findings.md).
-
-*Independent historical Business Analysis portfolio. No claim of verified root causes, realised savings, supplier inbound OTIF or New Zealand business performance.*
+*Historical Olist Brazil data (2016-2018), BRL. These are proposed investigative actions, not operational changes or savings already achieved.*
