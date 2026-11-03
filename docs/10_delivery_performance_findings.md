@@ -1,43 +1,42 @@
-# Customer Delivery and Fulfilment - Management Findings
+# Customer Delivery Performance - Evidence-Based Findings
 
-**Data basis:** 8 original Olist CSVs, downloaded from [Olist's own public repository](https://github.com/olist/work-at-olist-data) and reconciled using the [published calculation script](../scripts/process_olist.py). Source covers historical Brazilian marketplace activity in 2016-2018. Monetary values are in BRL.
+**Read the [one-page visual summary](../README.md) first.** This document provides the underlying interpretation, data denominators and practical follow-up questions without repeating the charts.
 
-## What did we learn?
+## 1. Customer delivery performance
 
-![Actual customer delivery results and monthly trend](../evidence/customer_delivery_performance.svg)
+The original Olist source contains **99,441 customer orders** and **96,478** orders marked delivered. Of the delivered population, **96,470** contain both an actual customer-delivery date and an estimated date; eight were excluded from the on-time denominator because the actual date was missing.
 
-**Finding 1 - Delivery reliability is high overall but varies materially by period.** Across 99,441 orders, 96,478 have status delivered; 96,470 of those have both actual and estimated delivery dates. **89,936 of the eligible orders were delivered on or before the estimated calendar date (93.23%), while 6,534 arrived later**. Mean purchase-to-delivery lead time for the eligible cohort is **12.56 days**.
+Of the eligible orders, **89,936 (93.23%)** were on or before the estimated calendar date and **6,534** arrived later. Mean time from purchase to delivery was **12.56 days** in the eligible group.
 
-**Finding 2 - March 2018 is a key period for investigation.** Among 7,003 eligible March-2018 orders, **1,328 arrived late**, making the on-time rate **81.04%**. Other notable purchase-month cohorts were February 2018 (**85.87%, 926 late**) and November 2017 (**87.60%, 904 late**). These findings are not evidence of a specific carrier, inventory or warehouse root cause.
+## 2. Periods warranting review
 
-![Destination state comparison using customer order records](../evidence/customer_delivery_by_region.svg)
+March 2018 had **1,328 late orders** among **7,003** eligible orders, giving **81.04%** on-time performance. February 2018 had **926 late (85.87% on time)** and November 2017 **904 late (87.60% on time)**. These are differences by *purchase-month cohort*, not independently verified carrier failure.
 
-**Finding 3 - Customer delivery varies by destination.** São Paulo (SP) had **95.51%** on-time delivery across **40,494** eligible orders; Rio de Janeiro (RJ) had **87.89%** across **12,350**. Ceará (CE) had **86.24%** across **1,279**. Denominators differ significantly. These figures refer to the customer's destination state, not the seller's warehouse location.
+## 3. Destination differences
 
-![Observed review differences for early/on-time and late deliveries](../evidence/delivery_and_reviews.svg)
+**SP:** 40,494 eligible deliveries, **95.51%** on time. **RJ:** 12,350 eligible deliveries, **87.89%** on time. **CE:** 1,279 eligible deliveries, **86.24%** on time. Comparisons must keep their denominators and account for order mix. The locations describe customer destinations rather than warehouse or dispatch origin.
 
-**Finding 4 - Late delivery is associated with lower customer reviews.** Eligible on-time/early orders with valid reviews average **4.29/5** (89,443 reviewed orders). Late orders average **2.27/5** (6,381 reviewed orders). Low review scores (1-2/5) appear in **9.23%** and **62.36%** of the reviewed orders respectively. This is an association, not proof that delivery timing alone determines customer satisfaction.
+## 4. Reviews and delivery timing
 
-![Item value and listed freight by category](../evidence/freight_category_analysis.svg)
+Reviewed on-time/early orders had a mean valid review score of **4.29/5** across **89,443 reviewed orders**. Reviewed late orders had an average of **2.27/5** across **6,381** reviewed orders. Low review scores (1-2/5) made up **9.23%** and **62.36%** respectively.
 
-**Finding 5 - Freight exposure differs across product categories.** The original order-items contain **BRL 13,591,643.70** in listed merchandise price and **BRL 2,256,599.44** in listed freight value, equivalent to **16.60%** of item value. These are customer-side listed values, not invoice-verified transport cost or upstream supplier spending.
+This is an observed association. The public records do not establish that timing alone caused lower ratings.
 
-## Suggested management follow-up
+## 5. Merchandise and freight exposure
 
-| Priority | Business decision | Supporting evidence | Next information to obtain |
-|---|---|---|---|
-| 1 | Review delivery-service exceptions for March 2018 and other low-performing periods. | Monthly late counts and eligible on-time rates. | Carrier event logs, service promise rules and backlog evidence before assigning cause. |
-| 2 | Investigate whether regional service patterns need different delivery approaches. | Customer-state on-time rates with denominators. | Dispatch origin, carrier, distance and SKU mix. |
-| 3 | Prioritise reviewing late orders with negative customer feedback. | Significant observed review-score association. | Contact-resolution outcomes and customer-service interventions. |
-| 4 | Examine categories with relatively high listed freight to item value. | Category-level merchandise and freight summaries. | Actual carrier invoices and profit/contribution information before claiming cost savings. |
+Across the original order-item rows, the sum of listed item prices was **BRL 13,591,643.70** and listed freight **BRL 2,256,599.44**, a freight-to-item ratio of **16.60%**. Category comparisons can identify areas for investigation. Listed freight is not independently verified carrier expense or a measure of profit.
 
-## Data quality and KPI boundaries
+## Management follow-up
 
-- One distinct `order_id` is counted once. Items, payments and reviews are aggregated before joining, avoiding accidental duplicate value totals.
-- **Eight** orders with status delivered have no actual delivery date and are excluded from the on-time denominator.
-- The source uses the order status `canceled`; this has been incorporated into the cancellation calculation. There are **625 canceled orders (0.63% of the observed order population)**.
-- Monthly, category and source-key reconciliations pass. [Validated totals](../data/processed/kpi_summary.json), [monthly evidence](../data/processed/monthly_metrics.csv), [regional evidence](../data/processed/customer_region_summary.csv) and [review evidence](../data/processed/review_by_delivery.csv) are published without individual order or customer identifiers.
-- This analysis measures **customer on-time delivery against estimated delivery dates**, not supplier inbound OTIF. Olist does not contain upstream purchase orders, goods-receipt quantities, verified carrier invoices or a stock ledger.
-- Source attribution: [Olist data publisher](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce), with [retrieved source commit and method](../data/processed/PROVENANCE.json). Underlying data reuse is subject to the publisher's licence terms.
+| Priority | Question to investigate | Evidence still needed |
+|---|---|---|
+| 1 | Why did March 2018 have more late deliveries? | Carrier milestones, dispatch processes, order mix and demand peaks |
+| 2 | Why do destination-state outcomes differ? | Routes, dispatch origins, distance and carrier allocation |
+| 3 | How might late-delivery experience be improved? | Customer support histories and interventions |
+| 4 | Which categories have higher underlying logistics costs? | Carrier invoices and contribution margin, not just listed freight |
 
-**Project context:** independent historical portfolio analysis, not a live business implementation or a claim of measured savings.
+## Evidence and boundaries
+
+[Overall KPIs](../data/processed/kpi_summary.json) | [Monthly data](../data/processed/monthly_metrics.csv) | [Destination data](../data/processed/customer_region_summary.csv) | [Reviews](../data/processed/review_by_delivery.csv) | [Categories](../data/processed/category_summary.csv) | [Source provenance](../data/processed/PROVENANCE.json).
+
+The source uses `canceled` for canceled orders, and **625 orders (0.63%)** have that status. Source-key, monthly, item and category checks passed. This is a **customer-delivery** study, not a calculation of supplier inbound OTIF, warehouse inventory or purchasing costs. Results reflect historical Brazilian records (2016-2018) rather than a live deployment.
