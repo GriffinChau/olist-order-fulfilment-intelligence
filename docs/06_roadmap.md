@@ -1,15 +1,28 @@
-# Implementation roadmap
+# Delivery Analytics Roadmap
 
-## Stage 1 - Verified real-data seller footprint
-Use the publicly accessible Olist sellers table, compute and reconcile real seller-state and seller-city summaries. Publish provenance and a workbook preview without invented delivery figures.
+## Completed: Seller coverage
 
-## Stage 2 - Full Olist order data
-Download the eight original required CSVs from Kaggle, process them with `scripts/process_olist.py`, inspect `kpi_summary.json` and regenerate Excel using `scripts/build_workbook.py`. Resolve data gaps explicitly rather than inventing missing values.
+Verified 3,095 Olist seller IDs across 23 Brazilian states and published state/city distribution visuals.
 
-## Stage 3 - Business Analysis validation
-Inspect monthly delivery cohorts, seller/category freight trends and review associations, check denominators, confirm dashboard to source reconciliation, and document acceptance evidence. Do not claim real stakeholder sign-off.
+## Completed: Customer delivery analysis
 
-## Stage 4 - Optional extensions
-Investigate regional freight patterns, seller order concentration and an authenticated refresh process. Upstream supplier PO, inventory or actual procurement-cost reporting would require separately authorised ERP data from the *same* organisation.
+Analysed **99,441 historical orders** and calculated customer-delivery reliability for **96,470 eligible delivered orders**, using the original order table accessed via a public mirror.
 
-**Release gate:** Do not call the project a completed full-data delivery analysis until all source CSVs have been processed and the KPI outputs spot-checked against the original files.
+Results include monthly delivery performance, regional delivery comparisons, descriptive customer review associations, item-category value and freight comparisons.
+
+## Completed: Business reporting
+
+Published evidence-based diagrams, a management brief, updated project overview and source-derived aggregate QA files. Raw customer and transaction data are not redistributed.
+
+## Next: Deeper diagnostic analysis
+
+- Compare customer delivery delays across seller-to-customer routes with adequate sample sizes.
+- Assess freight ratios by product characteristics, not only categories.
+- Measure how the severity of lateness relates to review scores using suitable controls.
+- Review data anomalies and collect feedback on reporting requirements.
+
+## Outside dataset scope
+
+Inbound supplier OTIF, overdue supplier POs, warehouse stockouts, actual supplier purchasing spend and contract freight invoices require genuine ERP, WMS or finance data. They cannot be derived from the public Olist dataset alone.
+
+**Caveat:** This independent portfolio analysis does not report implemented business changes, quantified savings or stakeholder sign-off.
