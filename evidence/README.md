@@ -1,24 +1,36 @@
-# Visual evidence
+# Olist Business Analysis - Visual Evidence
 
-This folder presents verified findings from real Olist marketplace seller records. The charts are based on the source summaries in [data/reference](../data/reference/PROVENANCE.md).
+**Actual historical Olist records | Brazil, 2016-2018 | Source-derived aggregated results**
 
-| Visual | What it shows |
+The charts answer the main management questions without requiring a reviewer to read the underlying CSVs.
+
+## Delivery and customer experience
+
+| Visual | Key question |
 |---|---|
-| [Executive dashboard](dashboard_overview.svg) | Confirmed seller counts and current data availability |
-| [State concentration](seller_state_concentration.svg) | Top five states, all remaining states and seller counts |
-| [Top seller cities](top_seller_cities.svg) | Ten most frequent raw city/state seller locations |
-| [Analysis to action](analysis_to_action.svg) | How the business question leads to analysis and next decisions |
+| ![Monthly delivery performance](customer_delivery_trend.svg) | When did customer orders arrive later than estimated? |
+| ![Regional delivery reliability](delivery_by_customer_state.svg) | Which customer states had lower on-time delivery rates? |
+| ![Customer reviews by delivery timing](delivery_and_customer_reviews.svg) | How did customer ratings differ between on-time and late orders? |
+| ![Item categories and freight](product_category_and_freight.svg) | Which product groups have high recorded item value and freight exposure? |
 
-## Key numbers
+## Seller geography (context)
 
-- **3,095** distinct Olist seller IDs across **23** Brazilian state codes.
-- São Paulo state accounts for **1,849 (59.7%)**.
-- Top five states together account for **2,803 (90.6%)**.
-- Top ten city/state strings together account for **1,254 (40.5%)**.
-- Raw `sao paulo, SP` accounts for **694 (22.4%)**.
+[Seller state concentration](seller_state_concentration.svg) | [Top seller cities](top_seller_cities.svg) | [Analysis to decision process](analysis_to_action.svg).
 
-These are seller population statistics, not order, turnover, delivery or warehouse metrics.
+Seller population is not a measure of sales, order volume or delivery quality.
 
-The original [Olist Excel workbook](../workbook/Olist_Order_Fulfilment_Intelligence.xlsx) is also available; its transactional customer delivery results remain **Not loaded** pending the original order files.
+## Evidence files and source scope
 
-**Source:** [Olist Brazilian E-Commerce Public Dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce), with the seller records via the [public CSV mirror](https://raw.githubusercontent.com/spdrio/Brazilian-E-Commerce-Public-Dataset-by-Olist/master/files/olist_sellers_dataset.csv). Source data are historical Brazil records from 2016-2018.
+| File | What is verified |
+|---|---|
+| [Order KPI summary](order_delivery_kpis.json) | 99,441 orders; 96,470 eligible delivered; 93.23% on time; 6,534 late |
+| [Monthly delivery CSV](monthly_delivery_summary.csv) | One row per purchase-month cohort; order and delivery reconciliation |
+| [Customer state and reviews](delivery_by_state_and_reviews.json) | State-level eligible orders, late counts and descriptive order-level review scores |
+| [Commercial categories](commercial_kpis.json) | 112,650 item lines, category item prices and listed freight, plus reconciliation checks |
+| [Customer payments](customer_payment_kpis.json) | 103,886 customer payment events, separate from procurement spend |
+
+**Source:** [Olist Brazilian E-Commerce Public Dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce), accessed through a [public source CSV mirror](https://github.com/anggid/Brazilian-E-Commerce-Public-Dataset-by-Olist). The original source records are not redistributed in this repository. Source licence: **CC BY-NC-SA 4.0**.
+
+**Measurement boundaries:** On-time compares customer actual vs estimated delivery calendar date, not supplier OTIF. Listed freight is not an audited carrier cost. Differences in customer review scores describe association, not causality.
+
+The GitHub-hosted [Excel workbook](../workbook/Olist_Order_Fulfilment_Intelligence.xlsx) is still the earlier seller preview until its binary is replaced with the updated workbook. The validated delivery results are published in the evidence above.
