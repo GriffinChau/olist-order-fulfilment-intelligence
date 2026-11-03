@@ -4,7 +4,7 @@
 
 The published 12-sheet Excel workbook is a historical Olist portfolio prototype. It contains a verified 3,095-seller geographic reference, an executive summary, seller-state and city views, KPI definitions, BA requirements, source log, how-to-use instructions and data-quality controls.
 
-**Data status:** The Olist customer order, item, payment and review CSVs are **not** bundled in this GitHub repository. Accordingly, customer delivery counts, on-time rates, lead time, seller-attributed item sales and category sales are marked **Not loaded** in the released workbook. Do not quote those as observed KPIs.
+**Release status:** The GitHub-hosted workbook is the earlier **seller-only preview**. Real Olist customer delivery, review and commercial metrics are now calculated and published in the [project overview](../README.md) and [evidence directory](../evidence/). A revised 16-sheet Excel workbook has been generated separately, but this repository binary has **not yet been replaced**. Do not mistake the original workbook's **Not loaded** cells for missing published evidence.
 
 ## Review
 
