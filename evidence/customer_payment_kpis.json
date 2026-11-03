@@ -1,0 +1,35 @@
+{
+  "source": "Olist customer payment events, not supplier spend or AP invoices",
+  "source_url": "https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce",
+  "rows": 103886,
+  "unique_order_ids": 99440,
+  "total_customer_payment_value_brl": "16008872.12",
+  "by_payment_method": [
+    {
+      "method": "credit_card",
+      "rows": 76795,
+      "value_brl": "12542084.19"
+    },
+    {
+      "method": "boleto",
+      "rows": 19784,
+      "value_brl": "2869361.27"
+    },
+    {
+      "method": "voucher",
+      "rows": 5775,
+      "value_brl": "379436.87"
+    },
+    {
+      "method": "debit_card",
+      "rows": 1529,
+      "value_brl": "217989.79"
+    },
+    {
+      "method": "not_defined",
+      "rows": 3,
+      "value_brl": "0.00"
+    }
+  ],
+  "note": "Customer payments and item price + freight may not match exactly owing to vouchers, order adjustments, and payment semantics; do not label as purchase cost."
+}
