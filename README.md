@@ -1,79 +1,90 @@
 # Olist Order Fulfilment & Delivery Intelligence
 
-**Business Analysis portfolio | Real public marketplace data | Brazil, 2016-2018**
+**Supply Chain / Business Analysis Portfolio | Real Olist transactions | Brazil, 2016-2018**
 
-**The business challenge:** Understand where marketplace sellers are concentrated and build a reliable foundation for measuring whether customers receive orders on time.
+**Business question:** How reliably were customer orders delivered, where did delays occur, and how were delivery outcomes associated with customer experience?
 
-> **Current result:** Seller-network analysis is complete using real Olist records. Customer delivery analysis is the next phase because the full order files have not been processed. No delivery rates or business savings are claimed.
+![Delivery performance across Olist customer orders](evidence/customer_delivery_trend.svg)
 
-![Executive dashboard: verified seller counts, geographic concentration and unavailable delivery metrics](evidence/dashboard_overview.svg)
+**[Management Brief](docs/09_management_brief.md) | [Key Findings](docs/05_findings.md) | [Excel Dashboard](workbook/Olist_Order_Fulfilment_Intelligence.xlsx)**
 
-**[Excel Dashboard](workbook/Olist_Order_Fulfilment_Intelligence.xlsx) | [One-page Management Brief](docs/09_management_brief.md) | [Original Olist Data](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)**
+## The results in four numbers
 
-## What I worked on
-
-Instead of starting with a dashboard, I started with the business question: **Can an operations team see where the seller network is concentrated and identify what to investigate next?**
-
-![Workflow from public seller data to business decisions](evidence/analysis_to_action.svg)
-
-The work covers understanding the decision, checking real seller IDs, grouping them by location, building visual reporting and explaining the limitations of the information.
-
-## The findings at a glance
-
-| Verified observation | Result |
+| Actual Olist observation | Verified result |
 |---|---:|
-| Distinct sellers | **3,095** |
-| Brazilian states represented | **23** |
-| Sellers in São Paulo state | **1,849 (59.7%)** |
-| Sellers across the five largest states | **2,803 (90.6%)** |
-| Sellers across the ten largest city/state strings | **1,254 (40.5%)** |
+| Customer orders analysed | **99,441** |
+| Orders delivered with both dates available | **96,470** |
+| Delivered on or before estimated date | **93.23%** |
+| Orders delivered later than estimated | **6,534** |
 
-### Finding 1. Sellers are concentrated in a few states
+Delivery lead time averaged **12.56 days** from purchase to customer receipt for delivered orders with usable timestamps. The average lateness among late deliveries was **10.62 calendar days**.
 
-![Chart: the top five Brazilian states by seller IDs and all remaining states](evidence/seller_state_concentration.svg)
+**Definition:** On-time compares the recorded **actual customer delivery date** to the **estimated delivery date**, using calendar days. This is not supplier inbound OTIF, and it is not a carrier contract SLA.
 
-**What it means:** Nearly six in ten recorded seller IDs are in São Paulo state. This is a starting point for examining geographic coverage, not proof of delivery delays or a supplier-capacity risk.
+## What the analysis revealed
 
-### Finding 2. São Paulo city has the largest seller count
+### 1. Delivery performance varied sharply by purchase month
 
-![Chart: the ten city/state strings with the most Olist seller IDs](evidence/top_seller_cities.svg)
+![Actual Olist on-time customer delivery by month](evidence/customer_delivery_trend.svg)
 
-**What it means:** The raw `sao paulo, SP` city/state entry represents **694 sellers (22.4%)**. Geographic distribution can be compared with customer demand once actual orders and delivery addresses are available.
+Only **81.04%** of eligible orders placed in **March 2018** arrived by the estimated date (1,328 late out of 7,003 eligible). February 2018 was **85.87%** and November 2017 **87.60%**.
 
-## What decisions could a manager make?
+These three purchase-month groups account for **3,158 of 6,534 late orders (48.3%)**, despite making up only **21.6%** of eligible deliveries. This is a useful starting point for investigating seasonal pressure, geography and logistics, not proof of the cause.
 
-| Question | Practical next step |
+### 2. Customer experience differed substantially
+
+![Average review scores by delivery timing](evidence/delivery_and_customer_reviews.svg)
+
+| Delivery result | Average review score | Reviewed eligible orders |
+|---|---:|---:|
+| On-time or early | **4.29 / 5** | **89,443** |
+| Late | **2.27 / 5** | **6,381** |
+
+Orders were grouped by on-time status, with multiple reviews averaged **within each order** before comparing groups. This is an **association**, not evidence that lateness caused low ratings.
+
+### 3. Some customer regions showed lower delivery reliability
+
+![On-time rates by customer state](evidence/delivery_by_customer_state.svg)
+
+For states with at least 1,250 eligible orders, Ceará (**86.24%**), Bahia (**87.84%**) and Rio de Janeiro (**87.89%**) were among the lowest on-time groups in the displayed comparison.
+
+**Next question:** Do travel distance, product mix or logistics processes help explain the differences? The source does not establish the cause.
+
+### 4. Freight matters alongside product value
+
+![Product categories by item value, with freight comparison](evidence/product_category_and_freight.svg)
+
+Across **112,650 order-item rows**, the source lists **BRL 13.59 million** of item prices and **BRL 2.25 million** of freight values. Freight equals **16.57% of item value** as a descriptive ratio. These are customer-side listed amounts, **not** supplier purchasing expenditure or verified carrier invoices.
+
+## From data to an operational decision
+
+![How the project moves from source records to business questions](evidence/analysis_to_action.svg)
+
+| Management question | Practical decision support |
 |---|---|
-| Is the seller network geographically concentrated? | Review the state and city breakdowns. |
-| Does that concentration affect customers? | Compare seller locations with customer order locations and demand. |
-| Are deliveries arriving when expected? | Measure performance only after validating actual and estimated delivery dates. |
-| Which issues should be prioritised? | Use late-delivery trends, freight and customer reviews once transactional analysis is complete. |
+| **When were delays most prominent?** | Prioritise the March 2018, February 2018 and November 2017 purchase cohorts for deeper review. |
+| **Where should regional delivery be investigated?** | Compare customer-state results while considering eligible-order counts and product mix. |
+| **How are delays related to customer experience?** | Review late-delivery cases and satisfaction patterns without assuming causality. |
+| **Which categories have significant freight exposure?** | Examine item-value and freight-to-item-value comparisons before making cost decisions. |
 
-**Important:** Seller counts are not sales, shipments, warehouse capacity or supplier OTIF.
+## Earlier analysis: marketplace seller coverage
 
-## What comes next?
+The real Olist seller table contains **3,095 distinct seller IDs** in **23 Brazilian states**; **59.7%** are registered in São Paulo state. Seller geographic concentration is useful context, but it is not a measure of late shipments.
 
-<details>
-<summary><strong>Customer delivery, freight and customer experience</strong></summary>
+[View the seller geography chart](evidence/seller_state_concentration.svg) and [top cities](evidence/top_seller_cities.svg).
 
-The original Olist dataset also contains customer orders, items, payment records and reviews. When these files are analysed and reconciled, the project can calculate customer on-time delivery, average lead time, late orders, freight-to-item value and review patterns. **These results have not yet been published.**
+## Explore the project
 
-The workbook intentionally shows **Not loaded** for unavailable customer-order and delivery measures rather than fictional percentages.
+- **[Management Brief](docs/09_management_brief.md)** - visual summary with findings and business recommendations.
+- **[Excel Dashboard](workbook/Olist_Order_Fulfilment_Intelligence.xlsx)** - spreadsheet analysis and supporting KPI definitions.
+- **[Data & QA Evidence](evidence/)** - source-derived, aggregated calculations and charts.
+- **[Business Case](docs/01_business_case.md)** and **[KPI Dictionary](docs/03_kpi_dictionary.md)** - requirements and metric boundaries.
+- **[Technical Setup](docs/08_technical_setup.md)** - reproducibility steps for technical reviewers.
 
-</details>
+## Source and limitations
 
-## Explore more
+The results use the **[Brazilian E-Commerce Public Dataset by Olist](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)**, accessed through a [public GitHub mirror of the original CSVs](https://github.com/anggid/Brazilian-E-Commerce-Public-Dataset-by-Olist). All published metrics are aggregate calculations from actual historical, anonymised transactions. Original raw transactions are **not redistributed** in this repository. The original dataset is published with a **CC BY-NC-SA 4.0** licence; follow publisher conditions before downstream reuse.
 
-**[Management Brief](docs/09_management_brief.md)** - findings, visuals and decision questions for business readers.
+This is an independent historic Brazil case study, **not** a real-time Olist service, Würth operation or NZ purchasing system. Commercial values are in **BRL**. The dataset cannot establish supplier purchase orders, inbound OTIF, inventory stockouts, actual upstream procurement spend or operational improvements already achieved.
 
-**[Excel Dashboard](workbook/Olist_Order_Fulfilment_Intelligence.xlsx)** - verified seller geography and clearly identified pending delivery metrics.
-
-**[Business Case](docs/01_business_case.md)** - the business problem and stakeholders.
-
-**[Data Quality](docs/04_data_quality.md)** - what was checked.
-
-**[Technical Setup](docs/08_technical_setup.md)** - source files and reproducibility instructions for technical reviewers.
-
-**[Source Provenance](data/reference/PROVENANCE.md)** - original public seller dataset and coverage.
-
-<sub>Source: Olist Brazilian E-Commerce Public Dataset, Brazil 2016-2018. The published charts reflect verified seller IDs only. Original data licence: CC BY-NC-SA 4.0. An independent case study; not an Olist or New Zealand production system. Monetary order data, when processed, are in BRL rather than NZD.</sub>
+**Accuracy note:** Business recommendations are investigation priorities based on observed associations. They are not claims of proven root causes, commercial savings or stakeholder sign-off.
