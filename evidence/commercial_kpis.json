@@ -12,10 +12,11 @@
     "freight_value_brl": "2251909.54",
     "freight_to_item_value_pct": 16.57,
     "qa": {
-      "missing_products": 1603,
       "missing_sellers": 0,
       "category_totals_match": true,
-      "seller_totals_match": true
+      "seller_totals_match": true,
+      "missing_or_blank_product_category_item_lines": 1603,
+      "explanation": "Some item lines point to products with an empty category, not necessarily missing product IDs; uncategorised product lines are retained."
     },
     "top_categories": [
       {
