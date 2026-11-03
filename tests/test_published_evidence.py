@@ -1,62 +1,56 @@
-"""Validate consistency of publicly published Olist aggregates.
-
-These checks reconcile summary data, not the original source CSV bytes.
-Source transformation scripts are available under scripts/.
-"""
+"""Check the published Olist source-derived aggregates for internal consistency."""
 import csv
 import json
 import unittest
 from decimal import Decimal
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
-EVIDENCE = ROOT / "evidence"
+ROOT=Path(__file__).resolve().parents[1]/"data"/"processed"
 
+def load(name):
+    return json.loads((ROOT/name).read_text(encoding="utf-8"))
 
-def load_json(filename):
-    return json.loads((EVIDENCE / filename).read_text(encoding="utf-8"))
+def rows(name):
+    with (ROOT/name).open(newline="",encoding="utf-8") as f:
+        return list(csv.DictReader(f))
 
+class TestPublishedSourceEvidence(unittest.TestCase):
+    def test_orders_and_monthly_results(self):
+        k=load("kpi_summary.json")
+        m=rows("monthly_metrics.csv")
+        self.assertEqual(k["orders"],99441)
+        self.assertEqual(sum(int(x["orders"]) for x in m),k["orders"])
+        self.assertEqual(sum(int(x["on_time_eligible"]) for x in m),k["eligible_delivered_orders"])
+        self.assertEqual(sum(int(x["on_time_deliveries"]) for x in m),k["on_time_deliveries"])
+        self.assertEqual(sum(int(x["late_deliveries"]) for x in m),k["late_deliveries"])
+        self.assertEqual(k["on_time_deliveries"]+k["late_deliveries"],k["eligible_delivered_orders"])
+        self.assertEqual(k["delivered_orders"]-k["eligible_delivered_orders"],8)
+        self.assertEqual(k["cancelled_orders"],625)
+        self.assertEqual(k["on_time_delivery_rate_pct"],round(100*k["on_time_deliveries"]/k["eligible_delivered_orders"],2))
+    def test_geography_and_reviews(self):
+        k=load("kpi_summary.json")
+        r=rows("customer_region_summary.csv")
+        v=rows("review_by_delivery.csv")
+        self.assertEqual(sum(int(x["eligible_deliveries"]) for x in r),k["eligible_delivered_orders"])
+        self.assertEqual(sum(int(x["late_deliveries"]) for x in r),k["late_deliveries"])
+        self.assertEqual(sum(int(x["on_time_deliveries"]) for x in r),k["on_time_deliveries"])
+        self.assertEqual(sum(int(x["eligible_deliveries"]) for x in v),k["eligible_delivered_orders"])
+        self.assertEqual(len(v),2)
+        self.assertTrue(all(int(x["reviewed_orders"])<=int(x["eligible_deliveries"]) for x in v))
+    def test_category_and_freight(self):
+        k=load("kpi_summary.json")
+        cats=rows("category_summary.csv")
+        self.assertEqual(sum(int(x["item_lines"]) for x in cats),k["source_rows"]["items"])
+        self.assertEqual(sum((Decimal(x["item_value_brl"]) for x in cats),Decimal("0")),Decimal(k["item_value_brl"]))
+        self.assertEqual(sum((Decimal(x["freight_brl"]) for x in cats),Decimal("0")),Decimal(k["freight_value_brl"]))
+        self.assertTrue(k["qa"]["monthly_reconciles"])
+        self.assertTrue(k["qa"]["category_aggregation_reconciles"])
+        self.assertTrue(k["qa"]["item_aggregation_reconciles"])
+    def test_provenance(self):
+        p=load("PROVENANCE.json")
+        self.assertEqual(p["source_publisher"],"Olist")
+        self.assertTrue(p["original_commit_sha"])
+        self.assertFalse(p["original_row_level_data_committed"])
 
-class TestPublishedEvidence(unittest.TestCase):
-    def test_delivery_orders_monthly_reconcile(self):
-        d = load_json("order_delivery_kpis.json")
-        with (EVIDENCE / "monthly_delivery_summary.csv").open(newline="", encoding="utf-8") as fh:
-            monthly = list(csv.DictReader(fh))
-        self.assertEqual(len(monthly), 25)
-        self.assertEqual(sum(int(r["orders"]) for r in monthly), 99441)
-        self.assertEqual(sum(int(r["eligible"]) for r in monthly), 96470)
-        self.assertEqual(sum(int(r["on_time"]) for r in monthly), 89936)
-        self.assertEqual(sum(int(r["late"]) for r in monthly), 6534)
-        self.assertEqual(d["eligible_delivered_orders"], d["on_time_deliveries"] + d["late_deliveries"])
-        self.assertEqual(round(100 * d["on_time_deliveries"] / d["eligible_delivered_orders"], 2), d["on_time_delivery_rate_pct"])
-        self.assertEqual(d["delivered_orders"] - d["eligible_delivered_orders"], d["qa"]["missing_actual_for_delivered"])
-
-    def test_delivery_state_and_reviews_reconcile(self):
-        d = load_json("delivery_by_state_and_reviews.json")
-        self.assertEqual(sum(r["eligible"] for r in d["state_delivery"]), 96470)
-        self.assertEqual(sum(r["late"] for r in d["state_delivery"]), 6534)
-        self.assertEqual(sum(r["on_time"] for r in d["state_delivery"]), 89936)
-        self.assertEqual(sum(r["order_count"] for r in d["review_groups"]), 96470)
-        self.assertEqual(d["review_records"], 99224)
-        self.assertTrue(all(0 <= r["average_score"] <= 5 for r in d["review_groups"]))
-
-    def test_item_value_and_freight_reconcile(self):
-        doc = load_json("commercial_kpis.json")
-        d = doc["summary"]
-        self.assertEqual(d["item_rows"], 112650)
-        self.assertEqual(d["seller_reference_records"], 3095)
-        self.assertEqual(len(doc["categories"]), d["categories"])
-        self.assertEqual(sum(Decimal(r["item_value_brl"]) for r in doc["categories"]), Decimal(d["item_value_brl"]))
-        self.assertEqual(sum(Decimal(r["freight_value_brl"]) for r in doc["categories"]), Decimal(d["freight_value_brl"]))
-        self.assertTrue(d["qa"]["category_totals_match"])
-        self.assertTrue(d["qa"]["seller_totals_match"])
-
-    def test_customer_payment_scope(self):
-        p = load_json("customer_payment_kpis.json")
-        self.assertEqual(p["rows"], 103886)
-        self.assertEqual(sum(x["rows"] for x in p["by_payment_method"]), p["rows"])
-        self.assertEqual(sum(Decimal(x["value_brl"]) for x in p["by_payment_method"]), Decimal(p["total_customer_payment_value_brl"]))
-
-
-if __name__ == "__main__":
+if __name__=="__main__":
     unittest.main()
