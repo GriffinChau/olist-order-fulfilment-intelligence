@@ -1,12 +1,14 @@
-# Business requirements traceability
+# Business Requirements and Evidence
 
-| ID | Business need | Acceptance test | Evidence | Status |
-|---|---|---|---|---|
-| BR-01 | Customer fulfilment timeliness | Delivered orders with both dates only; correct on-time denominator | [Order KPI summary](../evidence/order_delivery_kpis.json), [monthly delivery](../evidence/monthly_delivery_summary.csv) | Source aggregates verified |
-| BR-02 | Explain commercial mix | Item price and freight reconcile across seller/category | [Category and freight evidence](../evidence/commercial_kpis.json) | Source aggregates verified |
-| BR-03 | Avoid double counting | Many items + many payments remain one correctly valued order | Unit tests | Test passed |
-| BR-04 | Profile marketplace footprint | Seller state totals = 3,095; SP = 1,849 | Verified real reference, workbook preview | Verified |
-| BR-05 | Explain KPI boundaries | No invented supplier OTIF, upstream purchasing spend or stockouts | README, KPI dictionary | Documented |
-| BR-06 | Reproducibility | Source attribution, executable scripts, and QA output | README, [source summary](../evidence/), [aggregate tests](../tests/test_published_evidence.py) | Aggregates validated; GitHub workbook binary replacement pending |
+| Requirement | What was delivered | Source evidence |
+|---|---|---|
+| BR-01: Measure customer on-time delivery | **93.23%** among 96,470 eligible orders | [KPIs](../data/processed/kpi_summary.json), [monthly chart](../evidence/customer_delivery_performance.svg) |
+| BR-02: Investigate service exceptions | March 2018 and other weaker delivery periods identified | [Monthly evidence](../data/processed/monthly_metrics.csv) |
+| BR-03: Understand customer regions | State-level on-time outcomes and denominators | [Region chart](../evidence/customer_delivery_by_region.svg) |
+| BR-04: Connect delivery timing and reviews | Score association reported without causal claims | [Review chart](../evidence/delivery_and_reviews.svg) |
+| BR-05: Analyse commercial exposure | Item prices and listed freight by category | [Freight chart](../evidence/freight_category_analysis.svg) |
+| BR-06: Avoid misleading reporting | Unique order keys, separate aggregation and source reconciliation | [QA evidence](04_data_quality.md), [unit tests](../tests/test_pipeline.py) |
 
-This is a portfolio requirements map, not a requirements baseline approved by Olist or a live employer.
+**Data status:** Source-derived aggregate reporting and business visualisations are complete. The GitHub Excel binary is still the initial seller-only edition and requires a separate refresh.
+
+The case study has not been approved by a real Olist stakeholder and does not claim measured operational improvements.
