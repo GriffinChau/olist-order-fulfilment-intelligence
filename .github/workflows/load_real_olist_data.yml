@@ -95,5 +95,7 @@ jobs:
           git add -f data/processed/kpi_summary.json data/processed/monthly_metrics.csv data/processed/category_summary.csv data/processed/seller_state_counts.csv data/processed/customer_region_summary.csv data/processed/review_by_delivery.csv data/processed/PROVENANCE.json
           if ! git diff --cached --quiet; then
             git commit -m "data: publish verified Olist order and delivery aggregates"
+            git fetch origin main
+            git rebase origin/main
             git push origin HEAD:main
           fi
