@@ -1,0 +1,258 @@
+{
+  "source": "Olist customer, order and review CSVs via public GitHub mirror",
+  "source_url": "https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce",
+  "mirror_url": "https://github.com/anggid/Brazilian-E-Commerce-Public-Dataset-by-Olist",
+  "order_count": 99441,
+  "customer_records": 99441,
+  "review_records": 99224,
+  "distinct_reviewed_orders": 98673,
+  "eligible_delivered_orders": 96470,
+  "missing_customer_state": 0,
+  "review_groups": [
+    {
+      "timing": "on_time",
+      "order_count": 89936,
+      "orders_with_reviews": 89443,
+      "sum_order_score": 383763.1666666667,
+      "low_reviews": 8257,
+      "high_reviews": 73913,
+      "average_score": 4.291,
+      "low_review_share_pct": 9.23,
+      "review_coverage_pct": 99.45
+    },
+    {
+      "timing": "late",
+      "order_count": 6534,
+      "orders_with_reviews": 6381,
+      "sum_order_score": 14496.5,
+      "low_reviews": 3979,
+      "high_reviews": 1706,
+      "average_score": 2.272,
+      "low_review_share_pct": 62.36,
+      "review_coverage_pct": 97.66
+    }
+  ],
+  "methods": {
+    "rating": "Review events averaged within each order to avoid double counting; then mean of per-order review scores for eligible delivered orders with a review.",
+    "on_time": "Delivered orders with actual and estimated customer delivery dates; calendar-date comparison; customer region from linked customer_id.",
+    "interpretation": "Association only, not evidence that a late delivery caused low satisfaction."
+  },
+  "state_delivery": [
+    {
+      "state": "SP",
+      "eligible": 40494,
+      "on_time": 38674,
+      "late": 1820,
+      "on_time_pct": 95.51,
+      "late_pct": 4.49
+    },
+    {
+      "state": "RJ",
+      "eligible": 12350,
+      "on_time": 10855,
+      "late": 1495,
+      "on_time_pct": 87.89,
+      "late_pct": 12.11
+    },
+    {
+      "state": "MG",
+      "eligible": 11354,
+      "on_time": 10835,
+      "late": 519,
+      "on_time_pct": 95.43,
+      "late_pct": 4.57
+    },
+    {
+      "state": "RS",
+      "eligible": 5344,
+      "on_time": 5019,
+      "late": 325,
+      "on_time_pct": 93.92,
+      "late_pct": 6.08
+    },
+    {
+      "state": "PR",
+      "eligible": 4923,
+      "on_time": 4724,
+      "late": 199,
+      "on_time_pct": 95.96,
+      "late_pct": 4.04
+    },
+    {
+      "state": "SC",
+      "eligible": 3546,
+      "on_time": 3255,
+      "late": 291,
+      "on_time_pct": 91.79,
+      "late_pct": 8.21
+    },
+    {
+      "state": "BA",
+      "eligible": 3256,
+      "on_time": 2860,
+      "late": 396,
+      "on_time_pct": 87.84,
+      "late_pct": 12.16
+    },
+    {
+      "state": "DF",
+      "eligible": 2080,
+      "on_time": 1962,
+      "late": 118,
+      "on_time_pct": 94.33,
+      "late_pct": 5.67
+    },
+    {
+      "state": "ES",
+      "eligible": 1995,
+      "on_time": 1781,
+      "late": 214,
+      "on_time_pct": 89.27,
+      "late_pct": 10.73
+    },
+    {
+      "state": "GO",
+      "eligible": 1957,
+      "on_time": 1829,
+      "late": 128,
+      "on_time_pct": 93.46,
+      "late_pct": 6.54
+    },
+    {
+      "state": "PE",
+      "eligible": 1593,
+      "on_time": 1440,
+      "late": 153,
+      "on_time_pct": 90.4,
+      "late_pct": 9.6
+    },
+    {
+      "state": "CE",
+      "eligible": 1279,
+      "on_time": 1103,
+      "late": 176,
+      "on_time_pct": 86.24,
+      "late_pct": 13.76
+    },
+    {
+      "state": "PA",
+      "eligible": 946,
+      "on_time": 840,
+      "late": 106,
+      "on_time_pct": 88.79,
+      "late_pct": 11.21
+    },
+    {
+      "state": "MT",
+      "eligible": 886,
+      "on_time": 833,
+      "late": 53,
+      "on_time_pct": 94.02,
+      "late_pct": 5.98
+    },
+    {
+      "state": "MA",
+      "eligible": 717,
+      "on_time": 592,
+      "late": 125,
+      "on_time_pct": 82.57,
+      "late_pct": 17.43
+    },
+    {
+      "state": "MS",
+      "eligible": 701,
+      "on_time": 633,
+      "late": 68,
+      "on_time_pct": 90.3,
+      "late_pct": 9.7
+    },
+    {
+      "state": "PB",
+      "eligible": 517,
+      "on_time": 463,
+      "late": 54,
+      "on_time_pct": 89.56,
+      "late_pct": 10.44
+    },
+    {
+      "state": "PI",
+      "eligible": 476,
+      "on_time": 410,
+      "late": 66,
+      "on_time_pct": 86.13,
+      "late_pct": 13.87
+    },
+    {
+      "state": "RN",
+      "eligible": 474,
+      "on_time": 430,
+      "late": 44,
+      "on_time_pct": 90.72,
+      "late_pct": 9.28
+    },
+    {
+      "state": "AL",
+      "eligible": 397,
+      "on_time": 312,
+      "late": 85,
+      "on_time_pct": 78.59,
+      "late_pct": 21.41
+    },
+    {
+      "state": "SE",
+      "eligible": 335,
+      "on_time": 284,
+      "late": 51,
+      "on_time_pct": 84.78,
+      "late_pct": 15.22
+    },
+    {
+      "state": "TO",
+      "eligible": 274,
+      "on_time": 247,
+      "late": 27,
+      "on_time_pct": 90.15,
+      "late_pct": 9.85
+    },
+    {
+      "state": "RO",
+      "eligible": 243,
+      "on_time": 236,
+      "late": 7,
+      "on_time_pct": 97.12,
+      "late_pct": 2.88
+    },
+    {
+      "state": "AM",
+      "eligible": 145,
+      "on_time": 141,
+      "late": 4,
+      "on_time_pct": 97.24,
+      "late_pct": 2.76
+    },
+    {
+      "state": "AC",
+      "eligible": 80,
+      "on_time": 77,
+      "late": 3,
+      "on_time_pct": 96.25,
+      "late_pct": 3.75
+    },
+    {
+      "state": "AP",
+      "eligible": 67,
+      "on_time": 65,
+      "late": 2,
+      "on_time_pct": 97.01,
+      "late_pct": 2.99
+    },
+    {
+      "state": "RR",
+      "eligible": 41,
+      "on_time": 36,
+      "late": 5,
+      "on_time_pct": 87.8,
+      "late_pct": 12.2
+    }
+  ]
+}
