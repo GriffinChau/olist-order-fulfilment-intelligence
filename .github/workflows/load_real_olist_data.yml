@@ -1,0 +1,90 @@
+name: Verify original Olist transactions
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/load_real_olist_data.yml'
+      - 'scripts/process_olist.py'
+permissions:
+  contents: write
+jobs:
+  real-data:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout portfolio
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Fetch source records from Olist's own public GitHub
+        uses: actions/checkout@v4
+        with:
+          repository: olist/work-at-olist-data
+          ref: master
+          path: _olist_original
+          persist-credentials: false
+          sparse-checkout: |
+            datasets/olist_customers_dataset.csv
+            datasets/olist_order_items_dataset.csv
+            datasets/olist_order_payments_dataset.csv
+            datasets/olist_order_reviews_dataset.csv
+            datasets/olist_orders_dataset.csv
+            datasets/olist_products_dataset.csv
+            datasets/olist_sellers_dataset.csv
+            datasets/product_category_name_translation.csv
+          sparse-checkout-cone-mode: false
+      - name: Confirm source files and analyse real transactions
+        run: |
+          mkdir -p data/raw
+          cp _olist_original/datasets/*.csv data/raw/
+          python scripts/process_olist.py --raw data/raw --output data/processed
+      - name: Verify independently calculated totals
+        run: |
+          python - <<'PY'
+          import csv,json,pathlib
+          d=pathlib.Path('data/processed')
+          k=json.loads((d/'kpi_summary.json').read_text())
+          with (d/'monthly_metrics.csv').open() as f:
+              m=list(csv.DictReader(f))
+          with (d/'category_summary.csv').open() as f:
+              c=list(csv.DictReader(f))
+          assert k['data_status']=='FULL_OLIST_DATA_LOADED'
+          assert k['qa']['unique_order_ids'] and k['qa']['monthly_reconciles']
+          assert k['qa']['item_aggregation_reconciles'] and k['qa']['category_aggregation_reconciles']
+          assert k['on_time_deliveries']+k['late_deliveries']==k['eligible_delivered_orders']
+          assert sum(int(row['on_time_eligible']) for row in m)==k['eligible_delivered_orders']
+          assert sum(int(row['orders']) for row in m)==k['orders']
+          assert sum(int(row['item_lines']) for row in c)<=k['source_rows']['items']
+          assert k['orders']>90000 and k['source_rows']['items']>100000
+          print('Verified real order count:',k['orders'])
+          print('Verified eligible deliveries:',k['eligible_delivered_orders'])
+          print('Verified on-time deliveries:',k['on_time_deliveries'])
+          print('Verified late deliveries:',k['late_deliveries'])
+          print('Verified on-time rate:',k['on_time_delivery_rate_pct'])
+          PY
+          python -m unittest discover -s tests -v
+      - name: Record provenance and commit aggregate evidence only
+        run: |
+          python - <<'PY'
+          import json,subprocess,pathlib
+          source_sha=subprocess.check_output(['git','-C','_olist_original','rev-parse','HEAD'],text=True).strip()
+          meta={
+            'source_publisher':'Olist',
+            'original_repository':'https://github.com/olist/work-at-olist-data',
+            'original_commit_sha':source_sha,
+            'original_dataset':'https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce',
+            'source_period':'2016-2018',
+            'currency':'BRL',
+            'reporting_grain':'order for delivery; item for category value',
+            'original_row_level_data_committed':False,
+            'note':'Aggregates computed directly from eight Olist original files. Raw source and order identifiers stay outside Git.'
+          }
+          pathlib.Path('data/processed/PROVENANCE.json').write_text(json.dumps(meta,indent=2)+'\n')
+          PY
+          git config user.name "Portfolio Data Validation"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -f data/processed/kpi_summary.json data/processed/monthly_metrics.csv data/processed/category_summary.csv data/processed/seller_state_counts.csv data/processed/PROVENANCE.json
+          if ! git diff --cached --quiet; then
+            git commit -m "data: publish verified Olist order and delivery aggregates"
+            git push origin HEAD:main
+          fi
