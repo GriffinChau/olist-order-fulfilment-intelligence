@@ -1,28 +1,23 @@
-# Delivery Analytics Roadmap
+# Project roadmap
 
-## Completed: Seller coverage
+## Completed - Seller geography
 
-Verified 3,095 Olist seller IDs across 23 Brazilian states and published state/city distribution visuals.
+Verified 3,095 unique marketplace sellers across 23 Brazilian states. Published seller-state and city graphics.
 
-## Completed: Customer delivery analysis
+## Completed - Full customer-order analysis
 
-Analysed **99,441 historical orders** and calculated customer-delivery reliability for **96,470 eligible delivered orders**, using the original order table accessed via a public mirror.
+Processed eight real Olist transactional CSVs from the publisher's public repository. Verified 99,441 orders, 96,470 delivered orders eligible for on-time calculation, 6,534 late orders and 93.23% on-time customer delivery. Produced category and customer-region aggregates and review comparisons.
 
-Results include monthly delivery performance, regional delivery comparisons, descriptive customer review associations, item-category value and freight comparisons.
+## Completed - Business-facing visual reporting
 
-## Completed: Business reporting
+Published monthly delivery, destination state, review comparisons and item/freight visualisations, including a [management findings report](10_delivery_performance_findings.md). The original row-level transaction records are not redistributed.
 
-Published evidence-based diagrams, a management brief, updated project overview and source-derived aggregate QA files. Raw customer and transaction data are not redistributed.
+## Remaining - Excel workbook refresh
 
-## Next: Deeper diagnostic analysis
+The GitHub Excel file remains the initial seller-geography edition. Rebuild the Excel file from the verified published aggregates with the same visual business interpretation and check that it matches the latest source-validated numbers. Do not call the original workbook the full-data report until updated.
 
-- Compare customer delivery delays across seller-to-customer routes with adequate sample sizes.
-- Assess freight ratios by product characteristics, not only categories.
-- Measure how the severity of lateness relates to review scores using suitable controls.
-- Review data anomalies and collect feedback on reporting requirements.
+## Future optional improvements
 
-## Outside dataset scope
+Explore carrier and origin/destination patterns if suitable data exist, and test whether delivery feedback associations hold when considering order value, category and customer region. Never infer supplier PO, inbound OTIF, inventory stockouts or actual purchasing spend from customer-side Olist orders.
 
-Inbound supplier OTIF, overdue supplier POs, warehouse stockouts, actual supplier purchasing spend and contract freight invoices require genuine ERP, WMS or finance data. They cannot be derived from the public Olist dataset alone.
-
-**Caveat:** This independent portfolio analysis does not report implemented business changes, quantified savings or stakeholder sign-off.
+**Release principle:** every portfolio metric must have an identifiable source, correct denominator and clear business meaning.
