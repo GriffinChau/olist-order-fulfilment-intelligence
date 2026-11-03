@@ -1,0 +1,11 @@
+{
+  "source_publisher": "Olist",
+  "original_repository": "https://github.com/olist/work-at-olist-data",
+  "original_commit_sha": "d9e49802f3e92d09ee94ab9ccc5e457f207a8959",
+  "original_dataset": "https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce",
+  "source_period": "2016-2018",
+  "currency": "BRL",
+  "reporting_grain": "order for delivery; item for category value",
+  "original_row_level_data_committed": false,
+  "note": "Aggregates computed directly from eight Olist original files. Raw source and order identifiers stay outside Git."
+}

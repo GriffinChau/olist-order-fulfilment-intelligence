@@ -1,0 +1,50 @@
+{
+  "source": "Olist Brazilian E-Commerce Public Dataset by Olist - Kaggle",
+  "data_status": "FULL_OLIST_DATA_LOADED",
+  "source_url": "https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce",
+  "currency": "BRL",
+  "orders": 99441,
+  "delivered_orders": 96478,
+  "eligible_delivered_orders": 96470,
+  "on_time_deliveries": 89936,
+  "late_deliveries": 6534,
+  "on_time_delivery_rate_pct": 93.23,
+  "avg_delivery_lead_days": 12.56,
+  "avg_late_days": 10.62,
+  "cancelled_orders": 0,
+  "cancellation_rate_pct": 0.0,
+  "item_value_brl": "13591643.70",
+  "freight_value_brl": "2256599.44",
+  "payment_value_brl": "16008872.12",
+  "seller_count": 3095,
+  "category_count": 74,
+  "source_rows": {
+    "orders": 99441,
+    "items": 112650,
+    "payments": 103886,
+    "reviews": 99224,
+    "sellers": 3095,
+    "products": 32951,
+    "customers": 99441
+  },
+  "qa": {
+    "unique_order_ids": true,
+    "missing_item_order_refs": 0,
+    "missing_payment_order_refs": 0,
+    "missing_review_order_refs": 0,
+    "missing_product_refs": 0,
+    "missing_seller_refs": 0,
+    "missing_customer_refs": 0,
+    "delivered_missing_actual_date": 8,
+    "delivered_missing_estimate_date": 0,
+    "monthly_reconciles": true,
+    "item_aggregation_reconciles": true,
+    "category_aggregation_reconciles": true
+  },
+  "definitions": {
+    "on_time": "status=delivered and both actual and estimated delivery dates present; actual calendar date <= estimated calendar date",
+    "amount": "sum order-item price and freight per order; payment values aggregated per order; never direct items x payments join",
+    "seller": "marketplace seller, not upstream supplier",
+    "review": "mean of valid review scores within order, if multiple reviews; do not count same order multiple times"
+  }
+}
