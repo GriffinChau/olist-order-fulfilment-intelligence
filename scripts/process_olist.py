@@ -116,7 +116,7 @@ def build(raw,output):
         purchase=stamp(r['order_purchase_timestamp']);actual=stamp(r['order_delivered_customer_date']);estimate=stamp(r['order_estimated_delivery_date'])
         status=r['order_status'];statuses[status]+=1;month=purchase.strftime('%Y-%m'); d=daily[month];d['orders']+=1
         subt,freight,count=item_total[id];d['item_value']+=subt;d['freight']+=freight
-        if status=='cancelled':cancelled+=1
+        if status in ('canceled','cancelled'):cancelled+=1
         if status=='delivered':
             delivered+=1;d['delivered']+=1
             if actual is None: missing_delivery_date+=1
