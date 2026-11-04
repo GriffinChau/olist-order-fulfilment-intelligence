@@ -100,18 +100,18 @@ def hbars(c,data,x,y,w,h,scale_max,kind="count",labels_limit=200):
         barw=min(plotw,max(1,plotw*float(val)/scale_max))
         rect(c,plotx,yy-9,plotw,20,LIGHT,5)
         rect(c,plotx,yy-9,barw,20,AMBER if (kind=="rate" and val<90) else TEAL,5)
-        pretty=f"{val:.2f}%" if kind=="rate" else (f"BRL {val/1e6:.2f}M" if kind=="money" else f"{val:,.0f}")
+        pretty=(f"{val:.2f}%" if kind=="rate" else f"BRL {val/1e6:.2f}M" if kind=="money" else f"{val:.2f} / 5" if kind=="score" else f"{val:,.0f}")
         right(c,x+w-12,yy-4,pretty,13,INK,True)
 
 def line(c,data,x,y,w,h,mn=75,mx=100):
     points=[]
-    left=x+42; right=x+w-22; bottom=y+38; top=y+h-20
+    left=x+42; right_edge=x+w-22; bottom=y+38; top=y+h-20
     for tick in [80,85,90,95,100]:
         py=bottom+(tick-mn)/(mx-mn)*(top-bottom)
-        stroke(c,LIGHT);c.setLineWidth(0.8);c.line(left,py,right,py)
+        stroke(c,LIGHT);c.setLineWidth(0.8);c.line(left,py,right_edge,py)
         rightf=f"{tick}%";right(c,left-10,py-4,rightf,11,MUTED)
     for i,(label,val) in enumerate(data):
-        px=left+i*(right-left)/max(len(data)-1,1)
+        px=left+i*(right_edge-left)/max(len(data)-1,1)
         py=bottom+(max(mn,min(mx,val))-mn)/(mx-mn)*(top-bottom)
         points.append((px,py))
         if i%2==0:
