@@ -6,6 +6,7 @@ on:
       - '.github/workflows/load_real_olist_data.yml'
       - 'scripts/process_olist.py'
       - 'scripts/summarise_delivery_experience.py'
+      - 'scripts/build_powerbi_fact_tables.py'
 permissions:
   contents: write
 jobs:
@@ -40,6 +41,7 @@ jobs:
           cp _olist_original/datasets/*.csv data/raw/
           python scripts/process_olist.py --raw data/raw --output data/processed
           python scripts/summarise_delivery_experience.py --orders data/processed/orders_enriched.csv --output data/processed
+          python scripts/build_powerbi_fact_tables.py --raw data/raw --processed data/processed
           python - <<'PY'
           import csv,pathlib
           base=pathlib.Path('data/processed')
@@ -100,7 +102,7 @@ jobs:
           PY
           git config user.name "Portfolio Data Validation"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -f data/processed/kpi_summary.json data/processed/monthly_metrics.csv data/processed/category_summary.csv data/processed/seller_state_counts.csv data/processed/customer_region_summary.csv data/processed/review_by_delivery.csv data/processed/top_sellers.csv data/processed/PROVENANCE.json
+          git add -f data/processed/kpi_summary.json data/processed/monthly_metrics.csv data/processed/category_summary.csv data/processed/seller_state_counts.csv data/processed/customer_region_summary.csv data/processed/review_by_delivery.csv data/processed/top_sellers.csv data/processed/pbi_fact_orders.csv data/processed/pbi_fact_items.csv data/processed/PROVENANCE.json
           if ! git diff --cached --quiet; then
             git commit -m "data: publish verified Olist order and delivery aggregates"
             git fetch origin main
