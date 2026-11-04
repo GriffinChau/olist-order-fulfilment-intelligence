@@ -1,0 +1,89 @@
+name: Publish editable Olist Power BI project
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'powerbi/_bundle_parts/manifest.sha256'
+permissions:
+  contents: write
+jobs:
+  build-pbip:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Assemble exact editable project and Windows-friendly ZIP
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from zipfile import ZipFile, ZIP_DEFLATED
+          from tempfile import TemporaryDirectory
+          import base64,hashlib,tarfile,shutil
+          parts=sorted(Path("powerbi/_bundle_parts").glob("[0-9][0-9].b64"))
+          assert len(parts)==8,f"Expected 8 checked parts, received {len(parts)}"
+          raw=base64.b64decode("".join(p.read_text().strip() for p in parts),validate=True)
+          digest=hashlib.sha256(raw).hexdigest()
+          expected=Path("powerbi/_bundle_parts/manifest.sha256").read_text().strip()
+          assert digest==expected,f"Archive sha mismatch: {digest}"
+          archive=Path("powerbi/Olist_PowerBI_Editable_Source.tar.xz")
+          archive.write_bytes(raw)
+          with TemporaryDirectory() as work:
+              with tarfile.open(archive,"r:xz") as tar:
+                  members=tar.getmembers()
+                  assert members and len(members)>=290
+                  for member in members:
+                      p=Path(member.name)
+                      assert not p.is_absolute() and ".." not in p.parts
+                      assert member.isfile() or member.isdir()
+                  tar.extractall(work,filter="data")
+              src=Path(work)/"Olist_PowerBI_AR_Style_Interactive"
+              assert (src/"Olist_Interactive_Report.pbip").is_file()
+              assert (src/"Olist_Interactive_Report.Report"/"definition.pbir").is_file()
+              assert (src/"Olist_Interactive_Report.SemanticModel"/"definition"/"relationships.tmdl").is_file()
+              dst=Path("powerbi/project")
+              if dst.exists(): shutil.rmtree(dst)
+              shutil.copytree(src,dst)
+              report=dst/"Olist_Interactive_Report.Report"/"definition"/"pages"
+              assert len(list(report.glob("*/page.json")))==5
+              import re,json
+              relationships=re.findall(r"^relationship\s+",(dst/"Olist_Interactive_Report.SemanticModel"/"definition"/"relationships.tmdl").read_text(),flags=re.M)
+              assert len(relationships)==6
+              visuals=list(report.glob("*/visuals/*/visual.json"))
+              assert len(visuals)>=250
+              types={}
+              for visual in visuals:
+                  obj=json.loads(visual.read_text())
+                  kind=obj["visual"]["visualType"]
+                  types[kind]=types.get(kind,0)+1
+                  pos=obj["position"]
+                  assert pos["x"]>=0 and pos["y"]>=0 and pos["x"]+pos["width"]<=1920 and pos["y"]+pos["height"]<=1080
+              assert types["cardVisual"]==20 and types["slicer"]==10 and types["actionButton"]==25
+              assert sum(types.get(k,0) for k in ["clusteredBarChart","clusteredColumnChart","lineChart"])==20
+          zippath=Path("powerbi/Olist_PowerBI_Editable_1920x1080.zip")
+          with ZipFile(zippath,"w",ZIP_DEFLATED,compresslevel=8) as z:
+              for f in sorted(dst.rglob("*")):
+                  if f.is_file():
+                      z.write(f,arcname="Olist_PowerBI_Project/"+str(f.relative_to(dst)))
+          with ZipFile(zippath) as z:
+              assert z.testzip() is None
+              assert "Olist_PowerBI_Project/Olist_Interactive_Report.pbip" in z.namelist()
+          print("Verified report: 5 pages, 6 relationships, 20 KPI cards, 20 native charts, 10 slicers, 25 navigation buttons")
+          print("Published ZIP bytes:",zippath.stat().st_size)
+          PY
+      - name: Commit editable PBIP files and ZIP to main
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm -f powerbi/_bundle_parts/*.b64 powerbi/_bundle_parts/manifest.sha256
+          git add -A powerbi
+          git add -f powerbi/project powerbi/Olist_PowerBI_Editable_1920x1080.zip powerbi/Olist_PowerBI_Editable_Source.tar.xz
+          if ! git diff --cached --quiet; then
+            git commit -m "powerbi: publish complete editable interactive report and model"
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
