@@ -1,0 +1,52 @@
+name: Publish Olist PDF Report
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'scripts/build_pdf_report.py'
+      - '.github/workflows/publish_olist_pdf.yml'
+permissions:
+  contents: write
+jobs:
+  build-report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install PDF rendering and validation packages
+        run: pip install reportlab pymupdf
+      - name: Render source-reconciled four-page PDF
+        run: python scripts/build_pdf_report.py
+      - name: Validate PDF data and text without any Power BI binaries
+        run: |
+          python - <<'PY'
+          import fitz
+          from pathlib import Path
+          path=Path('reports/Olist_PowerBI_Report.pdf')
+          pdf=fitz.open(path)
+          assert len(pdf)==4
+          assert all(round(p.rect.width)==1476 and round(p.rect.height)==846 for p in pdf)
+          text='\n'.join(p.get_text() for p in pdf)
+          for label in ('99,441','93.23%','6,534','96,470','BRL 13.59M','16.60%','1,328','Sao Paulo','Rio de Janeiro'):
+              assert label in text, f'Missing verified text {label}'
+          assert path.stat().st_size>8000
+          assert all(len(page.get_text('words'))>=75 for page in pdf)
+          print('PASS: 4 pages, real Olist KPIs, vector PDF, 1476 x 846 pt')
+          print('PDF size:',path.stat().st_size)
+          PY
+      - name: Publish PDF to GitHub
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -f reports/Olist_PowerBI_Report.pdf
+          if ! git diff --cached --quiet; then
+            git commit -m 'reports: publish real-data Olist Power BI PDF'
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
