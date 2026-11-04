@@ -160,7 +160,7 @@ def draw_region(c):
     cards(c,[("Eligible deliveries",f'{k["eligible_delivered_orders"]:,}',"All customer destination states"),
              ("Sao Paulo on time",f'{float(a["on_time_pct"]):.2f}%',f'{int(a["eligible_deliveries"]):,} eligible orders'),
              ("Rio de Janeiro on time",f'{float(b["on_time_pct"]):.2f}%',f'{int(b["eligible_deliveries"]):,} eligible orders'),
-             ("Late deliveries",f'{k["late_deliveries"]:,}',"All destination states")])
+             ("All customer orders",f'{k["orders"]:,}',"Across all purchase months")])
     top=states[:10]
     panel(c,45,140,673,388,"ON-TIME RATE BY STATE","Ten largest destination cohorts")
     panel(c,738,140,693,388,"LATE ORDERS BY STATE","Absolute late-order count in same cohorts")
