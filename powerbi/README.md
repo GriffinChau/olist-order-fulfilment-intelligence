@@ -1,52 +1,33 @@
-# Power BI | Olist Customer Delivery Intelligence
+# Power BI - Interactive Olist Delivery Intelligence
 
-**Purpose:** Convert the verified historical Olist analysis into an interactive, business-friendly report for Operations and Supply Chain managers.
+The Olist portfolio now includes **source-verified conformed fact tables** specifically prepared for an interactive Power BI Desktop model. The separate Power BI Project deliverable uses a native 1920 x 1080 layout, not screenshot-based KPI backgrounds.
 
-**Status:** Power BI-ready datasets and calculation definitions have been prepared. **No report has yet been published to a Power BI workspace**, because publishing requires an authorised Microsoft Power BI connection.
+## Real star-schema inputs
 
-## Suggested report layout
-
-| Page | What the viewer sees | Intended question |
+| Fact table | Grain | Verified source |
 |---|---|---|
-| **1. Executive Overview** | KPI cards: 99,441 orders, 93.23% on-time, 6,534 late, 12.56-day historical average lead time; monthly trend | How reliable is customer delivery? |
-| **2. Delivery Exceptions** | On-time and late counts by purchase month, with March 2018 highlighted | Which periods merit investigation? |
-| **3. Customer Regions** | On-time rates and eligible-order volumes by customer destination state | Where does service performance differ? |
-| **4. Customer Experience** | Review scores and low-rating shares for on-time vs late deliveries | What association exists between delays and reviews? |
-| **5. Product & Freight** | Category item value, listed freight and freight/item ratio | Which categories merit further cost investigation? |
+| **FactOrders** | Purchase month x customer state x delivery outcome | [Source-based order aggregates](../data/processed/pbi_fact_orders.csv) |
+| **FactItems** | Purchase month x customer state x product category | [Source-based item aggregates](../data/processed/pbi_fact_items.csv) |
 
-**Visual style:** Navy headings, teal for key results, amber for delivery exceptions, short annotations, no repeated screenshots or text-heavy introductions.
+The Power BI model defines four dimensions: **DimMonth**, **DimState**, **DimDelivery**, **DimCategory**. There are **six active one-to-many relationships**. Month and State are conformed dimensions that can filter both fact tables. Delivery outcome filters only FactOrders; Category filters only FactItems. This is a fact constellation that preserves genuine reporting grain, not a fabricated transaction-level join.
 
-## Public Power BI-ready datasets
+All 99,441 source orders, 96,470 eligible deliveries, 6,534 late deliveries, 112,650 order-item lines and BRL item/freight totals have been reconciled in [source-derived QA tests](../tests/test_pbi_star_facts.py).
 
-These files contain **aggregated real Olist results**, not simulated orders.
+## Native Power BI report design
 
-| Import as | Source in this repository | Data grain |
-|---|---|---|
-| `KPIs` | [kpi_overview.csv](kpi_overview.csv) | One row, entire historical period |
-| `Monthly` | [monthly_metrics.csv](../data/processed/monthly_metrics.csv) | One row per purchase month |
-| `Regions` | [customer_region_summary.csv](../data/processed/customer_region_summary.csv) | One row per customer destination state |
-| `Reviews` | [review_by_delivery.csv](../data/processed/review_by_delivery.csv) | One row per delivery outcome |
-| `Categories` | [category_summary.csv](../data/processed/category_summary.csv) | One row per product category |
+Five 16:9 pages:
+1. Executive Overview - dynamically calculated KPIs and monthly/experience charts.
+2. Delivery Exceptions - monthly service trend and late-order counts.
+3. Customer Regions - delivery reliability and exceptions by destination state.
+4. Customer Experience - reviews associated with on-time and late deliveries.
+5. Product and Freight - real item value and freight ratios by category.
 
-**Calculations:** [Power BI DAX measures](measures.dax). These include correctly weighted on-time rates and freight-to-item ratios.
+Cards are **live DAX measures**, not an image of a card. The Power BI report can be filtered using month, destination state, delivery outcome and product category slicers. A customer-state or month selection can affect metrics on both fact tables through relationships. All calculations preserve the original historical Olist source.
 
-## How the Power BI report should behave
+**External data dependency:** the new Power BI Project reads the two aggregated fact tables and the category dimension from public CSV links hosted on this repository with Power Query Web.Contents. Power BI Desktop may ask to set credentials to **Anonymous** and to refresh the model on first open. The PBIP project ZIP is a separate deliverable and is not currently checked into this GitHub repository.
 
-- Use monthly measures to show the overall trend and to filter monthly charts.
-- Use the customer-state table for regional comparisons; filter out very small cohorts or always display the denominator.
-- Display review scores for each delivery-outcome group, not a sum of averages.
-- Display the freight ratio using aggregated item and freight totals, not the average of individual category percentages.
-- **Do not cross-filter independent aggregated tables as though they share transaction-level relationships.** A month selection cannot correctly recalculate region or review results without more detailed transaction-level data.
-- Keep the historical `Avg Lead Days` measure clearly labelled as an overall-period statistic rather than a per-month metric.
+## Source boundaries
 
-## How to open in Power BI
+[Original Olist publisher](https://github.com/olist/work-at-olist-data) | [Source provenance](../data/processed/PROVENANCE.json) | [Data checks](../docs/04_data_quality.md).
 
-After connecting and authorising Power BI, import these five CSVs from their raw GitHub links or download the files from this repository. Assign the table names above, set numeric types and apply the measures from [measures.dax](measures.dax). For `Monthly[month]`, sort ascending as text in `YYYY-MM` format. The complete project source is [Olist's official public data](https://github.com/olist/work-at-olist-data).
-
-If a fully cross-filterable report by both month **and** customer destination is required, the original order-level Olist data must be loaded in Power BI, with a checked one-to-many data model. The public CSVs above are intentionally aggregates.
-
-## Data integrity
-
-The prepared inputs are derived from **99,441 actual Olist orders**, of which **96,470** delivered orders have both actual and estimated delivery dates. **89,936** of those met the estimated date, giving **93.23% on-time delivery**. Source [KPI checks](../data/processed/kpi_summary.json), [QA notes](../docs/04_data_quality.md) and [provenance](../data/processed/PROVENANCE.json) are public.
-
-Historical Brazil data (2016-2018), BRL. The report measures **customer delivery against estimated dates**, not inbound supplier OTIF, purchasing spend or audited carrier expense. Observed review differences are not proof of causality.
+Data are historical Brazil 2016-2018, with BRL values. The on-time measure is based on customer delivery against the estimated date; it is **not supplier inbound OTIF**. Listed freight is not an audited carrier invoice. Review-score differences are associations rather than proof of causation.
