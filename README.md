@@ -11,7 +11,7 @@
 ## What the analysis found
 
 1. **Delivery reliability:** 89,936 of 96,470 eligible delivered orders arrived on or before the estimated date, an **on-time rate of 93.23%**. Across the full historical dataset there were **99,441 orders** and **6,534 late deliveries**.
-2. **When to investigate:** March 2018 had **1,328 late deliveries** and an **81.04% on-time rate**, compared with 93.23% across the eligible source population.
+2. **When to investigate:** Orders purchased in March 2018 had **1,328 late deliveries** and an **81.04% on-time rate**, compared with 93.23% across the eligible source population.
 3. **Where to investigate:** São Paulo (SP) had **95.51%** on-time delivery across 40,494 eligible orders, while Rio de Janeiro (RJ) had **87.89%** across 12,350.
 4. **Customer experience:** Orders with valid reviews averaged **4.29 / 5** when delivered on time or early, versus **2.27 / 5** when late. This is an association, not proof of cause.
 5. **Freight exposure:** Listed item value totalled **BRL 13.59M** and listed freight **BRL 2.26M**, equivalent to **16.60%** of item value. This is not independently verified carrier cost.
@@ -37,6 +37,6 @@ These are evidence-led **questions and recommendations**, not changes implemente
 
 ## Source and scope
 
-The figures were computed from **Olist's public historical e-commerce records** for Brazil (2016-2018): [publisher repository](https://github.com/olist/work-at-olist-data) and [dataset listing](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce). Data source provenance and commit are recorded in [PROVENANCE.json](data/processed/PROVENANCE.json); the source-derived [KPI summary](data/processed/kpi_summary.json) and [aggregate tables](data/processed/monthly_metrics.csv) are published for verification. Original row-level orders are not redistributed.
+The figures were computed from **Olist's public historical e-commerce records** for Brazil (2016-2018): [publisher repository](https://github.com/olist/work-at-olist-data) and [dataset listing](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce). Data source provenance and commit are recorded in [PROVENANCE.json](data/processed/PROVENANCE.json); the source-derived [KPI summary](data/processed/kpi_summary.json) and [monthly metrics](data/processed/monthly_metrics.csv) are published for verification. Original row-level orders are not redistributed.
 
-**Measurement boundaries:** On-time means customer delivery on or before the *estimated* date, using delivered orders with both dates. Values are in **BRL**, not NZD. This does not measure supplier inbound OTIF, warehouse stockouts or upstream purchasing spend. This is an independent portfolio study, not Olist's operational dashboard.
+**Measurement boundaries:** Monthly comparisons use the order's *purchase month*, not its delivery month. On-time means customer delivery on or before the *estimated* date, using delivered orders with both dates. Values are in **BRL**, not NZD. This does not measure supplier inbound OTIF, warehouse stockouts or upstream purchasing spend. This is an independent portfolio study, not Olist's operational dashboard.
