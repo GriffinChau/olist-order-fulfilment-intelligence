@@ -1,2 +1,0 @@
-orders,delivered_orders,eligible_delivered_orders,on_time_deliveries,late_deliveries,on_time_delivery_rate_pct,avg_delivery_lead_days,avg_late_days,cancelled_orders,cancellation_rate_pct,item_value_brl,freight_value_brl,currency
-99441,96478,96470,89936,6534,93.23,12.56,10.62,625,0.63,13591643.70,2256599.44,BRL

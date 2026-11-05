@@ -6,7 +6,7 @@
 
 ![Olist executive dashboard: delivery, region, freight and customer experience](evidence/executive_summary.svg)
 
-**[View the Power BI report (PDF)](reports/Olist_PowerBI_Report.pdf)** | **[Open the Excel dashboard](workbook/Olist_Order_Fulfilment_Intelligence_Real_Data.xlsx)** | **[Management brief](docs/09_management_brief.md)**
+**[Open the Excel dashboard](workbook/Olist_Order_Fulfilment_Intelligence_Real_Data.xlsx)** | **[Management brief](docs/09_management_brief.md)**
 
 ## What the analysis found
 
@@ -30,7 +30,6 @@ These are evidence-led **questions and recommendations**, not changes implemente
 ## Deliverables
 
 - **[Excel dashboard with real transaction results](workbook/Olist_Order_Fulfilment_Intelligence_Real_Data.xlsx)**: interactive analysis and business reporting.
-- **[Power BI report (4-page PDF)](reports/Olist_PowerBI_Report.pdf)**: readable delivery, region, customer-review and freight findings. The editable Power BI project is not published.
 - **[Management findings](docs/10_delivery_performance_findings.md)**: conclusions, metrics and decision considerations.
 - **[Data and QA evidence](docs/04_data_quality.md)**: source coverage and reconciliation.
 - **[Supporting chart files](evidence/README.md)**: optional detailed visuals, available as links rather than repeated on this page.
