@@ -1,0 +1,15 @@
+relationship 627f6674-a48d-4551-bd41-a6f0a407f64e
+	fromColumn: FactMonthly.month
+	toColumn: DimMonth.month
+
+relationship 60bca518-49e6-48c8-83b3-312fae2ae503
+	fromColumn: FactRegion.state
+	toColumn: DimState.state
+
+relationship 227da14c-b161-47ea-85fe-9a35d2c71e56
+	fromColumn: FactReviews.delivery_outcome
+	toColumn: DimDeliveryOutcome.delivery_outcome
+
+relationship 2dffa560-618c-4f29-ba25-db8420321c6b
+	fromColumn: FactCategory.category
+	toColumn: DimCategory.category
