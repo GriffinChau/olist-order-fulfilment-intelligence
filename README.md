@@ -4,6 +4,8 @@
 
 **Business question:** Are customer orders arriving when expected, and where should an operations team investigate service and freight exposure?
 
+**Executive summary:** Across 96,470 delivery-eligible orders, 93.23% arrived by the estimated date. The March 2018 purchase cohort and some destination states show weaker performance, while late deliveries are associated with lower customer reviews. **Next business action:** investigate these exceptions with carrier and fulfilment records before attributing causes or claiming cost savings.
+
 ![Olist executive dashboard: delivery, region, freight and customer experience](evidence/executive_summary.svg)
 
 **[Open the Excel dashboard](workbook/Olist_Order_Fulfilment_Intelligence_Real_Data.xlsx)** | **[Management brief](docs/09_management_brief.md)**
@@ -26,6 +28,12 @@
 | Freight | Examine categories with higher freight-to-item ratios using actual carrier invoices and profitability data before recommending savings. |
 
 These are evidence-led **questions and recommendations**, not changes implemented at Olist or measured savings.
+
+## From raw data to decision
+
+The project follows **source understanding → order-grain data cleaning and reconciliation → descriptive visual analysis → management recommendations**. The eight original Olist CSVs are processed by [Python ETL](scripts/process_olist.py); [data QA](docs/04_data_quality.md) protects metric denominators, while the [management brief](docs/09_management_brief.md) explicitly separates observed evidence, hypotheses and data needed to validate decisions.
+
+**Reproducibility note:** source-derived aggregates can be rebuilt and checked with the [documented pipeline](docs/08_technical_setup.md). The published 16-sheet Excel portfolio is curated separately; the Python workbook builder produces a simpler edition, **not an identical remake**.
 
 ## Deliverables
 
