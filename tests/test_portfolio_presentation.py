@@ -28,6 +28,24 @@ class TestPortfolioPresentation(unittest.TestCase):
                 root=ET.parse(ROOT/p).getroot()
                 self.assertTrue(root.tag.endswith("svg"))
                 self.assertIn("viewBox",root.attrib)
+    def test_analysis_to_action_is_current(self):
+        path=ROOT/"evidence/analysis_to_action.svg"
+        root=ET.parse(path).getroot()
+        self.assertTrue(root.tag.endswith("svg"))
+        svg=path.read_text(encoding="utf-8")
+        self.assertIn("99,441",svg)
+        self.assertIn("96,470",svg)
+        self.assertIn("March",svg)
+        self.assertNotIn("Add verified customer orders",svg)
+
+    def test_readme_distinguishes_rebuilt_workbook(self):
+        text=(ROOT/"README.md").read_text(encoding="utf-8")
+        self.assertIn("**Executive summary:**",text)
+        self.assertIn("not an identical remake",text)
+        script=(ROOT/"scripts/run_pipeline.sh").read_text(encoding="utf-8")
+        self.assertIn("summarise_delivery_experience.py",script)
+        self.assertIn("check_processed_outputs.py",script)
+
     def test_current_full_data_workbook_exists(self):
         self.assertTrue(WORKBOOK.is_file())
         with zipfile.ZipFile(WORKBOOK) as z:
