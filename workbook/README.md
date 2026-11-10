@@ -1,19 +1,11 @@
-# Olist Excel dashboard — published versus generated
+# Excel Dashboard
 
-The **[curated 16-sheet full-data Excel portfolio workbook](Olist_Order_Fulfilment_Intelligence_Real_Data.xlsx)** is the canonical presentation delivered in this repository. It contains verified Olist Brazil (2016-2018) reporting, using BRL. The [one-image executive summary](../README.md) is a quicker starting point for business reviewers.
+This project includes a **[16-sheet Excel dashboard](Olist_Order_Fulfilment_Intelligence_Real_Data.xlsx)** built using real Olist e-commerce data from Brazil (2016–2018).
 
-## Reproducibility
+Python is used to clean, transform and validate the eight original datasets. Excel presents the results through KPIs, delivery trends, regional performance, customer reviews and freight analysis.
 
-The **source-derived metrics** and supporting aggregates can be recreated from the eight original Olist CSVs, with integrity checks; see [technical reproducibility](../docs/08_technical_setup.md).
+The data processing pipeline can be rerun using the original CSV files. The published 16-sheet dashboard is a separately curated portfolio deliverable; **the Python script does not recreate its exact layout**. See the [technical setup](../docs/08_technical_setup.md) for instructions.
 
-```bash
-# Rebuild source-derived tables and validate them without the optional workbook library
-BUILD_WORKBOOK=0 sh scripts/run_pipeline.sh
+**Key results:** 99,441 orders analysed; 96,470 eligible deliveries; 89,936 delivered on time (**93.23%**) and 6,534 delivered late.
 
-# Also generate a simpler spreadsheet, with artifact_tool installed
-sh scripts/run_pipeline.sh
-```
-
-The generated workbook is named `Olist_Order_Fulfilment_Intelligence_Rebuilt.xlsx` to prevent confusing it with the curated publication. The Python builder **does not currently recreate the canonical 16-sheet workbook or its exact visuals**. The curated file is checked as an Excel ZIP package by the repository tests, but this is not a claim that it is automatically regenerated.
-
-**Verified source highlights:** 99,441 historical customer orders; 96,470 eligible delivered orders; 89,936 on time (93.23%); 6,534 late. Customer delivery against the estimated date is **not** supplier inbound OTIF. Listed freight is not an independently verified carrier invoice.
+*Scope:* On-time delivery is measured against the estimated customer delivery date, not supplier inbound OTIF. Freight is the listed dataset value, not verified carrier expense.
