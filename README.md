@@ -38,6 +38,7 @@ The project follows **source understanding → order-grain data cleaning and rec
 ## Deliverables
 
 - **[Excel dashboard with real transaction results](workbook/Olist_Order_Fulfilment_Intelligence_Real_Data.xlsx)**: interactive analysis and business reporting.
+- **[Four-page PDF report — upload location](reports/README.md)**: a place for the reviewed delivery, regional, customer experience and freight report (PDF not yet committed).
 - **[Management findings](docs/10_delivery_performance_findings.md)**: conclusions, metrics and decision considerations.
 - **[Data and QA evidence](docs/04_data_quality.md)**: source coverage and reconciliation.
 - **[Supporting chart files](evidence/README.md)**: optional detailed visuals, available as links rather than repeated on this page.
