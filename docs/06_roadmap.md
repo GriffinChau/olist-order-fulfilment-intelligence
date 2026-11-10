@@ -9,10 +9,15 @@
 - **Excel deliverable:** [Full real-data workbook (16 worksheets)](../workbook/Olist_Order_Fulfilment_Intelligence_Real_Data.xlsx) published.
 - **QA:** Reconciliation of delivered orders, monthly counts, category totals and customer-region results documented in [data quality](04_data_quality.md).
 
+## Rebuild and publication status
+
+The reproducible CLI workflow now includes customer-state and review aggregation, verifies all **freshly generated** summary files against order-level KPIs, and exercises the tests. The **published 16-sheet Excel portfolio** remains a curated presentation artifact; the optional Python builder generates a simpler, separately named edition. These are deliberately distinguished in the [technical reproducibility guide](08_technical_setup.md).
+
 ## Optional future enhancements
 
 1. Add dispatch origin, carrier milestones or transport invoices, if licensed sources become available, to test explanations for delivery patterns.
 2. Explore category and region differences jointly, controlling for order characteristics before attributing causes.
-3. Convert findings into an operational pilot with stakeholder acceptance criteria, if working with a real business.
+3. Automate recreation of the curated 16-sheet workbook with matching worksheets and styling, if pixel-identical generation becomes a requirement.
+4. Convert findings into an operational pilot with stakeholder acceptance criteria, if working with a real business.
 
 The repository is an **independent historical portfolio project**. It does not represent a live Olist implementation, proven root causes or realised business savings.
