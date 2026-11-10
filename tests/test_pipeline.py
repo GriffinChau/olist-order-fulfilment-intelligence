@@ -6,6 +6,8 @@ from pathlib import Path
 import sys
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'scripts'))
 from process_olist import build
+from summarise_delivery_experience import aggregate
+from check_processed_outputs import verify
 
 class TestPipeline(unittest.TestCase):
     def test_reference_profile_reconciles(self):
@@ -51,4 +53,17 @@ class TestPipeline(unittest.TestCase):
             self.assertEqual(enriched[0]['item_value_brl'],'30.00')
             self.assertEqual(enriched[0]['review_score_avg'],'4.5')
             self.assertEqual(enriched[0]['payment_value_brl'],'33.00')
+            # Verify that the previously omitted pipeline stage actually runs
+            # against fresh output, and that all newly derived aggregates reconcile.
+            self.assertEqual(aggregate(out/'orders_enriched.csv',out),2)
+            with (out/'customer_region_summary.csv').open(newline='') as h:
+                states=list(csv.DictReader(h))
+            self.assertEqual(len(states),1)
+            self.assertEqual(states[0]['state'],'SP')
+            self.assertEqual(int(states[0]['eligible_deliveries']),2)
+            with (out/'review_by_delivery.csv').open(newline='') as h:
+                delivery_reviews={r['delivery_outcome']:r for r in csv.DictReader(h)}
+            self.assertEqual(delivery_reviews['on_time']['avg_review_score'],'4.50')
+            self.assertEqual(delivery_reviews['late']['avg_review_score'],'1.00')
+            self.assertTrue(verify(out))
 if __name__=='__main__':unittest.main()
