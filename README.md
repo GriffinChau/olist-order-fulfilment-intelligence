@@ -38,12 +38,13 @@ The project follows **source understanding → order-grain data cleaning and rec
 ## Deliverables
 
 - **[Excel dashboard with real transaction results](workbook/Olist_Order_Fulfilment_Intelligence_Real_Data.xlsx)**: interactive analysis and business reporting.
-- **[Four-page PDF report — upload location](reports/README.md)**: a place for the reviewed delivery, regional, customer experience and freight report (PDF not yet committed).
+- **[Four-page delivery PDF](reports/Olist_Delivery_Intelligence_Report.pdf)**: reference report covering delivery, regions, reviews and freight.
 - **[Management findings](docs/10_delivery_performance_findings.md)**: conclusions, metrics and decision considerations.
 - **[Data and QA evidence](docs/04_data_quality.md)**: source coverage and reconciliation.
 - **[Supporting chart files](evidence/README.md)**: optional detailed visuals, available as links rather than repeated on this page.
 - **[Technical reference](docs/08_technical_setup.md)**: reproducible calculation details for reviewers who want them.
-- **[Power BI model design](docs/11_powerbi_model_design.md)**: proposed multi-fact reporting model to recreate the four-page PDF; implementation requires validation in Power BI Desktop.
+- **[Power BI implementation notes](docs/powerbi/README.md)**: semantic model, 56 DAX measures, KPI dictionary and all four report-page specifications. The editable Power BI project remains local.
+- **[Power BI model design](docs/11_powerbi_model_design.md)**: aggregate-grain schema and modelling constraints.
 
 ## Source and scope
 
