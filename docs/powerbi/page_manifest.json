@@ -1,0 +1,275 @@
+{
+  "source": "Olist_PowerBI_PDF_Style (local PBIP generated in this conversation)",
+  "status": "Page specification extracted from PBIR definitions; Power BI Desktop visual validation required",
+  "model": {
+    "tables": 9,
+    "relationships": 4,
+    "measures": 56,
+    "grain": "aggregate",
+    "global_slicers": 0
+  },
+  "page_order": [
+    "01 Delivery performance",
+    "02 Customer regions",
+    "03 Customer experience",
+    "04 Product and freight"
+  ],
+  "pages": [
+    {
+      "page_id": "c6fddcc9551d46978b7a",
+      "title": "01 Delivery performance",
+      "canvas": {
+        "width": 1600,
+        "height": 900,
+        "display_option": "FitToPage"
+      },
+      "template_image": "olist_report_template_01.png",
+      "cards": [
+        {
+          "x": 302,
+          "y": 198,
+          "width": 244,
+          "height": 73,
+          "type": "cardVisual",
+          "measure": "FactKpi.Display On-time Delivery"
+        },
+        {
+          "x": 633,
+          "y": 198,
+          "width": 244,
+          "height": 73,
+          "type": "cardVisual",
+          "measure": "FactKpi.Display Late Deliveries"
+        },
+        {
+          "x": 964,
+          "y": 198,
+          "width": 244,
+          "height": 73,
+          "type": "cardVisual",
+          "measure": "FactKpi.Display Eligible Deliveries"
+        },
+        {
+          "x": 1295,
+          "y": 198,
+          "width": 244,
+          "height": 73,
+          "type": "cardVisual",
+          "measure": "FactKpi.Display Canceled Orders"
+        }
+      ],
+      "charts": [
+        {
+          "type": "lineChart",
+          "x": 285,
+          "y": 385,
+          "width": 605,
+          "height": 204,
+          "axis": "DimMonth.month",
+          "measure": "FactMonthly.On-time Rate (Report)"
+        },
+        {
+          "type": "clusteredColumnChart",
+          "x": 944,
+          "y": 385,
+          "width": 607,
+          "height": 204,
+          "axis": "DimMonth.month",
+          "measure": "FactMonthly.Late Deliveries (12m)"
+        }
+      ]
+    },
+    {
+      "page_id": "288f004404cc460fb0fc",
+      "title": "02 Customer regions",
+      "canvas": {
+        "width": 1600,
+        "height": 900,
+        "display_option": "FitToPage"
+      },
+      "template_image": "olist_report_template_02.png",
+      "cards": [
+        {
+          "x": 302,
+          "y": 198,
+          "width": 244,
+          "height": 73,
+          "type": "cardVisual",
+          "measure": "FactKpi.Display Eligible Deliveries"
+        },
+        {
+          "x": 633,
+          "y": 198,
+          "width": 244,
+          "height": 73,
+          "type": "cardVisual",
+          "measure": "FactRegion.Display SP Rate"
+        },
+        {
+          "x": 964,
+          "y": 198,
+          "width": 244,
+          "height": 73,
+          "type": "cardVisual",
+          "measure": "FactRegion.Display RJ Rate"
+        },
+        {
+          "x": 1295,
+          "y": 198,
+          "width": 244,
+          "height": 73,
+          "type": "cardVisual",
+          "measure": "FactKpi.Display Late Deliveries"
+        }
+      ],
+      "charts": [
+        {
+          "type": "clusteredBarChart",
+          "x": 285,
+          "y": 385,
+          "width": 605,
+          "height": 204,
+          "axis": "DimState.state",
+          "measure": "FactRegion.Top 8 On-time Rate by State"
+        },
+        {
+          "type": "clusteredBarChart",
+          "x": 944,
+          "y": 385,
+          "width": 607,
+          "height": 204,
+          "axis": "DimState.state",
+          "measure": "FactRegion.Top 8 Late by State"
+        }
+      ]
+    },
+    {
+      "page_id": "f7eda08b11114e0f9a69",
+      "title": "03 Customer experience",
+      "canvas": {
+        "width": 1600,
+        "height": 900,
+        "display_option": "FitToPage"
+      },
+      "template_image": "olist_report_template_03.png",
+      "cards": [
+        {
+          "x": 302,
+          "y": 198,
+          "width": 244,
+          "height": 73,
+          "type": "cardVisual",
+          "measure": "FactReviews.Display On-time Review"
+        },
+        {
+          "x": 633,
+          "y": 198,
+          "width": 244,
+          "height": 73,
+          "type": "cardVisual",
+          "measure": "FactReviews.Display Late Review"
+        },
+        {
+          "x": 964,
+          "y": 198,
+          "width": 244,
+          "height": 73,
+          "type": "cardVisual",
+          "measure": "FactReviews.Display Low Rating On-time"
+        },
+        {
+          "x": 1295,
+          "y": 198,
+          "width": 244,
+          "height": 73,
+          "type": "cardVisual",
+          "measure": "FactReviews.Display Low Rating Late"
+        }
+      ],
+      "charts": [
+        {
+          "type": "clusteredBarChart",
+          "x": 285,
+          "y": 385,
+          "width": 605,
+          "height": 204,
+          "axis": "DimDeliveryOutcome.delivery_display",
+          "measure": "FactReviews.Avg Review Score"
+        },
+        {
+          "type": "clusteredBarChart",
+          "x": 944,
+          "y": 385,
+          "width": 607,
+          "height": 204,
+          "axis": "DimDeliveryOutcome.delivery_display",
+          "measure": "FactReviews.Low Rating Share"
+        }
+      ]
+    },
+    {
+      "page_id": "dc7a642aaeed4fdfba99",
+      "title": "04 Product and freight",
+      "canvas": {
+        "width": 1600,
+        "height": 900,
+        "display_option": "FitToPage"
+      },
+      "template_image": "olist_report_template_04.png",
+      "cards": [
+        {
+          "x": 302,
+          "y": 198,
+          "width": 244,
+          "height": 73,
+          "type": "cardVisual",
+          "measure": "FactKpi.Display Item Value"
+        },
+        {
+          "x": 633,
+          "y": 198,
+          "width": 244,
+          "height": 73,
+          "type": "cardVisual",
+          "measure": "FactKpi.Display Listed Freight"
+        },
+        {
+          "x": 964,
+          "y": 198,
+          "width": 244,
+          "height": 73,
+          "type": "cardVisual",
+          "measure": "FactKpi.Display Freight Ratio"
+        },
+        {
+          "x": 1295,
+          "y": 198,
+          "width": 244,
+          "height": 73,
+          "type": "cardVisual",
+          "measure": "FactCategory.Display Item Lines"
+        }
+      ],
+      "charts": [
+        {
+          "type": "clusteredBarChart",
+          "x": 285,
+          "y": 385,
+          "width": 605,
+          "height": 204,
+          "axis": "DimCategory.category_display",
+          "measure": "FactCategory.Top 8 Item Value"
+        },
+        {
+          "type": "clusteredBarChart",
+          "x": 944,
+          "y": 385,
+          "width": 607,
+          "height": 204,
+          "axis": "DimCategory.category_display",
+          "measure": "FactCategory.Top 8 Freight to Item Rate"
+        }
+      ]
+    }
+  ]
+}
