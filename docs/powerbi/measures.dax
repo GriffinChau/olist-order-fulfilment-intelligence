@@ -1,0 +1,206 @@
+-- Olist Delivery Intelligence: DAX measure definitions from the local PDF-style PBIP project.
+-- Source: Olist_Delivery_Intelligence.SemanticModel/definition/tables/*.tmdl
+-- 56 measures in total. Kept here as an auditable reference, not a compiled PBIX.
+-- A measure is created in its named table (Modeling > New measure).
+-- Power BI may use comma or semicolon argument separators depending on locale.
+-- FORMAT() is used only for display cards; numeric measures feed charts.
+-- The all-time FactKpi snapshot has no relationship to the four summary-grain branches.
+
+-- ============================================================
+-- FactMonthly (8 measures)
+-- ============================================================
+
+'FactMonthly'[Month Accent Color] =
+    IF(SELECTEDVALUE(DimMonth[month]) = "2018-03", "#D9854C", "#0A988B")
+
+'FactMonthly'[Monthly Orders] =
+    SUM(FactMonthly[orders])
+
+'FactMonthly'[Eligible Deliveries] =
+    SUM(FactMonthly[on_time_eligible])
+
+'FactMonthly'[On-time Deliveries] =
+    SUM(FactMonthly[on_time_deliveries])
+
+'FactMonthly'[Late Deliveries] =
+    SUM(FactMonthly[late_deliveries])
+
+'FactMonthly'[On-time Rate] =
+    DIVIDE([On-time Deliveries], [Eligible Deliveries])
+
+'FactMonthly'[On-time Rate (Report)] =
+    VAR m = SELECTEDVALUE(DimMonth[month])
+    RETURN IF(NOT ISBLANK(m) && m >= "2017-01" && m <= "2018-08" && [Eligible Deliveries] >= 500, [On-time Rate])
+
+'FactMonthly'[Late Deliveries (12m)] =
+    VAR m = SELECTEDVALUE(DimMonth[month])
+    RETURN IF(NOT ISBLANK(m) && m >= "2017-09" && m <= "2018-08", [Late Deliveries])
+
+
+-- ============================================================
+-- FactRegion (11 measures)
+-- ============================================================
+
+'FactRegion'[Display SP Rate] =
+    FORMAT([SP On-time Rate], "0.00%")
+
+'FactRegion'[Display RJ Rate] =
+    FORMAT([RJ On-time Rate], "0.00%")
+
+'FactRegion'[State Accent Color] =
+    IF(SELECTEDVALUE(DimState[state]) IN {"RJ", "BA"}, "#D9854C", "#0A988B")
+
+'FactRegion'[Eligible by State] =
+    SUM(FactRegion[eligible_deliveries])
+
+'FactRegion'[On-time by State] =
+    SUM(FactRegion[on_time_deliveries])
+
+'FactRegion'[Late by State] =
+    SUM(FactRegion[late_deliveries])
+
+'FactRegion'[On-time Rate by State] =
+    DIVIDE([On-time by State], [Eligible by State])
+
+'FactRegion'[SP On-time Rate] =
+    CALCULATE([On-time Rate by State], DimState[state] = "SP")
+
+'FactRegion'[RJ On-time Rate] =
+    CALCULATE([On-time Rate by State], DimState[state] = "RJ")
+
+'FactRegion'[Top 8 On-time Rate by State] =
+    VAR RankByEligible = RANKX(ALL(DimState[state]), [Eligible by State], , DESC, DENSE)
+    RETURN IF(RankByEligible <= 8, [On-time Rate by State])
+
+'FactRegion'[Top 8 Late by State] =
+    VAR RankByEligible = RANKX(ALL(DimState[state]), [Eligible by State], , DESC, DENSE)
+    RETURN IF(RankByEligible <= 8, [Late by State])
+
+
+-- ============================================================
+-- FactReviews (12 measures)
+-- ============================================================
+
+'FactReviews'[Display On-time Review] =
+    FORMAT([On-time Review Score], "0.00") & " / 5"
+
+'FactReviews'[Display Late Review] =
+    FORMAT([Late Review Score], "0.00") & " / 5"
+
+'FactReviews'[Display Low Rating On-time] =
+    FORMAT([On-time Low Rating Share], "0.00%")
+
+'FactReviews'[Display Low Rating Late] =
+    FORMAT([Late Low Rating Share], "0.00%")
+
+'FactReviews'[Review Accent Color] =
+    IF(SELECTEDVALUE(DimDeliveryOutcome[delivery_outcome]) = "late", "#D9854C", "#0A988B")
+
+'FactReviews'[Reviewed Orders] =
+    SUM(FactReviews[reviewed_orders])
+
+'FactReviews'[Avg Review Score] =
+    DIVIDE(SUMX(FactReviews, FactReviews[avg_review_score] * FactReviews[reviewed_orders]), [Reviewed Orders])
+
+'FactReviews'[Low Rating Share] =
+    DIVIDE(SUMX(FactReviews, FactReviews[low_review_share_pct] * FactReviews[reviewed_orders]), [Reviewed Orders] * 100)
+
+'FactReviews'[On-time Review Score] =
+    CALCULATE([Avg Review Score], DimDeliveryOutcome[delivery_outcome] = "on_time")
+
+'FactReviews'[Late Review Score] =
+    CALCULATE([Avg Review Score], DimDeliveryOutcome[delivery_outcome] = "late")
+
+'FactReviews'[On-time Low Rating Share] =
+    CALCULATE([Low Rating Share], DimDeliveryOutcome[delivery_outcome] = "on_time")
+
+'FactReviews'[Late Low Rating Share] =
+    CALCULATE([Low Rating Share], DimDeliveryOutcome[delivery_outcome] = "late")
+
+
+-- ============================================================
+-- FactCategory (8 measures)
+-- ============================================================
+
+'FactCategory'[Display Item Lines] =
+    FORMAT([Order Item Lines], "#,##0")
+
+'FactCategory'[Category Accent Color] =
+    IF(SELECTEDVALUE(DimCategory[category]) IN {"furniture_decor", "housewares"}, "#D9854C", "#0A988B")
+
+'FactCategory'[Item Value] =
+    SUM(FactCategory[item_value_brl])
+
+'FactCategory'[Listed Freight] =
+    SUM(FactCategory[freight_brl])
+
+'FactCategory'[Freight to Item Rate] =
+    DIVIDE([Listed Freight], [Item Value])
+
+'FactCategory'[Order Item Lines] =
+    SUM(FactCategory[item_lines])
+
+'FactCategory'[Top 8 Item Value] =
+    VAR RankByValue = RANKX(ALL(DimCategory[category]), [Item Value], , DESC, DENSE)
+    RETURN IF(RankByValue <= 8, [Item Value])
+
+'FactCategory'[Top 8 Freight to Item Rate] =
+    VAR RankByValue = RANKX(ALL(DimCategory[category]), [Item Value], , DESC, DENSE)
+    RETURN IF(RankByValue <= 8, [Freight to Item Rate])
+
+
+-- ============================================================
+-- FactKpi (17 measures)
+-- ============================================================
+
+'FactKpi'[Display On-time Delivery] =
+    FORMAT([Total On-time Rate], "0.00%")
+
+'FactKpi'[Display Late Deliveries] =
+    FORMAT([Total Late Deliveries], "#,##0")
+
+'FactKpi'[Display Eligible Deliveries] =
+    FORMAT([Total Eligible Deliveries], "#,##0")
+
+'FactKpi'[Display Canceled Orders] =
+    FORMAT([Total Canceled Orders], "#,##0")
+
+'FactKpi'[Display Item Value] =
+    "BRL " & FORMAT(DIVIDE([Total Item Value], 1000000), "0.00") & "M"
+
+'FactKpi'[Display Listed Freight] =
+    "BRL " & FORMAT(DIVIDE([Total Listed Freight], 1000000), "0.00") & "M"
+
+'FactKpi'[Display Freight Ratio] =
+    FORMAT([Total Freight to Item Rate], "0.00%")
+
+'FactKpi'[Total Orders] =
+    SUM(FactKpi[orders])
+
+'FactKpi'[Total Eligible Deliveries] =
+    SUM(FactKpi[eligible_delivered_orders])
+
+'FactKpi'[Total On-time Deliveries] =
+    SUM(FactKpi[on_time_deliveries])
+
+'FactKpi'[Total Late Deliveries] =
+    SUM(FactKpi[late_deliveries])
+
+'FactKpi'[Total On-time Rate] =
+    DIVIDE([Total On-time Deliveries], [Total Eligible Deliveries])
+
+'FactKpi'[Total Canceled Orders] =
+    SUM(FactKpi[cancelled_orders])
+
+'FactKpi'[Total Cancellation Rate] =
+    DIVIDE([Total Canceled Orders], [Total Orders])
+
+'FactKpi'[Total Item Value] =
+    SUM(FactKpi[item_value_brl])
+
+'FactKpi'[Total Listed Freight] =
+    SUM(FactKpi[freight_value_brl])
+
+'FactKpi'[Total Freight to Item Rate] =
+    DIVIDE([Total Listed Freight], [Total Item Value])
+

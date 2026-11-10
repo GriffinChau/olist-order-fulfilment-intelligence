@@ -1,0 +1,31 @@
+{
+  "name": "Olist Delivery Intelligence · Green PDF",
+  "dataColors": [
+    "#078F81",
+    "#D88950",
+    "#4EAAA2",
+    "#82CBC3",
+    "#CF9A68",
+    "#3F7075"
+  ],
+  "background": "#F2F8F5",
+  "foreground": "#122E30",
+  "tableAccent": "#078F81",
+  "textClasses": {
+    "title": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 16,
+      "color": "#122E30"
+    },
+    "label": {
+      "fontFace": "Segoe UI",
+      "fontSize": 11,
+      "color": "#55716C"
+    },
+    "callout": {
+      "fontFace": "Segoe UI Semibold",
+      "fontSize": 32,
+      "color": "#123E3B"
+    }
+  }
+}

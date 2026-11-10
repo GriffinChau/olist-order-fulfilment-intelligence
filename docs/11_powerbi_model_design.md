@@ -1,6 +1,6 @@
 # Power BI report model — design and status
 
-This document describes how the four-page [Olist Delivery Intelligence PDF](../reports/Olist_Delivery_Intelligence_Report.pdf) can be recreated using **Microsoft Power BI**. It documents a model and a proposed implementation; it does **not** assert that a finished Power BI report has already been opened or validated in Desktop.
+This document records the aggregate-model design for a four-page Power BI recreation of the [Olist Delivery Intelligence PDF](../reports/Olist_Delivery_Intelligence_Report.pdf). A local PBIP implementation has since been generated; its **actual measures, Power Query approach and page bindings** are documented in the [Power BI implementation reference](powerbi/README.md). The final PDF-style layout still requires visual validation in Power BI Desktop.
 
 ![Multi-fact reporting model](powerbi_reporting_model.svg)
 
@@ -44,4 +44,4 @@ On time means delivery by the estimated **customer** date, not supplier inbound 
 
 ## Portfolio wording
 
-Until a four-page report has actually been created, refreshed and checked in Power BI Desktop, label this work **“Power BI model design / prototype”**. After validation, it is fair to say **“Data visualisation: Power BI”**, and to publish screenshots and the exported PDF while keeping the PBIX locally. Uploading a PBIX to GitHub is optional.
+The local PBIP project has been generated and the earlier offline model was reported to load in Power BI Desktop. The exact PDF-style design has not yet been visually certified in Desktop, so treat the visual recreation as a **Power BI report prototype** until it has been refreshed and checked page by page. Once validated, it is fair to say **“Data visualization: Microsoft Power BI”**. The PBIX/PBIP can stay local while GitHub shares model documentation, DAX and screenshots captured from the actual report.
