@@ -43,6 +43,7 @@ The project follows **source understanding → order-grain data cleaning and rec
 - **[Data and QA evidence](docs/04_data_quality.md)**: source coverage and reconciliation.
 - **[Supporting chart files](evidence/README.md)**: optional detailed visuals, available as links rather than repeated on this page.
 - **[Technical reference](docs/08_technical_setup.md)**: reproducible calculation details for reviewers who want them.
+- **[Power BI model design](docs/11_powerbi_model_design.md)**: proposed multi-fact reporting model to recreate the four-page PDF; implementation requires validation in Power BI Desktop.
 
 ## Source and scope
 
