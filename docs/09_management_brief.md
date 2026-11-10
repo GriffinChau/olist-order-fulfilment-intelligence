@@ -1,4 +1,4 @@
-# Olist customer delivery — management brief
+# Olist customer delivery - management brief
 
 ## Executive decision
 
