@@ -13,5 +13,7 @@ jobs:
           python-version: '3.11'
       - name: Run Python unit tests
         run: python -m unittest discover -s tests -v
+      - name: Reconcile published aggregate evidence
+        run: python scripts/check_processed_outputs.py --processed data/processed
       - name: Check verified source and optional workbook
         run: python scripts/verify_bundle.py
