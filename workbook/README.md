@@ -1,13 +1,19 @@
-# Olist Excel Dashboard - Full Real-Data Edition
+# Olist Excel dashboard — published versus generated
 
-**[Open the current Excel dashboard (16 worksheets)](Olist_Order_Fulfilment_Intelligence_Real_Data.xlsx)**
+The **[curated 16-sheet full-data Excel portfolio workbook](Olist_Order_Fulfilment_Intelligence_Real_Data.xlsx)** is the canonical presentation delivered in this repository. It contains verified Olist Brazil (2016-2018) reporting, using BRL. The [one-image executive summary](../README.md) is a quicker starting point for business reviewers.
 
-This is the **full real-data edition**, covering the original Olist customer-order analysis, delivery performance, region and category comparisons, seller information and business reporting. The workbook is saved in this repository and is separate from the lightweight public-data pipeline scripts.
+## Reproducibility
 
-For the simplest overview, start with the [one-image executive dashboard](../README.md) rather than browsing every worksheet.
+The **source-derived metrics** and supporting aggregates can be recreated from the eight original Olist CSVs, with integrity checks; see [technical reproducibility](../docs/08_technical_setup.md).
 
-**Verified source highlights:** 99,441 customer orders, 96,470 delivery-eligible orders, 93.23% on time, 6,534 late deliveries. Source evidence and quality controls are published in [data/processed](../data/processed/kpi_summary.json).
+```bash
+# Rebuild source-derived tables and validate them without the optional workbook library
+BUILD_WORKBOOK=0 sh scripts/run_pipeline.sh
 
-**Scope:** Historical Olist Brazil data (2016-2018), BRL. The on-time metric measures customer delivery against the estimated date, not upstream supplier OTIF. Listed freight is not a carrier invoice.
+# Also generate a simpler spreadsheet, with artifact_tool installed
+sh scripts/run_pipeline.sh
+```
 
-The optional [Python Excel builder](../scripts/build_workbook.py) is a simpler reproducible reporting implementation; it should not be confused with the formatting and layout of this 16-worksheet portfolio file.
+The generated workbook is named `Olist_Order_Fulfilment_Intelligence_Rebuilt.xlsx` to prevent confusing it with the curated publication. The Python builder **does not currently recreate the canonical 16-sheet workbook or its exact visuals**. The curated file is checked as an Excel ZIP package by the repository tests, but this is not a claim that it is automatically regenerated.
+
+**Verified source highlights:** 99,441 historical customer orders; 96,470 eligible delivered orders; 89,936 on time (93.23%); 6,534 late. Customer delivery against the estimated date is **not** supplier inbound OTIF. Listed freight is not an independently verified carrier invoice.
