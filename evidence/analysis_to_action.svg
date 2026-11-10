@@ -1,43 +1,54 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1170 460" width="1170" height="460" role="img" aria-label="Four-step business analysis flow from real Olist seller records through data checks and visualisations to operational decision support">
-<rect width="1170" height="460" fill="#f3f7fa"/>
-<rect width="1170" height="99" fill="#152b42"/>
-<text x="43" y="42" font-family="Arial" font-size="27" font-weight="bold" fill="#fff">FROM PUBLIC DATA TO A BUSINESS DECISION</text>
-<text x="43" y="77" font-family="Arial" font-size="17" fill="#c0d7df">A traceable workflow, with observed results separated from future analysis</text>
-<rect x="40" y="134" width="240" height="168" rx="14" fill="#fff" stroke="#d2e2ea"/>
-<rect x="40" y="134" width="240" height="42" rx="14" fill="#173c54"/>
-<rect x="40" y="156" width="240" height="21" fill="#173c54"/>
-<text x="55" y="162" font-family="Arial" font-size="16" font-weight="bold" fill="#fff">1. SOURCE</text>
-<text x="55" y="214" font-family="Arial" font-size="17" font-weight="bold" fill="#263f57">Public Olist seller records</text>
-<text x="55" y="245" font-family="Arial" font-size="14" fill="#61758a">Original location fields</text>
-<rect x="55" y="268" width="128" height="24" rx="12" fill="#e8eff5"/>
-<text x="66" y="285" font-family="Arial" font-size="12" fill="#205262">Completed stage</text>
-<path d="M294 212 H317" stroke="#128980" stroke-width="4" stroke-linecap="round"/><path d="M308 205 L317 212 L308 219" fill="none" stroke="#128980" stroke-width="4" stroke-linecap="round"/><rect x="326" y="134" width="240" height="168" rx="14" fill="#fff" stroke="#d2e2ea"/>
-<rect x="326" y="134" width="240" height="42" rx="14" fill="#173c54"/>
-<rect x="326" y="156" width="240" height="21" fill="#173c54"/>
-<text x="341" y="162" font-family="Arial" font-size="16" font-weight="bold" fill="#fff">2. QUALITY</text>
-<text x="341" y="214" font-family="Arial" font-size="17" font-weight="bold" fill="#263f57">3,095 IDs reconciled</text>
-<text x="341" y="245" font-family="Arial" font-size="14" fill="#61758a">State and city checks</text>
-<rect x="341" y="268" width="128" height="24" rx="12" fill="#e8eff5"/>
-<text x="352" y="285" font-family="Arial" font-size="12" fill="#205262">Completed stage</text>
-<path d="M580 212 H603" stroke="#128980" stroke-width="4" stroke-linecap="round"/><path d="M594 205 L603 212 L594 219" fill="none" stroke="#128980" stroke-width="4" stroke-linecap="round"/><rect x="612" y="134" width="240" height="168" rx="14" fill="#fff" stroke="#d2e2ea"/>
-<rect x="612" y="134" width="240" height="42" rx="14" fill="#173c54"/>
-<rect x="612" y="156" width="240" height="21" fill="#173c54"/>
-<text x="627" y="162" font-family="Arial" font-size="16" font-weight="bold" fill="#fff">3. VISUALISE</text>
-<text x="627" y="214" font-family="Arial" font-size="17" font-weight="bold" fill="#263f57">Geographic distribution</text>
-<text x="627" y="245" font-family="Arial" font-size="14" fill="#61758a">Top states and cities</text>
-<rect x="627" y="268" width="128" height="24" rx="12" fill="#e8eff5"/>
-<text x="638" y="285" font-family="Arial" font-size="12" fill="#205262">Completed stage</text>
-<path d="M866 212 H889" stroke="#128980" stroke-width="4" stroke-linecap="round"/><path d="M880 205 L889 212 L880 219" fill="none" stroke="#128980" stroke-width="4" stroke-linecap="round"/><rect x="898" y="134" width="240" height="168" rx="14" fill="#e2f3ee" stroke="#d2e2ea"/>
-<rect x="898" y="134" width="240" height="42" rx="14" fill="#067e73"/>
-<rect x="898" y="156" width="240" height="21" fill="#067e73"/>
-<text x="913" y="162" font-family="Arial" font-size="16" font-weight="bold" fill="#fff">4. DECIDE</text>
-<text x="913" y="214" font-family="Arial" font-size="17" font-weight="bold" fill="#263f57">Investigate concentration</text>
-<text x="913" y="245" font-family="Arial" font-size="14" fill="#61758a">Plan next data needs</text>
-<rect x="913" y="268" width="144" height="24" rx="12" fill="#b4e1d6"/>
-<text x="924" y="285" font-family="Arial" font-size="12" fill="#205262">Decision support</text>
-<rect x="40" y="334" width="1089" height="71" rx="13" fill="#e5f2f0"/>
-<text x="60" y="362" font-family="Arial" font-size="17" font-weight="bold" fill="#126b66">NEXT STAGE</text>
-<text x="205" y="363" font-family="Arial" font-size="17" fill="#2f5156">Add verified customer orders and delivery dates to calculate delivery performance.</text>
-<text x="205" y="386" font-family="Arial" font-size="14" fill="#476d6c">Not yet an observed result: no delivery KPI is inferred from seller location alone.</text>
-<text x="45" y="440" font-family="Arial" font-size="13" fill="#607687">Olist Brazil 2016-2018 | Project analysis uses historical public seller records.</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1170 490" width="1170" height="490" role="img" aria-label="Olist data-to-decision flow: eight original CSVs, verified order-grain analysis of 99,441 orders, customer delivery insights and recommended investigations">
+  <rect width="1170" height="490" fill="#F3F7FA"/>
+  <rect width="1170" height="104" fill="#152B42"/>
+  <text x="40" y="41" font-family="Arial,sans-serif" font-size="27" font-weight="bold" fill="#FFFFFF">FROM OLIST RAW DATA TO A BUSINESS DECISION</text>
+  <text x="40" y="77" font-family="Arial,sans-serif" font-size="17" fill="#C0D7DF">Evidence-led analysis | 99,441 historical customer orders | Brazil, 2016–2018</text>
+
+  <rect x="34" y="136" width="255" height="193" rx="13" fill="#FFFFFF" stroke="#D2E2EA"/>
+  <rect x="34" y="136" width="255" height="43" rx="13" fill="#173C54"/>
+  <rect x="34" y="158" width="255" height="21" fill="#173C54"/>
+  <text x="50" y="164" font-family="Arial,sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF">1. SOURCE &amp; GRAIN</text>
+  <text x="50" y="211" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#263F57">8 original Olist CSVs</text>
+  <text x="50" y="244" font-family="Arial,sans-serif" font-size="15" fill="#61758A">99,441 unique orders</text>
+  <text x="50" y="272" font-family="Arial,sans-serif" font-size="15" fill="#61758A">Track source provenance</text>
+  <text x="50" y="299" font-family="Arial,sans-serif" font-size="13" fill="#127F78">Source documents retained</text>
+
+  <path d="M297 226 H323 M313 218 L323 226 L313 234" stroke="#128980" fill="none" stroke-width="4" stroke-linecap="round"/>
+
+  <rect x="331" y="136" width="255" height="193" rx="13" fill="#FFFFFF" stroke="#D2E2EA"/>
+  <rect x="331" y="136" width="255" height="43" rx="13" fill="#173C54"/>
+  <rect x="331" y="158" width="255" height="21" fill="#173C54"/>
+  <text x="347" y="164" font-family="Arial,sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF">2. CLEAN &amp; VERIFY</text>
+  <text x="347" y="211" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#263F57">Order-grain ETL</text>
+  <text x="347" y="244" font-family="Arial,sans-serif" font-size="15" fill="#61758A">96,470 eligible deliveries</text>
+  <text x="347" y="272" font-family="Arial,sans-serif" font-size="15" fill="#61758A">8 excluded: missing dates</text>
+  <text x="347" y="299" font-family="Arial,sans-serif" font-size="13" fill="#127F78">Counts &amp; totals reconciled</text>
+
+  <path d="M595 226 H620 M610 218 L620 226 L610 234" stroke="#128980" fill="none" stroke-width="4" stroke-linecap="round"/>
+
+  <rect x="628" y="136" width="255" height="193" rx="13" fill="#FFFFFF" stroke="#D2E2EA"/>
+  <rect x="628" y="136" width="255" height="43" rx="13" fill="#173C54"/>
+  <rect x="628" y="158" width="255" height="21" fill="#173C54"/>
+  <text x="644" y="164" font-family="Arial,sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF">3. FIND PATTERNS</text>
+  <text x="644" y="211" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#263F57">93.23% delivered on time</text>
+  <text x="644" y="244" font-family="Arial,sans-serif" font-size="15" fill="#61758A">6,534 late deliveries</text>
+  <text x="644" y="272" font-family="Arial,sans-serif" font-size="15" fill="#61758A">Mar 2018: 81.04% on time</text>
+  <text x="644" y="299" font-family="Arial,sans-serif" font-size="13" fill="#127F78">Monthly &amp; regional views</text>
+
+  <path d="M892 226 H918 M908 218 L918 226 L908 234" stroke="#128980" fill="none" stroke-width="4" stroke-linecap="round"/>
+
+  <rect x="926" y="136" width="210" height="193" rx="13" fill="#E2F3EE" stroke="#D2E2EA"/>
+  <rect x="926" y="136" width="210" height="43" rx="13" fill="#067E73"/>
+  <rect x="926" y="158" width="210" height="21" fill="#067E73"/>
+  <text x="942" y="164" font-family="Arial,sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF">4. RECOMMEND</text>
+  <text x="942" y="211" font-family="Arial,sans-serif" font-size="17" font-weight="bold" fill="#263F57">Investigate March</text>
+  <text x="942" y="237" font-family="Arial,sans-serif" font-size="17" font-weight="bold" fill="#263F57">2018 exceptions</text>
+  <text x="942" y="272" font-family="Arial,sans-serif" font-size="14" fill="#476D6C">Validate routes, carrier</text>
+  <text x="942" y="295" font-family="Arial,sans-serif" font-size="14" fill="#476D6C">milestones &amp; order mix</text>
+
+  <rect x="34" y="356" width="1102" height="83" rx="12" fill="#E5F2F0"/>
+  <text x="52" y="387" font-family="Arial,sans-serif" font-size="18" font-weight="bold" fill="#126B66">NEXT EVIDENCE NEEDED</text>
+  <text x="52" y="415" font-family="Arial,sans-serif" font-size="15" fill="#2F5156">Carrier scans, fulfilment events, dispatch locations and true cost records before testing root causes or savings.</text>
+
+  <text x="39" y="469" font-family="Arial,sans-serif" font-size="14" fill="#607687">Historical, independent portfolio study. On-time is customer delivery vs estimated date, not supplier inbound OTIF.</text>
 </svg>
